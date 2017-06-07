@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>百题斩APP后台管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="../plug_in/ace/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../plug_in/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../plug_in/ace/assets/css/fonts.googleapis.com.css" />
+    <link rel="stylesheet" href="../plug_in/ace/assets/css/ace.min.css" />
+    <link rel="stylesheet" href="../plug_in/ace/assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="../plug_in/ace/assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="../plug_in/bootstrap/dist/bootstrap-table.css" />
+    <link rel="stylesheet" href="../plug_in/bootstrap/select2/select2.min.css" />
+    <link rel="stylesheet" href="../plug_in/lhgDialog/skins/metrole.css" />
+    <link rel="stylesheet" href="../plug_in/bootstrap/dist/bootstrap-treeview.min.css" />
+    <link rel="stylesheet" href="../plug_in/toastr/toastr.css" />
+    <link rel="stylesheet" href="../plug_in/tools/css/metrole/common.css" />
+    <link rel="stylesheet" href="../plug_in/easyui/themes/metrole/main.css" />
+    <link rel="stylesheet" href="./ace_main.css" />
+    <link rel="stylesheet" href="../plug_in/easyui/themes/metrole/easyui.css" />
+    <link rel="stylesheet" href="../plug_in/My97DatePicker/skin/WdatePicker.css" />
+    <link rel="stylesheet" href="../plug_in/easyui/themes/metrole/icon.css" />
+    <link rel="stylesheet" href="../plug_in/accordion/css/accordion.css" />
+    <link rel="stylesheet" href="../plug_in/Validform/css/tablefrom.css" />
+    <script src="../plug_in/ace/assets/js/ace-extra.min.js"></script>
+</head>
+<body class="no-skin">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="" class="navbar-brand">
+                <small>
+                    <i class="fa fa-desktop"></i>
+                    百题斩APP管理端
+                </small>
+            </a>
+        </div>
+        <div class="navbar-header pull-right" role="navigation">
+            <ul class="nav ace-nav">
+                <li class="light-blue">
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                        <img class="nav-user-photo" src="../plug_in/ace/avatars/avatar2.png" alt="头像" />
+                        <span class="user-info">
+									<small data-bind="text:accountId"></small>
+				                    <span style="color: #666633" data-bind="text:role"></span>
+								</span>
+                        <i class="ace-icon fa fa-caret-down"></i>
+                    </a>
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a href="javascript:add('修改密码','./changePwd.html','',550,200)">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                &nbsp;修改密码
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:openwindow('个人信息','./showProfile.html')">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                &nbsp;个人信息
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:add('修改密码','userController.do?changepassword','',550,200)">
+                                <i class="fa fa-recycle" aria-hidden="true"></i>
+                                &nbsp;清除缓存
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a class="dropdown-toggle" href="javascript:" onclick="loginOff();">
+                                <i class="ace-icon red2 fa fa-power-off"></i>
+                                &nbsp;退出登录&nbsp;&nbsp;
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="main-container ace-save-state">
+    <div class="sidebar" >
+        <div class="sidebar-shortcuts">
+            <div class="sidebar-shortcuts-large">
+                <button class="btn btn-success">
+                    <i class="ace-icon fa fa-signal"></i>
+                </button>
+                <button class="btn btn-info">
+                    <i class="ace-icon fa fa-pencil"></i>
+                </button>
+                <button class="btn btn-warning">
+                    <i class="ace-icon fa fa-users"></i>
+                </button>
+                <button class="btn btn-danger">
+                    <i class="ace-icon fa fa-cogs"></i>
+                </button>
+            </div>
+        </div>
+        <ul class="nav nav-list" style="margin-right: 0px;">
+            <li class="active">
+                <a class="fn-item-click" target="../pages/index/index.html">
+                    <i class="menu-icon fa fa-tachometer"></i>
+                    <span class="menu-text">首页</span>
+                </a>
+                <b class="arrow"></b>
+            </li>
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa  fa-paper-plane"></i>
+                    <span class="menu-text">公告新闻</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a class="fn-item-click" target="../pages/newsBulletin/carousel/carousel.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            信息轮播
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a class="fn-item-click" target="../pages/newsBulletin/message/message.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            消息推送
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-address-card"></i>
+                    <span class="menu-text">用户管理</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a class="fn-item-click" target="../pages/user/user.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            账号管理
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa  fa-desktop"></i>
+                    <span class="menu-text">系统管理</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a class="fn-item-click" target="../pages/admin/account.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            系统账号
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-newspaper-o"></i>
+                    <span class="menu-text">课程管理</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a class="fn-item-click" target="../pages/mainCourse/mainCourse.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            课程分类
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div style="background-color:#f3f3f3;border-color: #e0e0e0;border-style: solid;border-width:0 0 1px 0;text-align: center;padding: 3px 0;position: relative;">
+            <i class="ace-icon fa fa-ils ace-save-state"></i>
+        </div>
+    </div>
+    <div class="main-content">
+        <div id="content-iframe" class="main-content-inner" >
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    window.$ = window.jQuery = require("../plug_in/ace/assets/js/jquery-2.1.4.min.js");
+    window.toastr = require("../plug_in/toastr/toastr.min.js");
+</script>
+<script  src="../plug_in/ace/assets/js/bootstrap.min.js"></script>
+<script src="../../system/GlobalConstant.js"></script>
+<script src="../plug_in/knockout/knockout.js"></script>
+<script src="../plug_in/tools/curdtools_zh-cn.js"></script>
+<script src="../plug_in/jquery/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="../plug_in/lhgDialog/lhgdialog.min.js"></script>
+<script src="../plug_in/knockout/knockout.js"></script>
+<script src="../plug_in/ace/assets/js/ace-elements.min.js"></script>
+<script src="../plug_in/ace/assets/js/ace-extra.min.js"></script>
+<script src="../plug_in/ace/assets/js/bootstrap-editable.min.js"></script>
+<script src="../plug_in/ace/assets/js/ace.min.js"></script>
+<script src="../plug_in/My97DatePicker/WdatePicker.js"></script>
+<script src="./ace_main.js"></script>
+<script>
+    //切换标签
+    $('.fn-item-click').click(function() {
+        var _clickTab = $(this).attr('target');
+        if(_clickTab!=undefined&&_clickTab.length>0){
+            $(".active").removeClass("active");
+            $.get(_clickTab,function(data){
+                $("#content-iframe").html(data);
+            });
+            $(this).parent().addClass("active");
+        }
+    });
+
+    $(document).ready(function() {
+        $.get("../pages/index/index.html", function (data) {
+            $("#content-iframe").html(data);
+        });
+    });
+</script>

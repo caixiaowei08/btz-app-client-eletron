@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="panel-fit">
+<head>
+    <meta charset="UTF-8">
+    <title>系统账户信息表</title>
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/main.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/tools/css/metrole/common.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/My97DatePicker/skin/WdatePicker.css">
+    <script type="text/javascript" src="../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-easy-ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-easy-ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <link rel="stylesheet" href="../../plug_in/toastr/toastr.css" />
+    <script type="text/javascript" src="../../plug_in/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/lhgDialog/lhgdialog.min.js"></script>
+    <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
+</head>
+<body>
+<div style="height: 650px;">
+    <div id="adminListtb"  class="datagrid-toolbar">
+        <div name="searchColums" id="searchColums">
+            <form >
+                <div style="height: 2px;"></div>
+                <span style="display:-moz-inline-box;display:inline-block;">
+                     <span style="display:-moz-inline-box;display:inline-block;">
+                    <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "title="账户ID:">账户ID: </span>
+                    <input type="text" name="accountId" style="width: 120px" class="inuptxt">
+                </span>
+                    <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
+                          title="账号类型">账号类型：</span>
+                    <select name="type" width="100" style="width: 104px">
+                                <option value="">
+                                    ---请选择---
+                                </option>
+                                <option value="1">
+                                    管理员
+                                </option>
+                                <option value="2">
+                                    录入员
+                                </option>
+                    </select>
+                </span>
+                </span>
+                <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
+                      title="账户状态">账户状态：</span>
+                <select name="state" width="100" style="width: 104px">
+                    <option value="">
+                        ---请选择---
+                    </option>
+                    <option value="1">
+                        有效
+                    </option>
+                    <option value="2">
+                        无效
+                    </option>
+                </select>
+                </span>
+            </form>
+        </div>
+        <div style="height: 2px;"></div>
+        <div style="height:35px;" class="datagrid-toolbar">
+            <span style="float:left;">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="add('新增系统账户','../pages/admin/addNewAdmin.html','adminList',600,350);">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-add l-btn-icon-left">新增&nbsp;</span>
+                     </span>
+                </a>
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="update('系统账户编辑','../pages/admin/updateAdmin.html','adminList',600,350)">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-edit l-btn-icon-left">修改&nbsp;</span>
+                     </span>
+                </a>
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="update('修改密码','../pages/admin/changePwd.html','adminList',600,200)">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-edit l-btn-icon-left">修改密码&nbsp;</span>
+                     </span>
+                </a>
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="deleteALLSelect('删除账户',GLOBAL_CONSTANT_URL +'adminController.do?doDel','adminList')">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
+                     </span>
+                </a>
+            </span>
+            <span style="float:right;">
+                <a href="#" class="l-btn" iconcls="icon-search" onclick="adminListSearch()">
+                         <span class="l-btn-left" style="">
+                              <span class="l-btn-text icon-search l-btn-icon-left">查询&nbsp;</span>
+                         </span>
+                </a>
+                <a href="#" class="l-btn" iconcls="icon-reload" onclick="searchReset()">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-reload l-btn-icon-left">重置&nbsp;</span>
+                     </span>
+                </a>
+            </span>
+        </div>
+    </div>
+    <table id="adminList"></table>
+</div>
+</body>
+</html>
+<script>
+    $(function() {
+        $("#adminList").datagrid({
+            idField: 'id',
+            title: '系统管理账户信息表',
+            url:GLOBAL_CONSTANT_URL+"adminController.do?datagrid&field=id,accountId,accountName,type,state,updateTime,createTime,",
+            toolbar: "#adminListtb",
+            pagination: true,
+            pageList: [10, 20, 30],
+            rownumbers: true,
+            emptyMsg:"无查询结果！",
+            singleSelect: true,
+            fit : true,
+            fitColumns:true,
+            frozenColumns: [[{
+                field: 'ck',
+                checkbox: 'true'
+            }]],
+            columns:[[
+                {field:'id', title:'主键',sortable:true,hidden: true},
+                {field:'accountId',sortable:true,title:'账号ID'},
+                {field:'accountName',sortable:true,title:'账户名称'},
+                {
+                    field:'type',
+                    title:'账户类型',
+                    sortable: true,
+                    formatter: function(value, rec, index){
+                        if (value == '1') {
+                            return '管理员';
+                        }
+                        if (value == '2') {
+                            return '录入员';
+                        }
+                        return "";
+                    }
+                },
+                {
+                    field:'state',
+                    title:'状态',
+                    formatter: function(value, rec, index){
+                        if (value == '1') {
+                            return '有效';
+                        }
+                        if (value == '2') {
+                            return '无效';
+                        }
+                        return "";
+                    }
+                },
+                {field:'updateTime',title:'更新时间'},
+                {field:'createTime',title:'创建时间'}
+            ]],
+        });
+    });
+
+    /**
+     * 查询
+     */
+    function adminListSearch() {
+        var queryParams = $('#adminList').datagrid('options').queryParams;
+        $('#adminListtb').find('*').each(function() {
+            queryParams[$(this).attr('name')] = $(this).val();
+        });
+        $('#adminList').datagrid({
+            url: GLOBAL_CONSTANT_URL+"adminController.do?datagrid&field=id,accountId,accountName,type,state,updateTime,createTime,",
+            pageNumber: 1
+        });
+    }
+
+    function searchReset() {
+        $("#adminListtb").find(":input").val("");
+        var queryParams = $('#adminList').datagrid('options').queryParams;
+        $('#adminListtb').find('*').each(function() {
+            queryParams[$(this).attr('name')] = $(this).val();
+        });
+        $('#adminList').datagrid({
+            url:  GLOBAL_CONSTANT_URL+"adminController.do?datagrid&field=id,accountId,accountName,type,state,updateTime,createTime,",
+            pageNumber: 1
+        });
+    }
+
+    function reloadTable() {
+        try {
+            $('#adminList').datagrid('reload');
+        } catch(ex) {}
+    }
+
+
+</script>

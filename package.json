@@ -1,0 +1,30 @@
+{
+  "name": "btz-web-client-eletron",
+  "version": "1.0.0",
+  "description": "百题斩APP后台管理端",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "packager": "electron-packager ./ btz-web-client-eletron --win32 --out ./bin --arch=x64 --electronVersion 1.6.2 --overwrite --ignore=node_modules --icon=./www/pages/image/favicon.ico"
+  },
+  "repository": "",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "蔡晓伟",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "bootstrap-select": "^1.12.2",
+    "bootstrap-table": "^1.11.2",
+    "bootstrap-treeview": "^1.2.0",
+    "electron": "~1.6.2",
+    "electron-packager": "^8.6.0"
+  },
+  "dependencies": {
+    "toastr": "^2.1.2"
+  }
+}

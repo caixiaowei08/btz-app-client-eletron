@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="panel-fit">
+<head>
+    <meta charset="UTF-8">
+    <title>用户账户信息表</title>
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/main.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/tools/css/metrole/common.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/My97DatePicker/skin/WdatePicker.css">
+    <script type="text/javascript" src="../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-easy-ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-easy-ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <link rel="stylesheet" href="../../plug_in/toastr/toastr.css" />
+    <script type="text/javascript" src="../../plug_in/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/lhgDialog/lhgdialog.min.js"></script>
+    <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
+</head>
+<body>
+<div style="height: 650px;">
+    <div id="userListtb"  class="datagrid-toolbar">
+        <div name="searchColums" id="searchColums">
+            <form >
+                <div style="height: 2px;"></div>
+                <span style="display:-moz-inline-box;display:inline-block;">
+                     <span style="display:-moz-inline-box;display:inline-block;">
+                    <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "title="账户ID:">账户ID: </span>
+                    <input type="text" name="userId" style="width: 120px" class="inuptxt">
+                </span>
+                    <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
+                          title="账号类型">账号状态：</span>
+                    <select name="state" width="100" style="width: 104px">
+                                <option value="">
+                                    ---请选择---
+                                </option>
+                                <option value="1">
+                                    已激活
+                                </option>
+                                <option value="2">
+                                    已冻结
+                                </option>
+                    </select>
+                </span>
+                </span>
+                <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
+                      title="账户状态">账户来源：</span>
+                <select name="source" width="100" style="width: 104px">
+                    <option value="">
+                        ---请选择---
+                    </option>
+                    <option value="1">
+                        web系统
+                    </option>
+                    <option value="2">
+                        其他
+                    </option>
+                </select>
+                </span>
+            </form>
+        </div>
+        <div style="height: 2px;"></div>
+        <div style="height:35px;" class="datagrid-toolbar">
+            <span style="float:left;">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="lockALLSelect('冻结账户',GLOBAL_CONSTANT_URL +'userController.do?doLock','userList')">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-edit l-btn-icon-left">冻结账户&nbsp;</span>
+                     </span>
+                </a>
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="unLockALLSelect('激活账户',GLOBAL_CONSTANT_URL +'userController.do?doUnLock','userList')">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-edit l-btn-icon-left">激活账户&nbsp;</span>
+                     </span>
+                </a>
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="update('密码重置','../pages/user/changePwd.html','userList',600,200)">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-edit l-btn-icon-left">修改密码&nbsp;</span>
+                     </span>
+                </a>
+
+            </span>
+            <span style="float:right;">
+                <a href="#" class="l-btn" iconcls="icon-search" onclick="ListSearch()">
+                         <span class="l-btn-left" style="">
+                              <span class="l-btn-text icon-search l-btn-icon-left">查询&nbsp;</span>
+                         </span>
+                </a>
+                <a href="#" class="l-btn" iconcls="icon-reload" onclick="searchReset()">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-reload l-btn-icon-left">重置&nbsp;</span>
+                     </span>
+                </a>
+            </span>
+        </div>
+    </div>
+    <table id="userList"></table>
+</div>
+</body>
+</html>
+<script>
+    $(function() {
+        $("#userList").datagrid({
+            idField: 'id',
+            title: '用户信息表',
+            url:GLOBAL_CONSTANT_URL+"userController.do?datagrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
+            toolbar: "#userListtb",
+            pagination: true,
+            pageList: [10,20,30,50,100],
+            rownumbers: true,
+            emptyMsg:"无查询结果！",
+            singleSelect: true,
+            fit : true,
+            fitColumns:true,
+            frozenColumns: [[{
+                field: 'ck',
+                checkbox: 'true'
+            }]],
+            columns:[[
+                {field:'id', title:'主键',sortable:true,hidden: true},
+                {field:'userId',sortable:true,title:'账号ID'},
+                {field:'userName',sortable:true,title:'账号名称'},
+                {field:'phone',sortable:true,title:'手机号码'},
+                {field:'authority',title:'权限'},
+                {field:'area',title:'考生地区'},
+                {
+                    field:'state',
+                    title:'状态',
+                    sortable: true,
+                    formatter: function(value, rec, index){
+                        if (value == '1') {
+                            return '已激活';
+                        }
+                        if (value == '2') {
+                            return '已冻结';
+                        }
+                        return "其他";
+                    }
+                },
+                {
+                    field:'source',
+                    title:'来源',
+                    formatter: function(value, rec, index){
+                        if (value == '1') {
+                            return 'web系统';
+                        }
+                        if (value == '2') {
+                            return '其他';
+                        }
+                        return "";
+                    }
+                },
+                {field:'updateTime',title:'更新时间'},
+                {field:'createTime',title:'创建时间'}
+            ]],
+        });
+    });
+
+    /**
+     * 查询
+     */
+    function ListSearch() {
+        var queryParams = $('#userList').datagrid('options').queryParams;
+        $('#userListtb').find('*').each(function() {
+            queryParams[$(this).attr('name')] = $(this).val();
+        });
+        $('#userList').datagrid({
+            url: GLOBAL_CONSTANT_URL+"userController.do?datagrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
+            pageNumber: 1
+        });
+    }
+
+    function searchReset() {
+        $("#userListtb").find(":input").val("");
+        var queryParams = $('#userList').datagrid('options').queryParams;
+        $('#userListtb').find('*').each(function() {
+            queryParams[$(this).attr('name')] = $(this).val();
+        });
+        $('#userList').datagrid({
+            url:  GLOBAL_CONSTANT_URL+"userController.do?datagrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
+            pageNumber: 1
+        });
+    }
+
+    function reloadTable() {
+        try {
+            $('#userList').datagrid('reload');
+        } catch(ex) {}
+    }
+
+
+</script>
