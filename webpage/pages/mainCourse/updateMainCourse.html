@@ -1,0 +1,154 @@
+<html>
+<head>
+    <title>修改课程信息</title>
+    <script type="text/javascript" src="../../plug_in/mutiLang/zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-plugs/storage/jquery.storageapi.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/dataformat.js"></script>
+    <link rel="stylesheet" href="../../plug_in/easyui/themes/metrole/easyui.css" type="text/css">
+    <link rel="stylesheet" href="../../plug_in/easyui/themes/metrole/main.css" type="text/css">
+    <link rel="stylesheet" href="../../plug_in/easyui/themes/metrole/icon.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/accordion/css/accordion.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/accordion/css/icons.css">
+    <script type="text/javascript" src="../../plug_in/easyui/jquery.easyui.min.1.3.2.js"></script>
+    <script type="text/javascript" src="../../plug_in/easyui/locale/zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/syUtil.js"></script>
+    <script type="text/javascript" src="../../plug_in/easyui/extends/datagrid-scrollview.js"></script>
+    <link rel="stylesheet" href="../../plug_in/tools/css/metrole/common.css" type="text/css">
+    <link rel="stylesheet" href="../../plug_in/ace/css/font-awesome.css" type="text/css">
+    <script type="text/javascript" src="../../plug_in/lhgDialog/lhgdialog.min.js?skin=metrole"></script>
+    <script type="text/javascript" src="../../plug_in/ace/js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="../../plug_in/layer/layer.js"></script>
+    <link rel="stylesheet" href="../../plug_in/layer/skin/layer.css" id="layui_layer_skinlayercss">
+    <script type="text/javascript" src="../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/easyuiextend.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-plugs/hftable/jquery-hftable.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/json2.js"></script>
+    <script type="text/javascript" src="../../plug_in/toastr/toastr.min.js"></script>
+    <link rel="stylesheet" href="../../plug_in/toastr/toastr.css" type="text/css">
+</head>
+
+<body style="overflow-y: hidden" scroll="no">
+<form id="formobj" action="" name="formobj" method="post">
+    <input type="hidden" id="btn_sub" class="btn_sub">
+    <input id="id" type="hidden" name="id" data-bind="value:id">
+    <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
+        <tbody>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">课程名称:</span>
+            </td>
+            <td class="value">
+                <input type="text" name="name" style="height: 30px;" data-bind="value:name" class="inputxt" datatype="*" errormsg="请输入课程名称！"
+                       nullmsg="请输入课程名称！">
+                <span class="Validform_checktip">请输入课程名称！</span>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">显示顺序:</span></td>
+            <td class="value">
+                <input type="number" value="1" name="orderNo" data-bind="value:orderNo" min="1" max="100"
+                       datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;" class="inputxt"
+                       errormsg="请输入1-100的数字！" nullmsg="请输入1-100的数字！">
+                <span class="Validform_checktip">请输入1-100的数字！</span>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">是否使用:</span></td>
+            <td class="value">
+                <select name="state" style="height: 30px;line-height: 30px;" data-bind="value:state">
+                    <option value="1">
+                        正常使用
+                    </option>
+                    <option value="2" >
+                        禁止使用
+                    </option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <link rel="stylesheet" href="../../plug_in/Validform/css/metrole/style.css" type="text/css">
+    <link rel="stylesheet" href="../../plug_in/Validform/css/metrole/tablefrom.css" type="text/css">
+    <script type="text/javascript" src="../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/Validform/js/datatype_zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript" src="../../plug_in/knockout/knockout.js"></script>
+    <script src="../../plug_in/layer/layer.js"></script>
+    <script src="../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            loadData();
+            $("#formobj").attr("action",GLOBAL_CONSTANT_URL+"mainCourseController.do?doUpdate");
+            $("#formobj").Validform({
+                tiptype: 4,
+                btnSubmit: "#btn_sub",
+                btnReset: "#btn_reset",
+                ajaxPost: true,
+                callback: function(data) {
+                    var win = frameElement.api.opener;
+                    if (data.success =="success") {
+                        frameElement.api.close();
+                        win.toastr.success(data.msg);
+                    } else if(data.success =="fail"){
+                        win.toastr.warning(data.msg)
+                    }else{
+                        win.toastr.error("服务器异常，请联系维护人员！");
+                    }
+                    win.reloadTable();
+                }
+            });
+        });
+
+
+        var viewModel = {
+            id: ko.observable(""),
+            name: ko.observable(""),
+            orderNo: ko.observable(""),
+            state: ko.observable("")
+        };
+        ko.applyBindings(viewModel);
+        var win = frameElement.api.opener;
+        function loadData() {
+            var str = window.document.location.href;
+            var start_index = str.indexOf("id=");
+            var start_end = str.indexOf("&_=");
+            var val = str.substring(start_index+3,start_end);
+            $(function(){
+                $.ajax({
+                    type:"post",
+                    url:GLOBAL_CONSTANT_URL+"mainCourseController.do?get",
+                    async:true,
+                    timeout:10000,
+                    data:{id:val},
+                    success: function(res){
+                        if(res.success === "success"){
+                            viewModel.id(res.content.id);
+                            viewModel.name(res.content.name);
+                            viewModel.orderNo(res.content.orderNo);
+                            viewModel.state(res.content.state);
+                        }else if(res.success === "fail"){
+                            win.toastr.warning(res.msg);
+                        }else{
+                            win.toastr.error("获取课程信息超时,请检查网络问题！");
+                        }
+                    },
+                    error:function () {
+                        win.toastr.error("服务器异常，请联系维护人员！");
+                    },
+                    complete:function (XMLHttpRequest, textStatus) {
+                        if(status=='timeout'){//超时,status还有success,error等值的情况
+                            win.toastr.error("获取课程信息超时,请检查网络问题！");
+                        }
+                    }
+                },'json');
+            });
+        }
+    </script>
+</form>
+</body>
+</html>
