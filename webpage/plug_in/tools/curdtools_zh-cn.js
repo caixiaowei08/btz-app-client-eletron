@@ -98,6 +98,25 @@ function update(title,url, id,width,height,isRestful) {
 	createwindow(title,url,width,height);
 }
 
+function addUpdate(title,url, id,width,height,isRestful) {
+    gridname=id;
+    var rowsData = $('#'+id).datagrid('getSelections');
+    if (!rowsData || rowsData.length==0) {
+        tip('请选中一个课程大类！');
+        return;
+    }
+    if (rowsData.length>1) {
+        tip('请选择一条记录再编辑');
+        return;
+    }
+    if(isRestful!='undefined'&&isRestful){
+        url += '/'+rowsData[0].id;
+    }else{
+        url += '?id='+rowsData[0].id;
+    }
+    createwindow(title,url,width,height);
+}
+
 
 /**
  * 如果页面是详细查看页面，无效化所有表单元素，只能进行查看
@@ -161,7 +180,7 @@ function deleteALLSelect(title,url,gname) {
 					cache : false,
 					success : function(data) {
 						if (data.success == "success") {
-                            toastr.info(data.msg);
+                            toastr.success(data.msg);
 							$("#"+gname).datagrid('unselectAll');
 							ids='';
 						}else{
@@ -184,6 +203,58 @@ function deleteALLSelect(title,url,gname) {
 	} else {
 		tip("请选择需要删除的数据");
 	}
+}
+
+/**
+ * 多记录刪除請求
+ * @param title
+ * @param url
+ * @param gname
+ * @return
+ */
+function deleteALLSelectSubCourse(title,url,gname) {
+    gridname=gname;
+    var ids = [];
+    var rows = $("#"+gname).datagrid('getSelections');
+    if (rows.length > 0) {
+        $.dialog.setting.zIndex = getzIndex(true);
+        $.dialog.confirm('你确定永久删除该数据吗?', function(r) {
+            if (r) {
+                for ( var i = 0; i < rows.length; i++) {
+                    ids.push(rows[i].id);
+                }
+                $.ajax({
+                    url : url,
+                    type : 'post',
+                    data : {
+                        ids : ids.join(',')
+                    },
+                    cache : false,
+                    success : function(data) {
+                        if (data.success == "success") {
+                            toastr.success(data.msg);
+                            $("#"+gname).datagrid('unselectAll');
+                            ids='';
+                        }else{
+                            if (data.responseText == '' || data.responseText == undefined) {
+                                toastr.info(data.msg);
+                            } else {
+                                try {
+                                    toastr.error(data.msg);
+                                } catch(ex) {
+                                    toastr.error(data.responseText+"");
+                                }
+                            }
+                            return false;
+                        }
+                        subCourseReloadTable();
+                    }
+                });
+            }
+        });
+    } else {
+        tip("请选择需要删除的数据");
+    }
 }
 
 /**
