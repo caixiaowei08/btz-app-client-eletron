@@ -24,13 +24,161 @@
 </head>
 <body>
 <div class="row">
-    <div class="col-md-2">
-        <table id="tt"></table>
+    <div class="col-xs-5">
+        <div style="height: 650px;">
+            <table id="courseList"></table>
+        </div>
     </div>
-    <div class="col-md-8">
-aaaa
+    <div class="col-xs-6">
+        <div style="height: 650px;">
+            <div id="chapterListtb" class="datagrid-toolbar">
+                <input type="hidden" id="subCourseId" name="subCourseId" data-bind="value:subCourseId">
+                <div style="height: 35px;">
+                    <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
+                        <tr>
+                            <td align="center" width="20%">
+                                <span class="filedzt">课程名称:</span>
+                            </td>
+                            <td class="value">
+                                <input type="text" name="subCourseName" id="subCourseName" data-bind="value:subCourseName" style="height: 30px;"
+                                       readonly="readonly" class="inputxt" placeholder="请选择课程">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="height:35px;" class="datagrid-toolbar">
+                            <span style="float:left;">
+                                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                                   onclick="newChapter();">
+                                     <span class="l-btn-left" style="">
+                                         <span class="l-btn-text icon-add l-btn-icon-left">新增&nbsp;</span>
+                                     </span>
+                                </a>
+                                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                                   onclick="updateChapter();">
+                                     <span class="l-btn-left" style="">
+                                         <span class="l-btn-text icon-edit l-btn-icon-left">编辑&nbsp;</span>
+                                     </span>
+                                </a>
+                                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
+                                   onclick="deleteChapter();">
+                                     <span class="l-btn-left" style="">
+                                         <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
+                                     </span>
+                                </a>
+                            </span>
+                </div>
+            </div>
+            <table id="chapterList"></table>
+        </div>
     </div>
+
 </div>
 </body>
 </html>
+<script>
+    $(function () {
+        var viewModel = {
+            subCourseId: ko.observable(),
+            subCourseName: ko.observable()
+        };
+        ko.applyBindings(viewModel);
+
+        $('#chapterList').treegrid({
+            title: '章节信息',
+            idField: 'id',
+            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
+            collapsible: false,      //是否可折叠
+            rownumbers: true,        //行号
+            fitColumns: true,
+            pagination: false,        //分页控件
+            method: 'post',          //请求方式
+            treeField: 'name',       //定义树节点的字段
+            fit: true,               //网格自动撑满
+            fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            toolbar: "#chapterListtb",
+            columns: [[
+                {field: 'name', title: '课程分类', width: 100},
+                {field: 'orderNo', title: '显示顺序', width: 100},
+                {field: 'level', title: '章节层级', hidden: true}
+            ]]
+        });
+
+        $('#courseList').treegrid({
+            title: '课程信息',
+            idField: 'id',
+            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?mainCourseTreeGrid",
+            collapsible: false,      //是否可折叠
+            rownumbers: true,        //行号
+            fitColumns: true,
+            pagination: false,        //分页控件
+            method: 'post',          //请求方式
+            treeField: 'name',       //定义树节点的字段
+            fit: true,               //网格自动撑满
+            fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            columns: [[
+                {field: 'name', title: '课程分类', width: 100},
+                {field: 'leaf', title: '是否是叶子', hidden: true},
+                {
+                    field: 'state_s',
+                    title: '状态',
+                    formatter: function (value, rec, index) {
+                        if(rec.leaf){
+                            if (value == '1') {
+                                return '可以试用';
+                            }
+                            if (value == '2') {
+                                return '不能试用';
+                            }
+                        }else{
+                            if (value == '1') {
+                                return '正常使用';
+                            }
+                            if (value == '2') {
+                                return '禁用使用';
+                            }
+                        }
+                        return "";
+                    }
+                }
+            ]],
+            onSelect: function (node) {
+                if (node.leaf) {
+                    viewModel.subCourseId(node.id);
+                    viewModel.subCourseName(node.name);
+                    chapterReloadTable();
+                }
+            },
+            onBeforeSelect: function (node) {
+                return node.leaf;
+            }
+        });
+    });
+
+    function chapterReloadTable() {
+        try {
+            var subCourseId = $("#subCourseId").val();
+            var subCourseName = $("#subCourseName").val();
+            $('#chapterList').treegrid('reload',{"subCourseId":subCourseId,"subCourseName":subCourseName});
+        } catch (ex) {
+        }
+    }
+
+    function newChapter(title,url,width,height) {
+        var subCourseId = $("#subCourseId").val();
+        var subCourseName = $("#subCourseName").val();
+        var rowsData = $('#chapterList').treegrid('getSelections');
+        if (!rowsData || rowsData.length==0) {
+            tip('请选择新增章节的父级章节！');
+            return;
+        }
+        if (rowsData.length>1) {
+            tip('请选择一个父级章节，再进行新增！');
+            return;
+        }
+        url += '?subCourseId='+subCourseId+'&subCourseName='+subCourseName+'&id='+rowsData[0].id+'&level='+rowsData[0].level;
+        createwindow(title,url,width,height);
+    }
+</script>
+
 
