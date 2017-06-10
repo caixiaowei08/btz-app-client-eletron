@@ -49,19 +49,19 @@
                 <div style="height:35px;" class="datagrid-toolbar">
                             <span style="float:left;">
                                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                                   onclick="newChapter();">
+                                   onclick="newChapter('新增章节','../pages/mainCourse/chapter/addChapter.html',600,350);">
                                      <span class="l-btn-left" style="">
                                          <span class="l-btn-text icon-add l-btn-icon-left">新增&nbsp;</span>
                                      </span>
                                 </a>
                                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                                   onclick="updateChapter();">
+                                   onclick="updateChapter('编辑章节','../pages/mainCourse/chapter/updateChapter.html',600,350)">
                                      <span class="l-btn-left" style="">
                                          <span class="l-btn-text icon-edit l-btn-icon-left">编辑&nbsp;</span>
                                      </span>
                                 </a>
                                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
-                                   onclick="deleteChapter();">
+                                   onclick="deleteChapter('删除',GLOBAL_CONSTANT_URL +'chapterController.do?doDel');">
                                      <span class="l-btn-left" style="">
                                          <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
                                      </span>
@@ -90,7 +90,6 @@
             url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
-            fitColumns: true,
             pagination: false,        //分页控件
             method: 'post',          //请求方式
             treeField: 'name',       //定义树节点的字段
@@ -110,7 +109,6 @@
             url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?mainCourseTreeGrid",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
-            fitColumns: true,
             pagination: false,        //分页控件
             method: 'post',          //请求方式
             treeField: 'name',       //定义树节点的字段
@@ -166,7 +164,7 @@
 
     function newChapter(title,url,width,height) {
         var subCourseId = $("#subCourseId").val();
-        var subCourseName = $("#subCourseName").val();
+        //var subCourseName = $("#subCourseName").val();
         var rowsData = $('#chapterList').treegrid('getSelections');
         if (!rowsData || rowsData.length==0) {
             tip('请选择新增章节的父级章节！');
@@ -176,9 +174,73 @@
             tip('请选择一个父级章节，再进行新增！');
             return;
         }
-        url += '?subCourseId='+subCourseId+'&subCourseName='+subCourseName+'&id='+rowsData[0].id+'&level='+rowsData[0].level;
+        url += '?subCourseId='+subCourseId+'&subCourseName='+rowsData[0].name+'&id='+rowsData[0].id+'&level='+rowsData[0].level;
         createwindow(title,url,width,height);
     }
+
+    function updateChapter(title,url,width,height) {
+        var rowsData = $('#chapterList').treegrid('getSelections');
+        if (!rowsData || rowsData.length==0) {
+            tip('请选择章节进行编辑！');
+            return;
+        }
+        if (rowsData.length>1) {
+            tip('请选择一个章节，再进行编辑！');
+            return;
+        }
+        if (rowsData[0].level === 'S') {
+            tip('不能选择课程根节点进行修改！');
+            return;
+        }
+        url += '?id='+rowsData[0].id
+        createwindow(title,url,width,height);
+    }
+    
+    function deleteChapter(title,url) {
+        var ids = [];
+        var rows = $("#chapterList").treegrid('getSelections');
+        if (rows.length > 0) {
+            $.dialog.setting.zIndex = getzIndex(true);
+            $.dialog.confirm('你确定永久删除该数据吗?', function(r) {
+                if (r) {
+                    for ( var i = 0; i < rows.length; i++) {
+                        ids.push(rows[i].id);
+                    }
+                    $.ajax({
+                        url : url,
+                        type : 'post',
+                        data : {
+                            ids : ids.join(',')
+                        },
+                        cache : false,
+                        success : function(data) {
+                            if (data.success == "success") {
+                                toastr.success(data.msg);
+                                $("#chapterList").treegrid('unselectAll');
+                                ids='';
+                            }else{
+                                if (data.responseText == '' || data.responseText == undefined) {
+                                    toastr.info(data.msg);
+                                } else {
+                                    try {
+                                        toastr.error(data.msg);
+                                    } catch(ex) {
+                                        toastr.error(data.responseText+"");
+                                    }
+                                }
+                                return false;
+                            }
+                            chapterReloadTable();
+                        }
+                    });
+                }
+            });
+        } else {
+            tip("请选择需要删除的数据");
+        }
+    }
+    
+    
 </script>
 
 

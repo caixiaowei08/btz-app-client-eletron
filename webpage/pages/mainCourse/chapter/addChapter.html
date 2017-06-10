@@ -32,16 +32,27 @@
 <body style="overflow-y: hidden" scroll="no">
 <form id="formobj" action="" name="formobj" method="post">
     <input type="hidden" id="btn_sub" class="btn_sub">
+    <input id="courseId" type="hidden" name="courseId" data-bind="value:subCourseId">
+    <input id="fid" type="hidden" name="fid" data-bind="value:id">
+    <input id="level" type="hidden" name="level" data-bind="value:level">
     <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
         <tbody>
         <tr>
             <td align="center" width="20%">
-                <span class="filedzt">课程名称:</span>
+                <span class="filedzt">父级章节:</span>
             </td>
             <td class="value">
-                <input type="text" name="name" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入课程大类名称！"
-                       nullmsg="请输入课程大类名称！">
-                <span class="Validform_checktip">请输入课程名称！</span>
+                <input type="text" name="subCourseName" style="height: 30px;"  readonly="readonly" data-bind="value:subCourseName" class="inputxt" >
+            </td>
+        </tr>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">章节名称:</span>
+            </td>
+            <td class="value">
+                <input type="text" name="chapterName" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入章节名称！"
+                       nullmsg="请输入章节名称！">
+                <span class="Validform_checktip">请输入章节名称！</span>
             </td>
         </tr>
         <tr>
@@ -54,34 +65,22 @@
                 <span class="Validform_checktip">请输入1-100的数字！</span>
             </td>
         </tr>
-        <tr>
-            <td align="center">
-                <span class="filedzt">是否使用:</span></td>
-            <td class="value">
-                <select name="state" style="height: 30px;line-height: 30px;">
-                    <option value="1" selected>
-                        正常使用
-                    </option>
-                    <option value="2" >
-                        禁止使用
-                    </option>
-                </select>
-            </td>
-        </tr>
         </tbody>
     </table>
-    <link rel="stylesheet" href="../../plug_in/Validform/css/metrole/style.css" type="text/css">
-    <link rel="stylesheet" href="../../plug_in/Validform/css/metrole/tablefrom.css" type="text/css">
-    <script type="text/javascript" src="../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
-    <script type="text/javascript" src="../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
-    <script type="text/javascript" src="../../plug_in/Validform/js/datatype_zh-cn.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/Validform/css/metrole/style.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/Validform/css/metrole/tablefrom.css" type="text/css">
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/datatype_zh-cn.js"></script>
     <script type="text/javascript"
-            src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
-    <script src="../../plug_in/layer/layer.js"></script>
-    <script src="../../../system/GlobalConstant.js"></script>
+            src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script src="../../../plug_in/layer/layer.js"></script>
+    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
+    <script src="../../../../system/GlobalConstant.js"></script>
     <script type="text/javascript">
         $(function () {
-            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "mainCourseController.do?doAdd");
+            loadData();
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "chapterController.do?doAdd");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -91,16 +90,44 @@
                     var win = frameElement.api.opener;
                     if (data.success == "success") {
                         frameElement.api.close();
-                        win.toastr.info(data.msg);
+                        win.toastr.success(data.msg);
                     } else if (data.success == "fail") {
                         win.toastr.warning(data.msg);
                     } else {
                         win.toastr.warning("服务器错误或者网络问题,请联系管理员！");
                     }
-                    win.reloadTable();
+                    win.chapterReloadTable();
                 }
             });
         });
+
+        var viewModel = {
+            subCourseId: ko.observable(),
+            subCourseName: ko.observable(),
+            id: ko.observable(),
+            level: ko.observable()
+        };
+        ko.applyBindings(viewModel);
+        function loadData() {
+            //'?subCourseId='+subCourseId+'&subCourseName='+subCourseName+'&id='+rowsData[0].id+'&level='+rowsData[0].level;
+            var str = window.document.location.href;
+            var start_subCourseId = str.indexOf("subCourseId=");
+            var end_subCourseId = str.indexOf("&subCourseName");
+            var subCourseId = str.substring(start_subCourseId+13,end_subCourseId);
+            var start_subCourseName = str.indexOf("subCourseName=");
+            var end_subCourseName = str.indexOf("&id=");
+            var subCourseName = str.substring(start_subCourseName+14,end_subCourseName);
+            var start_id = str.indexOf("id=");
+            var end_id = str.indexOf("&level=");
+            var id = str.substring(start_id+4,end_id);
+            var start_level = str.indexOf("level=");
+            var end_level = str.indexOf("&_=");
+            var level = str.substring(start_level+6,end_level);
+            viewModel.subCourseId(subCourseId);
+            viewModel.subCourseName( decodeURI(subCourseName));
+            viewModel.id(id);
+            viewModel.level(level);
+        }
     </script>
 </form>
 </body>
