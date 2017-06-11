@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="panel-fit">
+<head>
+    <meta charset="UTF-8">
+    <title>系统账户信息表</title>
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metrole/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metrole/main.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/tools/css/metrole/common.css">
+    <link rel="stylesheet" type="text/css" href="../gridSystem.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/My97DatePicker/skin/WdatePicker.css">
+    <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-easy-ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-easy-ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/toastr/toastr.css"/>
+    <script type="text/javascript" src="../../../plug_in/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/lhgDialog/lhgdialog.min.js"></script>
+    <script type="text/javascript" src="../../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
+</head>
+<body>
+<div class="breadcrumbs">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:darkolivegreen;font-size:18px;line-height: 18px;" data-bind="text:subCourseName">当前选择课程</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#" class="l-btn" iconcls="icon-search" onclick="courseSearch()">
+       <span class="l-btn-left">
+            <span class="l-btn-text icon-search l-btn-icon-left">切换课程&nbsp;</span>
+       </span>
+    </a>
+</div>
+<div class="row">
+    <div class="col-xs-3">
+        <div style="height: 650px;">
+            <table id="chapterList"></table>
+        </div>
+    </div>
+    <div class="col-xs-8">
+        <div style="height: 650px;">
+            <table id="chapterExerciseList"></table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var viewModel = {
+        sid: ko.observable(""),
+        subCourseName: ko.observable("请选择课程")
+    };
+    ko.applyBindings(viewModel);
+
+    $(function () {
+        courseSearch();
+
+        $('#chapterList').treegrid({
+            title: '章节信息',
+            idField: 'id',
+            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
+            collapsible: false,      //是否可折叠
+            rownumbers: true,        //行号
+            pagination: false,        //分页控件
+            method: 'post',          //请求方式
+            treeField: 'name',       //定义树节点的字段
+            fit: true,               //网格自动撑满
+            fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            toolbar: "#chapterListtb",
+            columns: [[
+                {field: 'name', title: '章节列表'},
+                {field: 'orderNo', title: '显示顺序'},
+                {field: 'level', title: '章节层级', hidden: true}
+            ]]
+        });
+
+        $("#chapterExerciseList").datagrid({
+            idField: 'id',
+            title: '',
+            url: GLOBAL_CONSTANT_URL + "mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
+            toolbar: "#chapterExerciseListtb",
+            pagination: true,
+            pageSize: 20,
+            pageList: [10, 20, 30, 50, 100],
+            rownumbers: true,
+            emptyMsg: "无查询结果！",
+            singleSelect: true,
+            fit: true,
+            fitColumns: true,
+            onClickRow: function (rowIndex, field, value) {
+                viewModel.fid(field.id);
+                viewModel.name(field.name);
+                subCourseReloadTable();
+            },
+            frozenColumns: [[{
+                field: 'ck',
+                checkbox: 'true'
+            }]],
+            columns: [[
+                {field: 'id', title: '主键', sortable: true, hidden: true},
+                {
+                    field: 'name',
+                    title: '课程大类'
+                },
+                {
+                    field: 'orderNo',
+                    title: '显示顺序',
+                    sortable: true
+                },
+                {
+                    field: 'state',
+                    title: '状态',
+                    sortable: true,
+                    formatter: function (value, rec, index) {
+                        if (value == '1') {
+                            return '正常使用';
+                        }
+                        if (value == '2') {
+                            return '禁用使用';
+                        }
+                        return "";
+                    }
+                },
+                {field: 'updateTime', title: '更新时间'},
+                {field: 'createTime', title: '创建时间'}
+            ]],
+        });
+    })
+
+   function courseSearch() {
+       createwindow('课程选择','../pages/exercise/chooseCourse.html',400,600);
+   }
+
+   function loadCourseInfo(rowsData) {
+       viewModel.sid(rowsData[0].id);
+       viewModel.subCourseName(rowsData[0].name)
+       chapterReloadTable(rowsData[0].id,rowsData[0].name);
+   }
+
+    function chapterReloadTable(subCourseId,subCourseName) {
+        try {
+            $('#chapterList').treegrid('reload',{"subCourseId":subCourseId,"subCourseName":subCourseName});
+        } catch (ex) {
+        }
+    }
+
+</script>

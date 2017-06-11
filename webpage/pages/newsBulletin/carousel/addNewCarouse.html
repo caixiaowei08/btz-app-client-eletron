@@ -93,7 +93,6 @@
                 btnReset: "#btn_reset",
                 ajaxPost: true,
                 beforeSubmit:function(curform){
-                    console.log(curform);
                     var img_file = document.getElementById("img").files[0];
                     var reader = new FileReader();
                     reader.readAsDataURL(img_file);
