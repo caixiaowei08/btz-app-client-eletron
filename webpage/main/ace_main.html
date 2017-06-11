@@ -98,14 +98,7 @@
             </div>
         </div>
         <ul class="nav nav-list" style="margin-right: 0px;">
-            <li class="active">
-                <a class="fn-item-click" target="../pages/index/index.html">
-                    <i class="menu-icon fa fa-tachometer"></i>
-                    <span class="menu-text">首页</span>
-                </a>
-                <b class="arrow"></b>
-            </li>
-            <li class="">
+            <li class="open">
                 <a href="#" class="dropdown-toggle">
                     <i class="menu-icon fa  fa-paper-plane"></i>
                     <span class="menu-text">公告新闻</span>
@@ -113,7 +106,7 @@
                 </a>
                 <b class="arrow"></b>
                 <ul class="submenu">
-                    <li class="">
+                    <li class="active">
                         <a class="fn-item-click" target="../pages/newsBulletin/carousel/carousel.html">
                             <i class="menu-icon fa fa-caret-right"></i>
                             信息轮播
@@ -187,6 +180,30 @@
                     </li>
                 </ul>
             </li>
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-file-text"></i>
+                    <span class="menu-text">试题管理</span>
+                    <b class="arrow fa fa-angle-down"></b>
+                </a>
+                <b class="arrow"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a class="fn-item-click" target="../pages/exercise/chapterTestPoint/chapterTestPoint.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            章节练习
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a class="fn-item-click" target="../pages/exercise/coreTestPoint/coreTestPoint.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            核心考点
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                </ul>
+            </li>
         </ul>
         <div style="background-color:#f3f3f3;border-color: #e0e0e0;border-style: solid;border-width:0 0 1px 0;text-align: center;padding: 3px 0;position: relative;">
             <i class="ace-icon fa fa-ils ace-save-state"></i>
@@ -230,7 +247,7 @@
     });
 
     $(document).ready(function() {
-        $.get("../pages/index/index.html", function (data) {
+        $.get("../pages/newsBulletin/carousel/carousel.html", function (data) {
             $("#content-iframe").html(data);
         });
     });
