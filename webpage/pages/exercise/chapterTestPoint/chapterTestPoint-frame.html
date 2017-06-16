@@ -33,6 +33,25 @@
 <div class="row">
     <div class="col-xs-3">
         <div style="height: 650px;">
+            <div id="chapterExerciseListtb" class="datagrid-toolbar">
+                <input id="fid" type="hidden" name="fid" data-bind="value:fid">
+                <div style="height:35px;" class="datagrid-toolbar">
+                    <span style="float:left;">
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                           onclick="exportXlsByT();">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-put l-btn-icon-left">题目导入&nbsp;</span>
+                             </span>
+                        </a>
+                        <a href="#" id="icon-putout" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                           onclick="downLoadXlsByT();">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-putout l-btn-icon-left">模板下载&nbsp;</span>
+                             </span>
+                        </a>
+                    </span>
+                </div>
+            </div>
             <table id="chapterList"></table>
         </div>
     </div>
@@ -53,7 +72,6 @@
 
     $(function () {
         courseSearch();
-
         $('#chapterList').treegrid({
             title: '章节信息',
             idField: 'id',
@@ -134,13 +152,26 @@
        viewModel.sid(rowsData[0].id);
        viewModel.subCourseName(rowsData[0].name)
        chapterReloadTable(rowsData[0].id,rowsData[0].name);
+
    }
 
     function chapterReloadTable(subCourseId,subCourseName) {
         try {
+            $("#icon-putout").attr('href',GLOBAL_CONSTANT_URL + "exerciseController.do?downLoadExcel&subCourseId="+subCourseId.substring(1,subCourseId.length));
             $('#chapterList').treegrid('reload',{"subCourseId":subCourseId,"subCourseName":subCourseName});
         } catch (ex) {
         }
     }
+    
+    function exportXlsByT() {
+        createwindow('试题上传','../pages/exercise/chapterTestPoint/uploadFile.html',600,100);
+    }
 
+    function downLoadXlsByT(){
+        var val = $("#icon-putout").attr("href");
+        if (val === '#'){
+            toastr.warning("请选择课程,再点击模板下载")
+            return;
+        }
+    }
 </script>
