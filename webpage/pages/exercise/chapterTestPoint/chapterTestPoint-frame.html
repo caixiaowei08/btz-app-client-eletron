@@ -23,7 +23,8 @@
 </head>
 <body>
 <div class="breadcrumbs">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:darkolivegreen;font-size:18px;line-height: 18px;" data-bind="text:subCourseName">当前选择课程</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:darkolivegreen;font-size:18px;line-height: 18px;"
+                                              data-bind="text:subCourseName">当前选择课程</span>&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="#" class="l-btn" iconcls="icon-search" onclick="courseSearch()">
        <span class="l-btn-left">
             <span class="l-btn-text icon-search l-btn-icon-left">切换课程&nbsp;</span>
@@ -33,8 +34,13 @@
 <div class="row">
     <div class="col-xs-3">
         <div style="height: 650px;">
+            <table id="chapterList"></table>
+        </div>
+    </div>
+    <div class="col-xs-8">
+        <div style="height: 650px;">
             <div id="chapterExerciseListtb" class="datagrid-toolbar">
-                <input id="fid" type="hidden" name="fid" data-bind="value:fid">
+                <input id="sid" type="hidden" name="sid" data-bind="value:sid">
                 <div style="height:35px;" class="datagrid-toolbar">
                     <span style="float:left;">
                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
@@ -52,11 +58,6 @@
                     </span>
                 </div>
             </div>
-            <table id="chapterList"></table>
-        </div>
-    </div>
-    <div class="col-xs-8">
-        <div style="height: 650px;">
             <table id="chapterExerciseList"></table>
         </div>
     </div>
@@ -88,27 +89,30 @@
                 {field: 'name', title: '章节列表'},
                 {field: 'orderNo', title: '显示顺序'},
                 {field: 'level', title: '章节层级', hidden: true}
-            ]]
+            ]],
+            onBeforeSelect: function (node) {
+                return node.leaf;
+            },
+            onDblClickRow:function (row) {
+                if(row.leaf){
+                    console.log(row);
+                }
+            }
         });
 
         $("#chapterExerciseList").datagrid({
             idField: 'id',
             title: '',
-            url: GLOBAL_CONSTANT_URL + "mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL + "exerciseController.do?datagrid&field=id,subCourseId,chapterId,type,title,content,answer,answerKey,orderNo,updateTime,createTime,",
             toolbar: "#chapterExerciseListtb",
             pagination: true,
-            pageSize: 20,
-            pageList: [10, 20, 30, 50, 100],
+            pageSize: 50,
+            pageList: [10, 20, 30, 50,100,200],
             rownumbers: true,
             emptyMsg: "无查询结果！",
             singleSelect: true,
             fit: true,
             fitColumns: true,
-            onClickRow: function (rowIndex, field, value) {
-                viewModel.fid(field.id);
-                viewModel.name(field.name);
-                subCourseReloadTable();
-            },
             frozenColumns: [[{
                 field: 'ck',
                 checkbox: 'true'
@@ -116,27 +120,61 @@
             columns: [[
                 {field: 'id', title: '主键', sortable: true, hidden: true},
                 {
-                    field: 'name',
-                    title: '课程大类'
+                    field: 'subCourseId',
+                    title: '课程主键'
+                },
+                {
+                    field: 'chapterId',
+                    title: '章节主键',
+                    sortable: true
+                },
+                {
+                    field: 'type',
+                    title: '题目类型',
+                    sortable: true,
+                    formatter: function (value, rec, index) {
+                        if (value == '1') {
+                            return '单选题';
+                        }
+                        if (value == '2') {
+                            return '多选题';
+                        }
+                        if (value == '3') {
+                            return '判断题';
+                        }
+                        if (value == '4') {
+                            return '分录题';
+                        }
+                        if (value == '5') {
+                            return '不定项分析题';
+                        }
+                        if (value == '6') {
+                            return '长文本题';
+                        }
+                        if (value == '7') {
+                            return '短文本题';
+                        }
+                        if (value == '8') {
+                            return '公式题';
+                        }
+                        if (value == '9') {
+                            return '不定项表格';
+                        }
+                        return "";
+                    }
+                },
+                {
+                    field: 'answer',
+                    title: '答案',
+                },
+                {
+                    field: 'answerKey',
+                    title: '答案解析',
                 },
                 {
                     field: 'orderNo',
                     title: '显示顺序',
                     sortable: true
-                },
-                {
-                    field: 'state',
-                    title: '状态',
-                    sortable: true,
-                    formatter: function (value, rec, index) {
-                        if (value == '1') {
-                            return '正常使用';
-                        }
-                        if (value == '2') {
-                            return '禁用使用';
-                        }
-                        return "";
-                    }
                 },
                 {field: 'updateTime', title: '更新时间'},
                 {field: 'createTime', title: '创建时间'}
@@ -144,33 +182,43 @@
         });
     })
 
-   function courseSearch() {
-       createwindow('课程选择','../pages/exercise/chooseCourse.html',400,600);
-   }
+    function courseSearch() {
+        createwindow('课程选择', '../pages/exercise/chooseCourse.html', 400, 600);
+    }
 
-   function loadCourseInfo(rowsData) {
-       viewModel.sid(rowsData[0].id);
-       viewModel.subCourseName(rowsData[0].name)
-       chapterReloadTable(rowsData[0].id,rowsData[0].name);
+    function loadCourseInfo(rowsData) {
+        viewModel.sid(rowsData[0].id);
+        viewModel.subCourseName(rowsData[0].name);
+        chapterReloadTable(rowsData[0].id, rowsData[0].name);
+    }
 
-   }
+    function reloadDate() {
+       var subCourseId = $("#fid");
+        var rowsData = $('#chapterList').treegrid('getSelections');
+        var chapterId = "";
+        if (!rowsData || rowsData.length==0) {
+            chapterId = rowsData[0].id;
+        }
+        $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId, "chapterId":chapterId});
+    }
 
-    function chapterReloadTable(subCourseId,subCourseName) {
+    function chapterReloadTable(subCourseId, subCourseName) {
         try {
-            $("#icon-putout").attr('href',GLOBAL_CONSTANT_URL + "exerciseController.do?downLoadExcel&subCourseId="+subCourseId.substring(1,subCourseId.length));
-            $('#chapterList').treegrid('reload',{"subCourseId":subCourseId,"subCourseName":subCourseName});
+            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "exerciseController.do?downLoadExcel&subCourseId=" + subCourseId.substring(1, subCourseId.length));
+            $('#chapterList').treegrid('reload', {"subCourseId": subCourseId, "subCourseName": subCourseName});
+            $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId});
         } catch (ex) {
         }
     }
-    
+
     function exportXlsByT() {
-        createwindow('试题上传','../pages/exercise/chapterTestPoint/uploadFile.html',600,100);
+        createwindow('试题上传', '../pages/exercise/chapterTestPoint/uploadFile.html', 600, 100);
     }
 
-    function downLoadXlsByT(){
+    function downLoadXlsByT() {
         var val = $("#icon-putout").attr("href");
-        if (val === '#'){
-            toastr.warning("请选择课程,再点击模板下载")
+        if (val === '#') {
+            toastr.warning("请选择课程,再点击模板下载!")
             return;
         }
     }
