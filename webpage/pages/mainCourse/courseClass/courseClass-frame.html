@@ -100,6 +100,7 @@
                 {
                     field: 'type',
                     title: '模块名称',
+                    width: 100,
                     formatter: function (value, rec, index) {
                         if (value == '1') {
                             return '章节练习';
@@ -122,9 +123,11 @@
                         return "";
                     }
                 },
+                {field: 'versionNo', title: '题目版本序列', width: 100},
                 {
                     field: 's_state',
                     title: '状态',
+                    width: 100,
                     formatter: function (value, rec, index) {
                         console.log(value);
                         if (value == '1') {
