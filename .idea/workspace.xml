@@ -7,9 +7,8 @@
   <component name="ChangeListManager">
     <list default="true" id="779fa6be-42db-45f2-acb5-d92b3f60b456" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/addCourseClass.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/addCourseClass.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/courseClass-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/courseClass-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/chooseCourse.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/chooseCourse.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,41 +26,52 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="addCourseClass.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/addCourseClass.html">
+      <file leaf-file-name="chapterTestPoint-frame.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="116" column="46" lean-forward="false" selection-start-line="116" selection-start-column="46" selection-end-line="116" selection-end-column="46" />
-              <folding />
+              <caret line="134" column="30" lean-forward="false" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
+              <folding>
+                <element signature="e#1755#1761#0" expanded="true" />
+                <element signature="e#1761#1767#0" expanded="true" />
+                <element signature="e#1767#1773#0" expanded="true" />
+                <element signature="e#1773#1779#0" expanded="true" />
+                <element signature="e#1779#1785#0" expanded="true" />
+                <element signature="e#1785#1791#0" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#1950#1956#0" expanded="true" />
+                <element signature="e#1956#1962#0" expanded="true" />
+                <element signature="e#1962#1968#0" expanded="true" />
+                <element signature="e#1968#1974#0" expanded="true" />
+                <element signature="e#2155#2161#0" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#2979#2985#0" expanded="true" />
+                <element signature="e#3378#3384#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chapter.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter.html">
+      <file leaf-file-name="uploadFile.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/uploadFile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-              <folding />
+            <state relative-caret-position="2640">
+              <caret line="88" column="32" lean-forward="false" selection-start-line="88" selection-start-column="32" selection-end-line="88" selection-end-column="32" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="updateMainCourse.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/updateMainCourse.html">
+      <file leaf-file-name="mainCourse-frame.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/mainCourse-frame.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1830">
-              <caret line="61" column="100" lean-forward="false" selection-start-line="61" selection-start-column="77" selection-end-line="61" selection-end-column="100" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chapter-frame.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter-frame.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="165" column="50" lean-forward="false" selection-start-line="165" selection-start-column="50" selection-end-line="165" selection-end-column="50" />
+            <state relative-caret-position="3240">
+              <caret line="108" column="50" lean-forward="false" selection-start-line="108" selection-start-column="50" selection-end-line="108" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -70,65 +80,12 @@
       <file leaf-file-name="curdtools_zh-cn.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webpage/plug_in/tools/curdtools_zh-cn.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-666">
-              <caret line="674" column="9" lean-forward="false" selection-start-line="674" selection-start-column="9" selection-end-line="674" selection-end-column="9" />
+            <state relative-caret-position="3000">
+              <caret line="100" column="9" lean-forward="false" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="9" />
               <folding>
                 <marker date="1497165505523" expanded="true" signature="27641:27674" ph="..." />
                 <marker date="1497165505523" expanded="true" signature="28185:28218" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="updateCourseClass.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/updateCourseClass.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="115" column="46" lean-forward="false" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="46" />
-              <folding>
-                <element signature="n#style#0;n#select#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="updateSubCourse.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/updateSubCourse.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3510">
-              <caret line="117" column="12" lean-forward="false" selection-start-line="117" selection-start-column="12" selection-end-line="119" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="courseClass-frame.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/courseClass-frame.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="125" column="51" lean-forward="false" selection-start-line="125" selection-start-column="51" selection-end-line="125" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addChapter.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/chapter/addChapter.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="34" column="83" lean-forward="false" selection-start-line="34" selection-start-column="72" selection-end-line="34" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="courseClass.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/courseClass.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="22" column="48" lean-forward="false" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -147,8 +104,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>formobj</find>
-      <find>lock</find>
       <find>lockObj</find>
       <find>deleteALLSelect</find>
       <find>ListSearch</find>
@@ -171,12 +126,14 @@
       <find>toastr</find>
       <find>chapterList</find>
       <find>sid</find>
-      <find>fid</find>
       <find>jQuery.extend</find>
       <find>subCourseName</find>
       <find>courseId</find>
       <find>course_class</find>
+      <find>subCourseId</find>
       <find>newChapter</find>
+      <find>downLoadXlsByT</find>
+      <find>fid</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -222,11 +179,9 @@
         <option value="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint.html" />
         <option value="$PROJECT_DIR$/webpage/pages/newsBulletin/carousel/addNewCarouse.html" />
         <option value="$PROJECT_DIR$/webpage/plug_in/tools/curdtools_zh-cn.js" />
-        <option value="$PROJECT_DIR$/webpage/pages/exercise/chooseCourse.html" />
         <option value="$PROJECT_DIR$/webpage/pages/exercise/gridSystem.css" />
         <option value="$PROJECT_DIR$/webpage/plug_in/jquery/ajaxfileupload.js" />
         <option value="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/uploadFile.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html" />
         <option value="$PROJECT_DIR$/webpage/pages/mainCourse/mainCourse.html" />
         <option value="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter.html" />
         <option value="$PROJECT_DIR$/webpage/main/ace_main.html" />
@@ -236,6 +191,8 @@
         <option value="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/courseClass-frame.html" />
         <option value="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter-frame.html" />
         <option value="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/addChapter.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/chooseCourse.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html" />
       </list>
     </option>
   </component>
@@ -388,7 +345,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="courseClass" />
+              <option name="myItemId" value="chapter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -410,11 +367,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="mainCourse" />
+              <option name="myItemId" value="exercise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="btz-app-client-eletron" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="btz-app-client-eletron" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="chapter" />
+              <option name="myItemId" value="webpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="exercise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chapterTestPoint" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -470,8 +449,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -485,16 +464,16 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\democode\electron\btz-app-client-eletron\system" />
+      <recent name="F:\democode\electron\btz-app-client-eletron\webpage" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\democode\electron\btz-app-client-eletron\webpage\pages\mainCourse\courseClass" />
       <recent name="F:\democode\electron\btz-app-client-eletron\webpage\plug_in\jquery" />
       <recent name="F:\democode\electron\btz-app-client-eletron\webpage\plug_in\bootstrap" />
       <recent name="F:\democode\electron\btz-app-client-eletron\webpage\pages\exercise" />
       <recent name="F:\democode\electron\btz-app-client-eletron\webpage\pages\mainCourse\chapter" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\democode\electron\btz-app-client-eletron\system" />
-      <recent name="F:\democode\electron\btz-app-client-eletron\webpage" />
     </key>
   </component>
   <component name="RunManager">
@@ -613,34 +592,35 @@
       <workItem from="1497424207285" duration="932000" />
       <workItem from="1497506357723" duration="6944000" />
       <workItem from="1497576225998" duration="20165000" />
-      <workItem from="1497665836936" duration="5831000" />
+      <workItem from="1497665836936" duration="12238000" />
+      <workItem from="1497764404669" duration="54000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="312448000" />
+    <option name="totallyTimeSpent" value="318909000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="1" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1536643" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20961387" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09976617" sideWeight="0.535855" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35307872" sideWeight="0.53743106" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5949367" sideWeight="0.49575672" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09976617" sideWeight="0.464145" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35307872" sideWeight="0.46256894" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -772,7 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-60">
           <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -802,7 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2402">
           <caret line="85" column="20" lean-forward="false" selection-start-line="85" selection-start-column="20" selection-end-line="85" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,7 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5550">
           <caret line="185" column="13" lean-forward="false" selection-start-line="185" selection-start-column="13" selection-end-line="185" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -870,24 +847,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webpage/plug_in/jquery/ajaxfileupload.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="19" column="42" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/uploadFile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="743">
-          <caret line="89" column="45" lean-forward="true" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -898,52 +861,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chooseCourse.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="67" column="8" lean-forward="false" selection-start-line="67" selection-start-column="8" selection-end-line="70" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="201" column="42" lean-forward="false" selection-start-line="201" selection-start-column="42" selection-end-line="201" selection-end-column="42" />
-          <folding>
-            <element signature="e#1755#1761#0" expanded="true" />
-            <element signature="e#1761#1767#0" expanded="true" />
-            <element signature="e#1767#1773#0" expanded="true" />
-            <element signature="e#1773#1779#0" expanded="true" />
-            <element signature="e#1779#1785#0" expanded="true" />
-            <element signature="e#1785#1791#0" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#1950#1956#0" expanded="true" />
-            <element signature="e#1956#1962#0" expanded="true" />
-            <element signature="e#1962#1968#0" expanded="true" />
-            <element signature="e#1968#1974#0" expanded="true" />
-            <element signature="e#2155#2161#0" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#2979#2985#0" expanded="true" />
-            <element signature="e#3378#3384#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/mainCourse.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/mainCourse-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="134" column="7" lean-forward="true" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,7 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="990">
           <caret line="33" column="54" lean-forward="false" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -983,9 +903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1800">
           <caret line="60" column="44" lean-forward="false" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -993,7 +910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1830">
           <caret line="61" column="100" lean-forward="false" selection-start-line="61" selection-start-column="77" selection-end-line="61" selection-end-column="100" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1001,7 +917,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3510">
           <caret line="117" column="12" lean-forward="false" selection-start-line="117" selection-start-column="12" selection-end-line="119" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1009,7 +924,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1017,7 +931,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="116" column="46" lean-forward="false" selection-start-line="116" selection-start-column="46" selection-end-line="116" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1025,7 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="22" column="48" lean-forward="false" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1033,10 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="750">
           <caret line="115" column="46" lean-forward="false" selection-start-line="115" selection-start-column="24" selection-end-line="115" selection-end-column="46" />
-          <folding>
-            <element signature="n#style#0;n#select#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1044,14 +952,49 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="377">
           <caret line="125" column="51" lean-forward="false" selection-start-line="125" selection-start-column="51" selection-end-line="125" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/chapter/addChapter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2418">
+          <caret line="34" column="83" lean-forward="false" selection-start-line="34" selection-start-column="72" selection-end-line="34" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="108" column="99" lean-forward="true" selection-start-line="108" selection-start-column="92" selection-end-line="108" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chooseCourse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="42" column="93" lean-forward="false" selection-start-line="42" selection-start-column="93" selection-end-line="42" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/mainCourse-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3240">
+          <caret line="108" column="50" lean-forward="false" selection-start-line="108" selection-start-column="50" selection-end-line="108" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webpage/plug_in/tools/curdtools_zh-cn.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-666">
-          <caret line="674" column="9" lean-forward="false" selection-start-line="674" selection-start-column="9" selection-end-line="674" selection-end-column="9" />
+        <state relative-caret-position="3000">
+          <caret line="100" column="9" lean-forward="false" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="9" />
           <folding>
             <marker date="1497165505523" expanded="true" signature="27641:27674" ph="..." />
             <marker date="1497165505523" expanded="true" signature="28185:28218" ph="..." />
@@ -1059,19 +1002,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter-frame.html">
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/uploadFile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="165" column="50" lean-forward="false" selection-start-line="165" selection-start-column="50" selection-end-line="165" selection-end-column="50" />
-          <folding />
+        <state relative-caret-position="2640">
+          <caret line="88" column="32" lean-forward="false" selection-start-line="88" selection-start-column="32" selection-end-line="88" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/chapter/addChapter.html">
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="34" column="83" lean-forward="false" selection-start-line="34" selection-start-column="72" selection-end-line="34" selection-end-column="83" />
-          <folding />
+        <state relative-caret-position="30">
+          <caret line="134" column="30" lean-forward="false" selection-start-line="134" selection-start-column="30" selection-end-line="134" selection-end-column="30" />
+          <folding>
+            <element signature="e#1755#1761#0" expanded="true" />
+            <element signature="e#1761#1767#0" expanded="true" />
+            <element signature="e#1767#1773#0" expanded="true" />
+            <element signature="e#1773#1779#0" expanded="true" />
+            <element signature="e#1779#1785#0" expanded="true" />
+            <element signature="e#1785#1791#0" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#1950#1956#0" expanded="true" />
+            <element signature="e#1956#1962#0" expanded="true" />
+            <element signature="e#1962#1968#0" expanded="true" />
+            <element signature="e#1968#1974#0" expanded="true" />
+            <element signature="e#2155#2161#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#2979#2985#0" expanded="true" />
+            <element signature="e#3378#3384#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

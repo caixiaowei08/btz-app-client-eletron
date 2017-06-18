@@ -91,12 +91,11 @@
                 {field: 'level', title: '章节层级', hidden: true}
             ]],
             onBeforeSelect: function (node) {
-                return node.leaf;
+                return node.leaf||node.level =='S';
             },
-            onDblClickRow:function (row) {
-                if(row.leaf){
-                    console.log(row);
-                }
+            onSelect:function (row) {
+                console.log(row);
+                reloadDate();
             }
         });
 
@@ -127,6 +126,13 @@
                     field: 'chapterId',
                     title: '章节主键',
                     sortable: true
+                },{
+                    field: 'title',
+                    title: '题干'
+                },
+                {
+                    field: 'content',
+                    title: '内容'
                 },
                 {
                     field: 'type',
@@ -193,12 +199,14 @@
     }
 
     function reloadDate() {
-       var subCourseId = $("#fid");
+       var subCourseId = $("#sid").val();
         var rowsData = $('#chapterList').treegrid('getSelections');
         var chapterId = "";
-        if (!rowsData || rowsData.length==0) {
+        if (!(!rowsData || rowsData.length==0)) {
             chapterId = rowsData[0].id;
         }
+        console.log("subCourseId:"+subCourseId);
+        console.log("chapterId:"+chapterId);
         $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId, "chapterId":chapterId});
     }
 
