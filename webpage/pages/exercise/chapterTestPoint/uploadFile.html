@@ -70,28 +70,29 @@
             url: GLOBAL_CONSTANT_URL + "exerciseController.do?uploadExcel",
             secureuri: false,
             fileElementId: 'file',
-            dataType: 'json',
             type: "post",
+            dataType: 'json',
             success: function (data, status) {
+                console.log("success");
+                console.log(data);
                 if (data.success === "success") {
                     win.toastr.success("上传成功！");
                     win.reloadDate();
                     frameElement.api.close();
                 } else {
-                    toastr.error(data.msg);
+                    win.toastr.error(data.msg);
                 }
             },
             error: function (jqxhr, textStatus, errorThrow) {
-                console.log(jqxhr);
                 var data = JSON.parse(jqxhr.responseText);
+                console.log(data);
                 if (data.success === "success") {
                     win.toastr.success("上传成功！");
                     win.reloadDate();
                     frameElement.api.close();
                 } else {
-                    toastr.error(data.msg);
+                    win.toastr.error(data.msg);
                 }
-
             }
         });
     });
