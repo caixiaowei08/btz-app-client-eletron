@@ -37,50 +37,21 @@
         <tbody>
         <tr>
             <td align="center" width="20%">
-                <span class="filedzt">课程名称:</span>
+                <span class="filedzt">章节名称:</span>
             </td>
             <td class="value">
-                <input type="text" style="height: 30px;"  readonly="readonly" data-bind="value:subCourseName" class="inputxt" >
-            </td>
-        </tr>
-        <tr>
-            <td align="center">
-                <span class="filedzt">模块选择:</span></td>
-            <td class="value">
-                <select name="type"  disabled="disabled" style="height: 30px;line-height: 30px;" data-bind="value:type">
-                    <option value="1" >
-                        章节练习
-                    </option>
-                    <option value="2" >
-                        核心考点
-                    </option>
-                    <option value="3" >
-                        模拟考场
-                    </option>
-                    <option value="4" >
-                        考前押题
-                    </option>
-                    <option value="5" >
-                        授课视频
-                    </option>
-                    <option value="6" >
-                        直播课程
-                    </option>
-                </select>
+                <input type="text" name="chapterName" style="height: 30px;" data-bind="value:chapterName"  class="inputxt" datatype="*" errormsg="请输入章节名称！"
+                       nullmsg="请输入章节名称！">
+                <span class="Validform_checktip">请输入章节名称！</span>
             </td>
         </tr>
         <tr>
             <td align="center">
-                <span class="filedzt">模块状态:</span></td>
+                <span class="filedzt">显示顺序:</span></td>
             <td class="value">
-                <select name="s_state" style="height: 30px;line-height: 30px;" data-bind="value:s_state">
-                    <option value="1" >
-                        使用
-                    </option>
-                    <option value="2" >
-                        禁用
-                    </option>
-                </select>
+                <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100" data-bind="value:orderNo" datatype="/^([1-9]\d?|100)$/"  style="height: 30px;" class="inputxt"
+                       errormsg="请输入1-100的数字！" nullmsg="请输入1-100的数字！">
+                <span class="Validform_checktip">请输入1-100的数字！</span>
             </td>
         </tr>
         </tbody>
@@ -97,7 +68,7 @@
     <script type="text/javascript">
         $(function() {
             loadData();
-            $("#formobj").attr("action",GLOBAL_CONSTANT_URL+"moduleController.do?doUpdate");
+            $("#formobj").attr("action",GLOBAL_CONSTANT_URL+"chapterController.do?doUpdate");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -113,7 +84,7 @@
                     }else{
                         win.toastr.error("服务器异常，请联系维护人员！");
                     }
-                    win.courseClassReloadTable();
+                    win.chapterReloadTable();
                 }
             });
         });
@@ -121,32 +92,27 @@
 
         var viewModel = {
             id: ko.observable(),
-            s_state: ko.observable(),
-            type:ko.observable(),
-            subCourseName:ko.observable()
+            chapterName: ko.observable(),
+            orderNo: ko.observable()
         };
         ko.applyBindings(viewModel);
         var win = frameElement.api.opener;
         function loadData() {
             var str = window.document.location.href;
             var start_index = str.indexOf("id=");
-            var start_end = str.indexOf("&subCourseName=");
-            var val = str.substring(start_index+3,start_end);
-            var start_subCourseName = str.indexOf("subCourseName=");
-            var end_subCourseName = str.indexOf("&_=");
-            var subCourseName = str.substring(start_subCourseName+14,end_subCourseName);
-            viewModel.subCourseName( decodeURI(subCourseName));
+            var start_end = str.indexOf("&_=");
+            var id_parm = str.substring(start_index+4,start_end);
             $(function(){
                 $.ajax({
                     type:"post",
-                    url:GLOBAL_CONSTANT_URL+"moduleController.do?doGet",
+                    url:GLOBAL_CONSTANT_URL+"chapterController.do?get",
                     async:true,
-                    data:{id:val},
+                    data:{id:id_parm},
                     success: function(res){
                         if(res.success === "success"){
                             viewModel.id(res.content.id);
-                            viewModel.type(res.content.type);
-                            viewModel.s_state(res.content.s_state);
+                            viewModel.chapterName(res.content.chapterName);
+                            viewModel.orderNo(res.content.orderNo);
                         }else if(res.success === "fail"){
                             win.toastr.warning(res.msg);
                         }else{

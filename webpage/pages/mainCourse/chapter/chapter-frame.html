@@ -199,6 +199,12 @@
     function deleteChapter(title,url) {
         var ids = [];
         var rows = $("#chapterList").treegrid('getSelections');
+
+        if (!rows || rows.length == 0) {
+            tip('请选择需要删除的数据！');
+            return;
+        }
+
         if (rows[0].level === 'S') {
             tip('不能删除课程根结点！');
             return;
