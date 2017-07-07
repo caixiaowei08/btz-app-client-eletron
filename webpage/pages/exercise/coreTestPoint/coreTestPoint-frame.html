@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="panel-fit">
+<head>
+    <meta charset="UTF-8">
+    <title>系统账户信息表</title>
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metrole/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metrole/main.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/tools/css/metrole/common.css">
+    <link rel="stylesheet" type="text/css" href="../gridSystem.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/My97DatePicker/skin/WdatePicker.css">
+    <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-easy-ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-easy-ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/toastr/toastr.css"/>
+    <script type="text/javascript" src="../../../plug_in/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/lhgDialog/lhgdialog.min.js"></script>
+    <script type="text/javascript" src="../../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
+</head>
+<body>
+<div class="breadcrumbs">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:darkolivegreen;font-size:18px;line-height: 18px;"
+                                              data-bind="text:subCourseName">当前选择课程</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#" class="l-btn" iconcls="icon-search" onclick="courseSearch()">
+       <span class="l-btn-left">
+            <span class="l-btn-text icon-search l-btn-icon-left">切换课程&nbsp;</span>
+       </span>
+    </a>
+</div>
+<div class="row">
+    <div class="col-xs-3">
+        <div style="height: 650px;">
+            <table id="chapterList"></table>
+        </div>
+    </div>
+    <div class="col-xs-8">
+        <div style="height: 650px;">
+            <div id="chapterExerciseListtb" class="datagrid-toolbar">
+                <input id="sid" type="hidden" name="sid" data-bind="value:sid">
+                <div style="height:35px;" class="datagrid-toolbar">
+                    <span style="float:left;">
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"onclick="exportXlsByT();">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-put l-btn-icon-left">增量导入&nbsp;</span>
+                             </span>
+                        </a>
+                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="update('编辑','../pages/global/updateTest.html','chapterExerciseList',600,600)">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-edit l-btn-icon-left">编辑&nbsp;</span>
+                             </span>
+                        </a>
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"onclick="deleteALLSelect('删除题目',GLOBAL_CONSTANT_URL +'exerciseController.do?doDel','chapterExerciseList')">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
+                             </span>
+                        </a>
+                    </span>
+                    <span style="float: right">
+                         <a href="#" id="icon-putout" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                            onclick="downLoadXlsByT();">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-putout l-btn-icon-left">模板下载&nbsp;</span>
+                             </span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <table id="chapterExerciseList"></table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var viewModel = {
+        sid: ko.observable(""),
+        subCourseName: ko.observable("请选择课程")
+    };
+    ko.applyBindings(viewModel);
+
+    $(function () {
+        courseSearch();
+        $('#chapterList').treegrid({
+            title: '章节信息',
+            idField: 'id',
+            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
+            collapsible: false,      //是否可折叠
+            rownumbers: true,        //行号
+            pagination: false,        //分页控件
+            method: 'post',          //请求方式
+            treeField: 'name',       //定义树节点的字段
+            fit: true,               //网格自动撑满
+            fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            toolbar: "#chapterListtb",
+            columns: [[
+                {field: 'name', title: '章节列表'},
+                {field: 'orderNo', title: '显示顺序'},
+                {field: 'level', title: '章节层级', hidden: true}
+            ]],
+            onBeforeSelect: function (node) {
+                return node.leaf || node.level == 'S';
+            },
+            onSelect: function (row) {
+                console.log(row);
+                reloadDate();
+            }
+        });
+
+        $("#chapterExerciseList").datagrid({
+            idField: 'id',
+            title: '',
+            cache: false,
+            url: GLOBAL_CONSTANT_URL + "exerciseController.do?datagrid&field=id,subCourseId,chapterId,type,title,content,answer,answerKey,orderNo,updateTime,createTime,",
+            toolbar: "#chapterExerciseListtb",
+            pagination: true,
+            pageSize: 50,
+            pageList: [10, 20, 30, 50, 100, 200],
+            rownumbers: true,
+            emptyMsg: "无查询结果！",
+            fit: true,
+            fitColumns: true,
+            frozenColumns: [[{
+                field: 'ck',
+                checkbox: 'true'
+            }]],
+            columns: [[
+                {field: 'id', title: '主键', sortable: true, hidden: true},
+                {
+                    field: 'subCourseId',
+                    title: '课程主键'
+                },
+                {
+                    field: 'chapterId',
+                    title: '章节主键',
+                    sortable: true
+                }, {
+                    field: 'title',
+                    title: '题干'
+                },
+                {
+                    field: 'content',
+                    title: '内容'
+                },
+                {
+                    field: 'type',
+                    title: '题目类型',
+                    sortable: true,
+                    formatter: function (value, rec, index) {
+                        if (value == '1') {
+                            return '单选题';
+                        }
+                        if (value == '2') {
+                            return '多选题';
+                        }
+                        if (value == '3') {
+                            return '判断题';
+                        }
+                        if (value == '4') {
+                            return '分录题';
+                        }
+                        if (value == '5') {
+                            return '不定项分析题';
+                        }
+                        if (value == '6') {
+                            return '长文本题';
+                        }
+                        if (value == '7') {
+                            return '短文本题';
+                        }
+                        if (value == '8') {
+                            return '公式题';
+                        }
+                        if (value == '9') {
+                            return '不定项表格';
+                        }
+                        return "";
+                    }
+                },
+                {
+                    field: 'answer',
+                    title: '答案',
+                },
+                {
+                    field: 'answerKey',
+                    title: '答案解析',
+                },
+                {
+                    field: 'orderNo',
+                    title: '显示顺序',
+                    sortable: true
+                },
+                {field: 'updateTime', title: '更新时间'},
+                {field: 'createTime', title: '创建时间'}
+            ]],
+        });
+    })
+
+    function courseSearch() {
+        createwindow('课程选择', '../pages/exercise/chooseCourse.html', 400, 600);
+    }
+
+    function loadCourseInfo(rowsData) {
+        viewModel.sid(rowsData[0].id);
+        viewModel.subCourseName(rowsData[0].name);
+        chapterReloadTable(rowsData[0].id, rowsData[0].name);
+    }
+
+    function reloadDate() {
+        var subCourseId = $("#sid").val();
+        var rowsData = $('#chapterList').treegrid('getSelections');
+        var chapterId = "";
+        if (!(!rowsData || rowsData.length == 0)) {
+            chapterId = rowsData[0].id;
+        }
+        $('#chapterExerciseList').datagrid('clearSelections');
+        $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId, "chapterId": chapterId});
+
+    }
+
+    function chapterReloadTable(subCourseId, subCourseName) {
+        try {
+            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "exerciseController.do?downLoadExcel&subCourseId=" + subCourseId.substring(1, subCourseId.length));
+            $('#chapterList').treegrid('reload', {"subCourseId": subCourseId, "subCourseName": subCourseName});
+            $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId});
+        } catch (ex) {
+        }
+    }
+
+    function reloadTable() {
+        reloadDate();
+    }
+
+    function exportXlsByT() {
+        createwindow('增量导入', '../pages/exercise/chapterTestPoint/uploadFile.html', 600, 100);
+    }
+
+    function downLoadXlsByT() {
+        var val = $("#icon-putout").attr("href");
+        if (val === '#') {
+            toastr.warning("请选择课程,再点击模板下载!")
+            return;
+        }
+    }
+</script>

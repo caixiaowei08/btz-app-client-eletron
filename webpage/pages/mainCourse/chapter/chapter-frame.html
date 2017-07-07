@@ -142,6 +142,7 @@
             ]],
             onSelect: function (node) {
                 if (node.leaf) {
+                    $('#chapterList').datagrid('clearSelections');
                     viewModel.subCourseId(node.id);
                     viewModel.subCourseName(node.name);
                     chapterReloadTable();
@@ -157,7 +158,7 @@
         try {
             var subCourseId = $("#subCourseId").val();
             var subCourseName = $("#subCourseName").val();
-            $('#chapterList').treegrid('reload',{"subCourseId":subCourseId,"subCourseName":subCourseName});
+            $('#chapterList').treegrid('reload',{"subCourseId":subCourseId,"subCourseName":subCourseName,moduleType:1});
         } catch (ex) {
         }
     }

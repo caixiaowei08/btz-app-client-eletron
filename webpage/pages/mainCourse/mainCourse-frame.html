@@ -155,6 +155,7 @@
             fit: true,
             fitColumns: true,
             onClickRow: function (rowIndex, field, value) {
+                $('#subCourseList').datagrid('clearSelections');
                 viewModel.fid(field.id);
                 viewModel.name(field.name);
                 subCourseReloadTable();
@@ -187,9 +188,9 @@
                         }
                         return "";
                     }
-                },
+                }/*,
                 {field: 'updateTime', title: '更新时间'},
-                {field: 'createTime', title: '创建时间'}
+                {field: 'createTime', title: '创建时间'}*/
             ]],
         });
 
@@ -235,9 +236,9 @@
                         }
                         return "";
                     }
-                },
+                }/*,
                 {field: 'updateTime', title: '更新时间'},
-                {field: 'createTime', title: '创建时间'}
+                {field: 'createTime', title: '创建时间'}*/
             ]],
         });
     });

@@ -196,8 +196,8 @@
         try {
             var subCourseId = $("#subCourseId").val();
             if (subCourseId === null || subCourseId === undefined || subCourseId === '') {
-                  toastr.warning("没有选中的课程！");
-                  return;
+                toastr.warning("没有选中的课程！");
+                return;
             }
             subCourseId = subCourseId.substring(1,subCourseId.length);
             $('#courseClassList').treegrid('reload',{"subCourseId":subCourseId});
@@ -230,7 +230,6 @@
         url += '?id='+rowsData[0].id+'&subCourseName='+subCourseName;
         createwindow(title,url,width,height);
     }
-
 </script>
 
 
