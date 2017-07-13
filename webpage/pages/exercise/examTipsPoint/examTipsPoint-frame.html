@@ -200,13 +200,13 @@
     })
 
     function courseSearch() {
-        createwindow('课程选择', '../pages/exercise/coreTestPoint/chooseCourseCoreTest.html', 400, 600);
+        createwindow('课程选择', '../pages/exercise/examTipsPoint/chooseCourseExamTips.html', 400, 600);
     }
 
     function loadCourseInfo(rowsData) {
         viewModel.sid(rowsData[0].id);
         viewModel.subCourseName(rowsData[0].name);
-        chapterReloadTable(rowsData[0].id, rowsData[0].name,2);
+        chapterReloadTable(rowsData[0].id, rowsData[0].name,4);
     }
 
     function reloadDate() {
@@ -223,7 +223,7 @@
 
     function chapterReloadTable(subCourseId, subCourseName,moduleType) {
         try {
-            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "exerciseController.do?downLoadExcel&belongTo=2&subCourseId=" + subCourseId.substring(1, subCourseId.length));
+            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "exerciseController.do?downLoadExcel&belongTo=4&subCourseId=" + subCourseId.substring(1, subCourseId.length));
             $('#chapterList').treegrid('reload', {"subCourseId": subCourseId, "subCourseName": subCourseName,"moduleType":moduleType});
             $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId,"moduleType":moduleType});
         } catch (ex) {
@@ -235,7 +235,7 @@
     }
 
     function exportXlsByT() {
-        createwindow('增量导入', '../pages/exercise/chapterTestPoint/uploadFile.html', 600, 100);
+        createwindow('增量导入', '../pages/exercise/examTipsPoint/uploadFile.html', 600, 100);
     }
 
     function downLoadXlsByT() {
