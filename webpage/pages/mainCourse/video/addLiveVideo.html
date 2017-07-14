@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>修改课程信息</title>
+    <title>用户信息</title>
     <script type="text/javascript" src="../../../plug_in/mutiLang/zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="../../../plug_in/jquery/jquery.cookie.js"></script>
@@ -32,25 +32,37 @@
 <body style="overflow-y: hidden" scroll="no">
 <form id="formobj" action="" name="formobj" method="post">
     <input type="hidden" id="btn_sub" class="btn_sub">
-    <input id="id" type="hidden" name="id" data-bind="value:id">
+    <input id="courseId" type="hidden" name="courseId" data-bind="value:subCourseId">
+    <input id="moduleType" type="hidden" name="moduleType" value="6">
+    <input id="fid" type="hidden" name="fid" data-bind="value:id">
+    <input id="level" type="hidden" name="level" data-bind="value:level">
     <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
         <tbody>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">课程名称:</span>
+            </td>
+            <td class="value">
+                <input type="text" name="subCourseName" style="height: 30px;"  readonly="readonly" data-bind="value:subCourseName" class="inputxt" >
+            </td>
+        </tr>
         <tr>
             <td align="center" width="20%">
                 <span class="filedzt">章节名称:</span>
             </td>
             <td class="value">
-                <input type="text" name="chapterName" style="height: 30px;" data-bind="value:chapterName"  class="inputxt" datatype="*" errormsg="请输入章节名称！"
-                       nullmsg="请输入章节名称！">
-                <span class="Validform_checktip">请输入视频章节名称！</span>
+                <input type="text" name="chapterName" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入试卷名称！"
+                       nullmsg="请输入视频章节名称！">
+                <span class="Validform_checktip">请输入试卷名称！</span>
             </td>
         </tr>
         <tr>
             <td align="center">
                 <span class="filedzt">显示顺序:</span></td>
             <td class="value">
-                <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100" data-bind="value:orderNo" datatype="/^([1-9]\d?|100)$/"  style="height: 30px;" class="inputxt"
-                       errormsg="请输入1-100的数字！" nullmsg="请输入1-100的数字！">
+                <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100"
+                       datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;" class="inputxt"
+                       errormsg="请输入1-100的数字！" nullmsg="请输入视频章节显示顺序（非常重要）">
                 <span class="Validform_checktip">请输入1-100的数字！</span>
             </td>
         </tr>
@@ -61,74 +73,60 @@
     <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/Validform/js/datatype_zh-cn.js"></script>
-    <script type="text/javascript" src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
-    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
+    <script type="text/javascript"
+            src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
     <script src="../../../plug_in/layer/layer.js"></script>
+    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
     <script src="../../../../system/GlobalConstant.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             loadData();
-            $("#formobj").attr("action",GLOBAL_CONSTANT_URL+"chapterController.do?doUpdate");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "chapterController.do?doAddPaper");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
                 btnReset: "#btn_reset",
                 ajaxPost: true,
-                callback: function(data) {
+                callback: function (data) {
                     var win = frameElement.api.opener;
-                    if (data.success =="success") {
+                    if (data.success === "success") {
                         frameElement.api.close();
                         win.toastr.success(data.msg);
-                    } else if(data.success =="fail"){
-                        win.toastr.warning(data.msg)
-                    }else{
-                        win.toastr.error("服务器异常，请联系维护人员！");
+                    } else if (data.success === "fail") {
+                        win.toastr.warning(data.msg);
+                    } else {
+                        win.toastr.warning("服务器错误或者网络问题,请联系管理员！");
                     }
                     win.chapterReloadTable();
                 }
             });
         });
 
-
         var viewModel = {
+            subCourseId: ko.observable(),
+            subCourseName: ko.observable(),
             id: ko.observable(),
-            chapterName: ko.observable(),
-            orderNo: ko.observable()
+            level: ko.observable()
         };
         ko.applyBindings(viewModel);
-        var win = frameElement.api.opener;
         function loadData() {
             var str = window.document.location.href;
-            var start_index = str.indexOf("id=");
-            var start_end = str.indexOf("&_=");
-            var id_parm = str.substring(start_index+4,start_end);
-            $(function(){
-                $.ajax({
-                    type:"post",
-                    url:GLOBAL_CONSTANT_URL+"chapterController.do?get",
-                    async:true,
-                    data:{id:id_parm},
-                    success: function(res){
-                        if(res.success === "success"){
-                            viewModel.id(res.content.id);
-                            viewModel.chapterName(res.content.chapterName);
-                            viewModel.orderNo(res.content.orderNo);
-                        }else if(res.success === "fail"){
-                            win.toastr.warning(res.msg);
-                        }else{
-                            win.toastr.error("获取课程信息超时,请检查网络问题！");
-                        }
-                    },
-                    error:function () {
-                        win.toastr.error("服务器异常，请联系维护人员！");
-                    },
-                    complete:function (XMLHttpRequest, textStatus) {
-                        if(status=='timeout'){//超时,status还有success,error等值的情况
-                            win.toastr.error("获取课程信息超时,请检查网络问题！");
-                        }
-                    }
-                },'json');
-            });
+            var start_subCourseId = str.indexOf("subCourseId=");
+            var end_subCourseId = str.indexOf("&subCourseName");
+            var subCourseId = str.substring(start_subCourseId+13,end_subCourseId);
+            var start_subCourseName = str.indexOf("subCourseName=");
+            var end_subCourseName = str.indexOf("&id=");
+            var subCourseName = str.substring(start_subCourseName+14,end_subCourseName);
+            var start_id = str.indexOf("id=");
+            var end_id = str.indexOf("&level=");
+            var id = str.substring(start_id+4,end_id);
+            var start_level = str.indexOf("level=");
+            var end_level = str.indexOf("&_=");
+            var level = str.substring(start_level+6,end_level);
+            viewModel.subCourseId(subCourseId);
+            viewModel.subCourseName( decodeURI(subCourseName));
+            viewModel.id(id);
+            viewModel.level(level);
         }
     </script>
 </form>

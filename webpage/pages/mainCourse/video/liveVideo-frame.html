@@ -50,13 +50,13 @@
                 <div style="height:35px;" class="datagrid-toolbar">
                             <span style="float:left;">
                                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                                   onclick="newChapter('新增视频章节','../pages/mainCourse/video/addRecordedVideo.html',600,350);">
+                                   onclick="newChapter('新增视频章节','../pages/mainCourse/video/addLiveVideo.html',600,350);">
                                      <span class="l-btn-left" style="">
                                          <span class="l-btn-text icon-add l-btn-icon-left">新增&nbsp;</span>
                                      </span>
                                 </a>
                                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                                   onclick="updateChapter('编辑视频章节','../pages/mainCourse/video/updateRecordedVideo.html',600,350)">
+                                   onclick="updateChapter('编辑视频章节','../pages/mainCourse/video/updateLiveVideo.html',600,350)">
                                      <span class="l-btn-left" style="">
                                          <span class="l-btn-text icon-edit l-btn-icon-left">编辑&nbsp;</span>
                                      </span>
@@ -107,7 +107,7 @@
         $('#courseList').treegrid({
             title: '课程信息',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?mainCourseTreeGrid&type=5",
+            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?mainCourseTreeGrid&type=6",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
@@ -162,7 +162,7 @@
             $('#chapterList').treegrid('reload', {
                 "subCourseId": subCourseId,
                 "subCourseName": subCourseName,
-                moduleType: 5
+                moduleType: 6
             });
         } catch (ex) {
         }
