@@ -1,0 +1,159 @@
+<html>
+<head>
+    <title>用户信息</title>
+    <script type="text/javascript" src="../../../plug_in/mutiLang/zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-plugs/storage/jquery.storageapi.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/dataformat.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/easyui/themes/metrole/easyui.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/easyui/themes/metrole/main.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/easyui/themes/metrole/icon.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/accordion/css/accordion.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/accordion/css/icons.css">
+    <script type="text/javascript" src="../../../plug_in/easyui/jquery.easyui.min.1.3.2.js"></script>
+    <script type="text/javascript" src="../../../plug_in/easyui/locale/zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/syUtil.js"></script>
+    <script type="text/javascript" src="../../../plug_in/easyui/extends/datagrid-scrollview.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/tools/css/metrole/common.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/ace/css/font-awesome.css" type="text/css">
+    <script type="text/javascript" src="../../../plug_in/lhgDialog/lhgdialog.min.js?skin=metrole"></script>
+    <script type="text/javascript" src="../../../plug_in/ace/js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="../../../plug_in/layer/layer.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/layer/skin/layer.css" id="layui_layer_skinlayercss">
+    <script type="text/javascript" src="../../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/easyuiextend.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-plugs/hftable/jquery-hftable.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/json2.js"></script>
+    <script type="text/javascript" src="../../../plug_in/toastr/toastr.min.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/toastr/toastr.css" type="text/css">
+</head>
+
+<body style="overflow-y: hidden" scroll="no">
+<form id="formobj" action="" name="formobj" method="post">
+    <input type="hidden" id="btn_sub" class="btn_sub">
+    <input id="subCourseId" type="hidden" name="subCourseId" value="" data-bind="value:subCourseId">
+    <input id="chapterId" type="hidden" name="chapterId" value="" data-bind="value:id">
+    <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
+        <tbody>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">视频章节:</span>
+            </td>
+            <td class="value">
+                <input type="text" value=""  style="height: 30px;" class="inputxt" readonly="readonly" data-bind="value:subCourseName">
+            </td>
+        </tr>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">视频名称:</span>
+            </td>
+            <td class="value">
+                <input type="text" value="" name="title" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入视频名称" nullmsg="请输入视频名称！">
+                <span class="Validform_checktip">视频名称</span>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">视频链接:</span>
+            </td>
+            <td class="value">
+                <input type="text" value="" name="videoUrl" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入视频链接" nullmsg="请输入视频链接！">
+                <span class="Validform_checktip">视频链接</span>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">讲义链接:</span>
+            </td>
+            <td class="value">
+                <input type="text" value="" name="lectureUrl" style="height: 30px;" class="inputxt">
+                <span class="Validform_checktip">讲义链接</span>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">显示顺序:</span></td>
+            <td class="value">
+                <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100"
+                       datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;" class="inputxt"
+                       errormsg="请输入1-100的数字！" nullmsg="请输入1-100的数字！">
+                <span class="Validform_checktip">请输入1-100的数字！</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+    <link rel="stylesheet" href="../../../plug_in/Validform/css/metrole/style.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/Validform/css/metrole/tablefrom.css" type="text/css">
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/datatype_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
+    <script src="../../../plug_in/layer/layer.js"></script>
+    <script src="../../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            loadData();
+            $("#formobj").attr("action",GLOBAL_CONSTANT_URL+"/courseRecordedVideoController.do?doAdd");
+            $("#formobj").Validform({
+                tiptype: 4,
+                btnSubmit: "#btn_sub",
+                btnReset: "#btn_reset",
+                ajaxPost: true,
+                callback: function(data) {
+                    var win = frameElement.api.opener;
+                    if (data.success =="success") {
+                        frameElement.api.close();
+                        win.toastr.success(data.msg);
+                    } else {
+                        if (data.responseText == '' || data.responseText == undefined) {
+                            win.toastr.info(data.msg);
+                        } else {
+                            try {
+                                win.toastr.error(data.msg);
+                            } catch(ex) {
+                                win.toastr.error(data.responseText+"");
+                            }
+                        }
+                        return false;
+                    }
+                    win.reloadTable();
+                }
+            });
+        });
+
+        var viewModel = {
+            subCourseId: ko.observable(),
+            subCourseName: ko.observable(),
+            id: ko.observable(),
+            level: ko.observable()
+        };
+        ko.applyBindings(viewModel);
+        function loadData() {
+            var str = window.document.location.href;
+            var start_subCourseId = str.indexOf("subCourseId=");
+            var end_subCourseId = str.indexOf("&subCourseName");
+            var subCourseId = str.substring(start_subCourseId+13,end_subCourseId);
+            var start_subCourseName = str.indexOf("subCourseName=");
+            var end_subCourseName = str.indexOf("&id=");
+            var subCourseName = str.substring(start_subCourseName+14,end_subCourseName);
+            var start_id = str.indexOf("id=");
+            var end_id = str.indexOf("&level=");
+            var id = str.substring(start_id+4,end_id);
+            var start_level = str.indexOf("level=");
+            var end_level = str.indexOf("&_=");
+            var level = str.substring(start_level+6,end_level);
+            console.log(subCourseId);
+            console.log(decodeURI(subCourseName));
+            console.log(id);
+            console.log(level);
+            viewModel.subCourseId(subCourseId);
+            viewModel.subCourseName( decodeURI(subCourseName));
+            viewModel.id(id);
+            viewModel.level(level);
+        }
+    </script>
+</body>
+</html>

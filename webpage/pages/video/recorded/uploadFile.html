@@ -43,7 +43,7 @@
         <tbody>
         <tr>
             <td align="center" width="20%">
-                <span class="filedzt">题目文件上传:</span>
+                <span class="filedzt">录播视频文件上传:</span>
             </td>
             <td class="value">
                 <input type="file" name="file" id="file"
@@ -55,7 +55,7 @@
 </form>
 <script type="text/javascript">
     $(function () {
-        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "exerciseController.do?uploadExcel");
+        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "courseRecordedVideoController.do?uploadExcel");
     });
 
     $("#btn_sub").click(function () {
@@ -67,7 +67,7 @@
             return;
         }
         $.ajaxFileUpload({
-            url: GLOBAL_CONSTANT_URL + "exerciseController.do?uploadExcel",
+            url: GLOBAL_CONSTANT_URL + "courseRecordedVideoController.do?uploadExcel",
             secureuri: false,
             fileElementId: 'file',
             type: "post",

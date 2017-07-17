@@ -673,8 +673,13 @@ function alertTip(msg,title) {
  * @param saveurl
  */
 function createwindow(title, addurl,width,height) {
+    console.log(width);
+    console.log(height);
+    console.log(addurl);
 	width = width?width:700;
 	height = height?height:400;
+	console.log(width);
+	console.log(height);
 	if(width=="100%" || height=="100%"){
 		width = window.top.document.body.offsetWidth;
 		height =window.top.document.body.offsetHeight-100;
