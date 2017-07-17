@@ -49,19 +49,19 @@
                              </span>
                         </a>
                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-add"
-                           onclick="newVideo('新增视频','../pages/video/recorded/addRecordedVideo.html','chapterExerciseList',600,300);">
+                           onclick="newVideo('新增视频','../pages/video/live/addLiveVideo.html','chapterExerciseList',600,300);">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-add l-btn-icon-left">新增视频&nbsp;</span>
                              </span>
                         </a>
                          <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                            onclick="update('编辑视频','../pages/video/recorded/updateRecordedVideo.html','chapterExerciseList',600,300);">
+                            onclick="update('编辑视频','../pages/video/live/updateLiveVideo.html','chapterExerciseList',600,300);">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-edit l-btn-icon-left">编辑视频&nbsp;</span>
                              </span>
                         </a>
                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                           onclick="deleteALLSelect('删除视频',GLOBAL_CONSTANT_URL +'courseRecordedVideoController.do?doDel','chapterExerciseList');">
+                           onclick="deleteALLSelect('删除视频',GLOBAL_CONSTANT_URL +'courseLiveVideoController.do?doDel','chapterExerciseList');">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-remove l-btn-icon-left">删除视频&nbsp;</span>
                              </span>
@@ -93,7 +93,7 @@
     $(function () {
         courseSearch();
         $('#chapterList').treegrid({
-            title: '视频层级分类',
+            title: ' 直播视频分类',
             idField: 'id',
             url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
             collapsible: false,      //是否可折叠
@@ -105,9 +105,9 @@
             fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
             toolbar: "#chapterListtb",
             columns: [[
-                {field: 'name', title: '视频归类列表'},
+                {field: 'name', title: '直播视频类别'},
                 {field: 'orderNo', title: '显示顺序'},
-                {field: 'level', title: '章节层级', hidden: true}
+                {field: 'level', title: '层级', hidden: true}
             ]],
             onBeforeSelect: function (node) {
                 return node.leaf || node.level === 'S';
@@ -121,7 +121,7 @@
             idField: 'id',
             title: '',
             cache: false,
-            url: GLOBAL_CONSTANT_URL + "courseRecordedVideoController.do?dataGrid&field=id,subCourseId,chapterId,moduleId,moduleType,title,videoUrl,lectureUrl,orderNo,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?dataGrid&field=id,subCourseId,chapterId,moduleId,moduleType,title,teacherName,videoUrl,status,orderNo,updateTime,createTime,",
             toolbar: "#chapterExerciseListtb",
             pagination: true,
             pageSize: 20,
@@ -141,13 +141,10 @@
                     title: '课程主键'
                 }, {
                     field: 'chapterId',
-                    title: '章节层级ID',
+                    title: '直播视频类别',
                 }, {
                     field: 'title',
                     title: '直播名称'
-                }, {
-                    field: 'videoUrl',
-                    title: '播放链接'
                 }, {
                     field: 'teacherName',
                     title: '老师名称'
@@ -163,7 +160,11 @@
                         }
                         return "";
                     }
-                }, {
+                },
+                {
+                    field: 'videoUrl',
+                    title: '播放链接'
+                },  {
                     field: 'orderNo',
                     title: '显示顺序',
                     sortable: true
@@ -179,7 +180,7 @@
     function loadCourseInfo(rowsData) {
         viewModel.sid(rowsData[0].id);
         viewModel.subCourseName(rowsData[0].name);
-        chapterReloadTable(rowsData[0].id, rowsData[0].name, 5);
+        chapterReloadTable(rowsData[0].id, rowsData[0].name, 6);
     }
 
     function reloadDate() {
@@ -191,12 +192,11 @@
         }
         $('#chapterExerciseList').datagrid('clearSelections');
         $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId, "chapterId": chapterId});
-
     }
 
     function chapterReloadTable(subCourseId, subCourseName, moduleType) {
         try {
-            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "courseRecordedVideoController.do?downLoadExcel&subCourseId=" + subCourseId.substring(1, subCourseId.length));
+            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?downLoadExcel&subCourseId=" + subCourseId.substring(1, subCourseId.length));
             $('#chapterList').treegrid('reload', {
                 "subCourseId": subCourseId,
                 "subCourseName": subCourseName,
@@ -212,7 +212,7 @@
     }
 
     function exportXlsByT() {
-        createwindow('增量导入', '../pages/video/recorded/uploadFile.html', 600, 100);
+        createwindow('增量导入', '../pages/video/live/uploadFile.html', 600, 100);
     }
 
     function downLoadXlsByT() {
@@ -232,7 +232,7 @@
         }
         if (rowsData[0].level === "S") {
             console.log(rowsData[0].level);
-            tip('不能选择课程进行新增视频操作！');
+            tip('请选择直播视频类别，新增直播视频操作！');
             return
         }
         url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level;
