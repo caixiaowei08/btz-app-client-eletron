@@ -42,8 +42,8 @@
     <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
         <tbody>
         <tr>
-            <td align="center" width="20%">
-                <span class="filedzt">题目文件上传:</span>
+            <td align="center" width="40%">
+                <span class="filedzt">直播视频文件上传:</span>
             </td>
             <td class="value">
                 <input type="file" name="file" id="file"
@@ -55,7 +55,7 @@
 </form>
 <script type="text/javascript">
     $(function () {
-        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "exerciseController.do?uploadExcel");
+        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?uploadExcel");
     });
 
     $("#btn_sub").click(function () {
@@ -67,7 +67,7 @@
             return;
         }
         $.ajaxFileUpload({
-            url: GLOBAL_CONSTANT_URL + "exerciseController.do?uploadExcel",
+            url: GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?uploadExcel",
             secureuri: false,
             fileElementId: 'file',
             type: "post",
@@ -75,7 +75,7 @@
             success: function (data, status) {
                 console.log("success");
                 console.log(data);
-                if (data.success === "success") {
+                if (data.success === "success"){
                     win.toastr.success("上传成功！");
                     win.reloadDate();
                     frameElement.api.close();

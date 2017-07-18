@@ -61,32 +61,28 @@
                 };
                 ko.applyBindings(viewModel);
                 var win = frameElement.api.opener;
-                $(function(){
+                $(function () {
                     $.ajax({
-                        type:"post",
-                        url:GLOBAL_CONSTANT_URL+"adminController.do?get",
-                        async:true,
-                        timeout:10000,
-                        data:{id:1},
-                        success: function(res){
-                            if(res.success === "success"){
+                        url: GLOBAL_CONSTANT_URL + "adminController.do?getAdminEntityFromSession",
+                        success: function (res) {
+                            if (res.success === "success") {
                                 viewModel.accountId(res.content.accountId);
                                 viewModel.accountName(res.content.accountName);
-                                viewModel.type(res.content.type === 1 ? "管理员":"录入员");
-                                viewModel.state(res.content.state === 1 ? "正常":"冻结");
-                            }else{
-                                win.toastr.warning("获取个人信息失败，请重新登录！");
+                                viewModel.type(res.content.type === 1 ? "管理员" : "录入员");
+                                viewModel.state(res.content.state === 1 ? "正常" : "冻结");
+                            } else {
+                                window.location.href = '../login/login.html';
                             }
                         },
-                        error:function () {
-                            win.toastr.warning("服务器异常，请联系维护人员！");
+                        error: function () {
+                            win.toastr.error("服务器异常，请联系维护人员！");
                         },
-                        complete:function (XMLHttpRequest, textStatus) {
-                            if(status=='timeout'){//超时,status还有success,error等值的情况
-                                win.toastr.warning("获取个人信息超时,请检查网络问题！");
+                        complete: function (XMLHttpRequest, textStatus) {
+                            if (status == 'timeout') {//超时,status还有success,error等值的情况
+                                win.toastr.warning("请求超时！");
                             }
-                       }
-                    },'json');
+                        }
+                    }, 'json');
                 });
             </script>
         </div>

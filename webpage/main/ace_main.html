@@ -60,12 +60,6 @@
                                 &nbsp;个人信息
                             </a>
                         </li>
-                        <li>
-                            <a href="javascript:add('修改密码','userController.do?changepassword','',550,200)">
-                                <i class="fa fa-recycle" aria-hidden="true"></i>
-                                &nbsp;清除缓存
-                            </a>
-                        </li>
                         <li class="divider"></li>
                         <li>
                             <a class="dropdown-toggle" href="javascript:" onclick="loginOff();">
@@ -317,4 +311,8 @@
             $("#content-iframe").html(data);
         });
     });
+
+    function goToLogin() {
+        setTimeout("window.location='/loginController.do?login'", 1000);
+    }
 </script>
