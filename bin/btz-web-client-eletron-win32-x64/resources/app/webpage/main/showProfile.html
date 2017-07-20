@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="../plug_in/mutiLang/zh-cn.js"></script>
+    <script type="text/javascript" src="../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../plug_in/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../plug_in/jquery-plugs/storage/jquery.storageapi.min.js"></script>
+    <link rel="stylesheet" href="../plug_in/tools/css/metrole/common.css" type="text/css">
+    <link rel="stylesheet" href="../plug_in/ace/css/font-awesome.css" type="text/css">
+    <script type="text/javascript" src="../plug_in/lhgDialog/lhgdialog.min.js?skin=metrole"></script>
+    <script type="text/javascript" src="../plug_in/ace/js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="../plug_in/layer/layer.js"></script>
+    <link rel="stylesheet" href="../plug_in/layer/skin/layer.css">
+    <script type="text/javascript" src="../plug_in/tools/curdtools_zh-cn.js"></script>
+    <script type="text/javascript" src="../plug_in/tools/easyuiextend.js"></script>
+    <script type="text/javascript" src="../plug_in/jquery-plugs/hftable/jquery-hftable.js"></script>
+    <script type="text/javascript" src="../plug_in/tools/json2.js"></script>
+    <script type="text/javascript" src="../plug_in/knockout/knockout.js"></script>
+</head>
+
+<body style="overflow-y: hidden" scroll="no">
+<div id="content">
+    <div id="wrapper">
+        <div id="steps">
+            <form id="formobj" action="null" name="formobj" method="post">
+                <input type="hidden" id="btn_sub" class="btn_sub">
+                <fieldset class="step">
+                    <div class="form">
+                        <label class="form">用户账号:</label>&nbsp;&nbsp;&nbsp;<span data-bind="text:accountId"></span>
+                    </div>
+                    <div class="form">
+                        <label class="form">姓名:</label>&nbsp;&nbsp;&nbsp;<span data-bind="text:accountName"></span>
+                    </div>
+                    <div class="form">
+                        <label class="form">角色:</label>&nbsp;&nbsp;&nbsp;<span data-bind="text:type"></span>
+                    </div>
+                    <div class="form">
+                        <label class="form">状态:</label>&nbsp;&nbsp;&nbsp;<span data-bind="text:state"></span>
+                    </div>
+                </fieldset>
+            </form>
+            <link rel="stylesheet" href="../plug_in/Validform/css/metrole/divfrom.css" type="text/css">
+            <link rel="stylesheet" href="../plug_in/Validform/css/metrole/style.css" type="text/css">
+            <link rel="stylesheet" href="../plug_in/Validform/css/metrole/tablefrom.css" type="text/css">
+            <script type="text/javascript" src="../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
+            <script type="text/javascript" src="../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
+            <script type="text/javascript" src="../plug_in/Validform/js/datatype_zh-cn.js"></script>
+            <script type="text/javascript" src="../../system/GlobalConstant.js"></script>
+            <script type="text/javascript" src="../plug_in/layer/layer.js"></script>
+            <script type="text/javascript">
+
+                var accountIdTemp = "";
+                var accountNameTemp = "";
+                var type = "";
+                var state = "";
+                var viewModel = {
+                    accountId: ko.observable(accountIdTemp),
+                    accountName: ko.observable(accountNameTemp),
+                    type: ko.observable(type),
+                    state: ko.observable(state)
+                };
+                ko.applyBindings(viewModel);
+                var win = frameElement.api.opener;
+                $(function () {
+                    $.ajax({
+                        url: GLOBAL_CONSTANT_URL + "adminController.do?getAdminEntityFromSession",
+                        success: function (res) {
+                            if (res.success === "success") {
+                                viewModel.accountId(res.content.accountId);
+                                viewModel.accountName(res.content.accountName);
+                                viewModel.type(res.content.type === 1 ? "管理员" : "录入员");
+                                viewModel.state(res.content.state === 1 ? "正常" : "冻结");
+                            } else {
+                                window.location.href = '../login/login.html';
+                            }
+                        },
+                        error: function () {
+                            win.toastr.error("服务器异常，请联系维护人员！");
+                        },
+                        complete: function (XMLHttpRequest, textStatus) {
+                            if (status == 'timeout') {//超时,status还有success,error等值的情况
+                                win.toastr.warning("请求超时！");
+                            }
+                        }
+                    }, 'json');
+                });
+            </script>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<html>
+<head>
+    <title>修改课程信息</title>
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metrole/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metrole/main.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/tools/css/metrole/common.css">
+    <link rel="stylesheet" type="text/css" href="../gridSystem.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/My97DatePicker/skin/WdatePicker.css">
+    <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-easy-ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-easy-ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/toastr/toastr.css"/>
+    <script type="text/javascript" src="../../../plug_in/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/lhgDialog/lhgdialog.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/datatype_zh-cn.js"></script>
+    <script type="text/javascript"
+            src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/plugin/swfupload/swfupload.queue-min.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/Validform/css/metrole/style.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/Validform/css/metrole/tablefrom.css" type="text/css">
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/datatype_zh-cn.js"></script>
+    <script type="text/javascript"
+            src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery/ajaxfileupload.js"></script>
+    <script src="../../../plug_in/layer/layer.js"></script>
+    <script src="../../../../system/GlobalConstant.js"></script>
+</head>
+<body style="overflow: hidden;" scroll="no">
+<form id="formobj" action="" name="formobj" method="post" enctype="multipart/form-data"
+      onsubmit="return submitUploadExcel()">
+    <input type="hidden" id="btn_sub" class="btn_sub">
+    <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
+        <tbody>
+        <tr>
+            <td align="center" width="40%">
+                <span class="filedzt">录播视频文件上传:</span>
+            </td>
+            <td class="value">
+                <input type="file" name="file" id="file"
+                       accept=".csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script type="text/javascript">
+    $(function () {
+        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "courseRecordedVideoController.do?uploadExcel");
+    });
+
+    $("#btn_sub").click(function () {
+        //$("#formobj").submit();
+        var win = frameElement.api.opener;
+        var file = $("#file").val();
+        if (file === null || file === undefined || file === '') {
+            win.toastr.warning("请选择上传文件！");
+            return;
+        }
+        $.ajaxFileUpload({
+            url: GLOBAL_CONSTANT_URL + "courseRecordedVideoController.do?uploadExcel",
+            secureuri: false,
+            fileElementId: 'file',
+            type: "post",
+            dataType: 'json',
+            success: function (data, status) {
+                console.log("success");
+                console.log(data);
+                if (data.success === "success") {
+                    win.toastr.success("上传成功！");
+                    win.reloadDate();
+                    frameElement.api.close();
+                } else {
+                    win.toastr.error(data.msg);
+                }
+            },
+            error: function (jqxhr, textStatus, errorThrow) {
+                var data = JSON.parse(jqxhr.responseText);
+                console.log(data);
+                if (data.success === "success") {
+                    win.toastr.success("上传成功！");
+                    win.reloadDate();
+                    frameElement.api.close();
+                } else {
+                    win.toastr.error(data.msg);
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
