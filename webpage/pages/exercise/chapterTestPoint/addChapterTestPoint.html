@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>用户信息</title>
+    <title></title>
     <script type="text/javascript" src="../../../plug_in/mutiLang/zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="../../../plug_in/jquery/jquery.cookie.js"></script>
@@ -34,65 +34,85 @@
     <input type="hidden" id="btn_sub" class="btn_sub">
     <input id="subCourseId" type="hidden" name="subCourseId" value="" data-bind="value:subCourseId">
     <input id="chapterId" type="hidden" name="chapterId" value="" data-bind="value:id">
+    <input id="moduleType" type="hidden" name="moduleType" value="1">
     <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
         <tbody>
         <tr>
             <td align="center" width="20%">
-                <span class="filedzt">直播视频归类:</span>
+                <span class="filedzt">题干:</span>
             </td>
             <td class="value">
-                <input type="text" value=""  style="height: 30px;" class="inputxt" readonly="readonly" data-bind="value:subCourseName">
-            </td>
-        </tr>
-        <tr>
-            <td align="center" width="20%">
-                <span class="filedzt">视频名称:</span>
-            </td>
-            <td class="value">
-                <input type="text" value="" name="title" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入视频名称" nullmsg="请输入视频名称！">
-                <span class="Validform_checktip">视频名称</span>
-            </td>
-        </tr>
-        <tr>
-            <td align="center" width="20%">
-                <span class="filedzt">讲师姓名:</span>
-            </td>
-            <td class="value">
-                <input type="text" value="" name="teacherName" style="height: 30px;" class="inputxt">
-                <span class="Validform_checktip">讲师姓名</span>
-            </td>
-        </tr>
-        <tr>
-            <td align="center" width="20%">
-                <span class="filedzt">直播视频链接:</span>
-            </td>
-            <td class="value">
-                <input type="text" value="" name="videoUrl" style="height: 30px;" class="inputxt" datatype="*" errormsg="直播视频链接" nullmsg="直播视频链接！">
-                <span class="Validform_checktip">直播视频链接</span>
+                <textarea name="title" class="inputxt" style="height: 80px;width: 300px;"
+                          datatype="*" rows="3" cols="20" errormsg="请输入题干信息！" nullmsg="请输入题干信息！"></textarea>
             </td>
         </tr>
         <tr>
             <td align="center">
-                <span class="filedzt">直播状态:</span></td>
+                <span class="filedzt">题目内容:</span></td>
             <td class="value">
-                <select name="status" style="height: 30px;line-height: 30px;">
-                    <option value="1" selected>
-                        开启
+                <textarea name="content" placeholder="题目内容分割<br/>" class="inputxt" style="height: 80px;width: 300px;" rows="3" cols="20"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">题目类型:</span></td>
+            <td class="value">
+                <select name="type" style="height: 30px;line-height: 30px;">
+                    <option value="1">
+                        单选题
                     </option>
-                    <option value="2" >
-                        关闭
+                    <option value="2">
+                        多选题
+                    </option>
+                    <option value="1">
+                        单选题
+                    </option>
+                    <option value="3">
+                        判断题
+                    </option>
+                    <option value="4">
+                        分录题
+                    </option>
+                    <option value="5">
+                        不定项分析题
+                    </option>
+                    <option value="6">
+                        长文本题
+                    </option>
+                    <option value="7">
+                        公式题
+                    </option>
+                    <option value="8">
+                        单选题
+                    </option>
+                    <option value="9">
+                        不定项表格
                     </option>
                 </select>
             </td>
         </tr>
         <tr>
             <td align="center">
-                <span class="filedzt">显示顺序:</span></td>
+                <span class="filedzt">答案:</span></td>
             <td class="value">
-                <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100"
-                       datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;" class="inputxt"
-                       errormsg="请输入1-100的数字！" nullmsg="请输入1-100的数字！">
-                <span class="Validform_checktip">请输入1-100的数字！</span>
+                <textarea name="answer" datatype="*" class="inputxt"
+                          style="height: 80px;width: 300px;" rows="3" cols="20"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">答案解析:</span>
+            </td>
+            <td class="value">
+                <textarea name="answerKey" class="inputxt" style="height: 80px;width: 300px;" rows="3" cols="20"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">显示顺序:</span>
+            </td>
+            <td class="value">
+                <input type="number" style="height: 30px;" datatype="*" min="1" name="orderNo" class="inputxt">
             </td>
         </tr>
         </tbody>
@@ -103,22 +123,23 @@
 <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
 <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
 <script type="text/javascript" src="../../../plug_in/Validform/js/datatype_zh-cn.js"></script>
-<script type="text/javascript" src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+<script type="text/javascript"
+        src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
 <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
 <script src="../../../plug_in/layer/layer.js"></script>
 <script src="../../../../system/GlobalConstant.js"></script>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         loadData();
-        $("#formobj").attr("action",GLOBAL_CONSTANT_URL+"courseLiveVideoController.do?doAdd");
+        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "exerciseController.do?doAdd");
         $("#formobj").Validform({
             tiptype: 4,
             btnSubmit: "#btn_sub",
             btnReset: "#btn_reset",
             ajaxPost: true,
-            callback: function(data) {
+            callback: function (data) {
                 var win = frameElement.api.opener;
-                if (data.success =="success") {
+                if (data.success == "success") {
                     frameElement.api.close();
                     win.toastr.success(data.msg);
                 } else {
@@ -127,8 +148,8 @@
                     } else {
                         try {
                             win.toastr.error(data.msg);
-                        } catch(ex) {
-                            win.toastr.error(data.responseText+"");
+                        } catch (ex) {
+                            win.toastr.error(data.responseText + "");
                         }
                     }
                     return false;
@@ -149,22 +170,22 @@
         var str = window.document.location.href;
         var start_subCourseId = str.indexOf("subCourseId=");
         var end_subCourseId = str.indexOf("&subCourseName");
-        var subCourseId = str.substring(start_subCourseId+13,end_subCourseId);
+        var subCourseId = str.substring(start_subCourseId + 13, end_subCourseId);
         var start_subCourseName = str.indexOf("subCourseName=");
         var end_subCourseName = str.indexOf("&id=");
-        var subCourseName = str.substring(start_subCourseName+14,end_subCourseName);
+        var subCourseName = str.substring(start_subCourseName + 14, end_subCourseName);
         var start_id = str.indexOf("id=");
         var end_id = str.indexOf("&level=");
-        var id = str.substring(start_id+4,end_id);
+        var id = str.substring(start_id + 4, end_id);
         var start_level = str.indexOf("level=");
         var end_level = str.indexOf("&_=");
-        var level = str.substring(start_level+6,end_level);
+        var level = str.substring(start_level + 6, end_level);
         console.log(subCourseId);
         console.log(decodeURI(subCourseName));
         console.log(id);
         console.log(level);
         viewModel.subCourseId(subCourseId);
-        viewModel.subCourseName( decodeURI(subCourseName));
+        viewModel.subCourseName(decodeURI(subCourseName));
         viewModel.id(id);
         viewModel.level(level);
     }

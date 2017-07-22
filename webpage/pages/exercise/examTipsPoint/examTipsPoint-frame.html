@@ -48,14 +48,20 @@
                                  <span class="l-btn-text icon-put l-btn-icon-left">增量导入&nbsp;</span>
                              </span>
                         </a>
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-add"
+                             onclick="newTest('新增题目','../pages/exercise/examTipsPoint/addExamTipsPoint.html','chapterExerciseList',600,600);">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-add l-btn-icon-left">新增题目&nbsp;</span>
+                             </span>
+                        </a>
                          <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="update('编辑','../pages/global/updateTest.html','chapterExerciseList',600,600)">
                              <span class="l-btn-left" style="">
-                                 <span class="l-btn-text icon-edit l-btn-icon-left">编辑&nbsp;</span>
+                                 <span class="l-btn-text icon-edit l-btn-icon-left">编辑题目&nbsp;</span>
                              </span>
                         </a>
                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"onclick="deleteALLSelect('删除题目',GLOBAL_CONSTANT_URL +'exerciseController.do?doDel','chapterExerciseList')">
                              <span class="l-btn-left" style="">
-                                 <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
+                                 <span class="l-btn-text icon-remove l-btn-icon-left">删除题目&nbsp;</span>
                              </span>
                         </a>
                     </span>
@@ -232,6 +238,22 @@
 
     function reloadTable() {
         reloadDate();
+    }
+
+    function newTest(title, url, gname, width, height) {
+        var subCourseId = $("#sid").val();
+        var rowsData = $('#chapterList').treegrid('getSelections');
+        if (!rowsData || rowsData.length == 0) {
+            tip('请选择左侧题目章节！');
+            return;
+        }
+        console.log(rowsData[0].leaf);
+        if (!rowsData[0].leaf) {
+            tip('只能在试卷上添加题目！');
+            return
+        }
+        url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level;
+        add(title, url, gname, width, height);
     }
 
     function exportXlsByT() {
