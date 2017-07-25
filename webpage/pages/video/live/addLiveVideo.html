@@ -33,17 +33,8 @@
 <form id="formobj" action="" name="formobj" method="post">
     <input type="hidden" id="btn_sub" class="btn_sub">
     <input id="subCourseId" type="hidden" name="subCourseId" value="" data-bind="value:subCourseId">
-    <input id="chapterId" type="hidden" name="chapterId" value="" data-bind="value:id">
     <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
         <tbody>
-        <tr>
-            <td align="center" width="20%">
-                <span class="filedzt">直播视频归类:</span>
-            </td>
-            <td class="value">
-                <input type="text" value=""  style="height: 30px;" class="inputxt" readonly="readonly" data-bind="value:subCourseName">
-            </td>
-        </tr>
         <tr>
             <td align="center" width="20%">
                 <span class="filedzt">视频名称:</span>
@@ -148,25 +139,9 @@
     function loadData() {
         var str = window.document.location.href;
         var start_subCourseId = str.indexOf("subCourseId=");
-        var end_subCourseId = str.indexOf("&subCourseName");
+        var end_subCourseId = str.indexOf("&_=");
         var subCourseId = str.substring(start_subCourseId+13,end_subCourseId);
-        var start_subCourseName = str.indexOf("subCourseName=");
-        var end_subCourseName = str.indexOf("&id=");
-        var subCourseName = str.substring(start_subCourseName+14,end_subCourseName);
-        var start_id = str.indexOf("id=");
-        var end_id = str.indexOf("&level=");
-        var id = str.substring(start_id+4,end_id);
-        var start_level = str.indexOf("level=");
-        var end_level = str.indexOf("&_=");
-        var level = str.substring(start_level+6,end_level);
-        console.log(subCourseId);
-        console.log(decodeURI(subCourseName));
-        console.log(id);
-        console.log(level);
         viewModel.subCourseId(subCourseId);
-        viewModel.subCourseName( decodeURI(subCourseName));
-        viewModel.id(id);
-        viewModel.level(level);
     }
 </script>
 </body>

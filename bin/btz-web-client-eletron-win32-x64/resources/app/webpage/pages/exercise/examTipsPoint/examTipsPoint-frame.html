@@ -137,19 +137,27 @@
                 {field: 'id', title: '主键', sortable: true, hidden: true},
                 {
                     field: 'subCourseId',
+                    hidden: true,
                     title: '课程主键'
                 },
                 {
                     field: 'chapterId',
+                    hidden: true,
                     title: '章节主键',
                     sortable: true
                 }, {
                     field: 'title',
-                    title: '题干'
+                    title: '题干',
+                    formatter: function (value, row, index) {
+                        return '<input type="text" style="border:none;width=400px;padding:0px;background:none;"  size="50" readonly="readonly" value="' + value + '"/>';
+                    }
                 },
                 {
                     field: 'content',
-                    title: '内容'
+                    title: '内容',
+                    formatter: function (value, row, index) {
+                        return '<input type="text" style="border:none;background:none;" size="50" readonly="readonly" value="' + value + '"/>';
+                    }
                 },
                 {
                     field: 'type',
@@ -189,18 +197,22 @@
                 {
                     field: 'answer',
                     title: '答案',
+                    formatter: function (value, row, index) {
+                        return '<input type="text" style="border:none;background:none;" readonly="readonly" size="50" value="' + value + '"/>';
+                    }
                 },
                 {
                     field: 'answerKey',
                     title: '答案解析',
+                    formatter: function (value, row, index) {
+                        return '<input type="text" style="border:none;background:none;" readonly="readonly" size="50" value="' + value + '"/>';
+                    }
                 },
                 {
                     field: 'orderNo',
                     title: '显示顺序',
                     sortable: true
-                },
-                {field: 'updateTime', title: '更新时间'},
-                {field: 'createTime', title: '创建时间'}
+                }
             ]],
         });
     })

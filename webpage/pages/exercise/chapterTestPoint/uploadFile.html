@@ -84,6 +84,7 @@
                 }
             },
             error: function (jqxhr, textStatus, errorThrow) {
+                console.log(jqxhr.responseText);
                 var data = JSON.parse(jqxhr.responseText);
                 console.log(data);
                 if (data.success === "success") {

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="panel-fit">
+<head>
+    <meta charset="UTF-8">
+    <title>系统账户信息表</title>
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/main.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/tools/css/metrole/common.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/My97DatePicker/skin/WdatePicker.css">
+    <script type="text/javascript" src="../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-easy-ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-easy-ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <link rel="stylesheet" href="../../plug_in/toastr/toastr.css"/>
+    <script type="text/javascript" src="../../plug_in/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/lhgDialog/lhgdialog.min.js"></script>
+    <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
+</head>
+<body>
+<div style="height: 650px;">
+    <div id="adminListtb" class="datagrid-toolbar">
+        <div name="searchColums" id="searchColums">
+            <form>
+                <div style="height: 2px;"></div>
+                <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; " title="笔记状态">笔记状态：</span>
+                <select name="status" width="100" style="width: 104px">
+                    <option value="">
+                        ---请选择---
+                    </option>
+                    <option value="1">
+                        待审核
+                    </option>
+                    <option value="2">
+                        审核通过
+                    </option>
+                    <option value="3">
+                        审核驳回
+                    </option>
+                </select>
+            </form>
+        </div>
+        <div style="height: 2px;"></div>
+        <div style="height:35px;" class="datagrid-toolbar">
+            <span style="float:left;">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                   onclick="pass('审核通过',GLOBAL_CONSTANT_URL +'notesController.do?doPass','adminList')">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-edit l-btn-icon-left">审核通过&nbsp;</span>
+                     </span>
+                </a>
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                   onclick="reject('审核驳回',GLOBAL_CONSTANT_URL +'notesController.do?doReject','adminList')">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-edit l-btn-icon-left">审核驳回&nbsp;</span>
+                     </span>
+                </a>
+            </span>
+            <span style="float:right;">
+                <a href="#" class="l-btn" iconcls="icon-search" onclick="adminListSearch()">
+                         <span class="l-btn-left" style="">
+                              <span class="l-btn-text icon-search l-btn-icon-left">查询&nbsp;</span>
+                         </span>
+                </a>
+                <a href="#" class="l-btn" iconcls="icon-reload" onclick="searchReset()">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-reload l-btn-icon-left">重置&nbsp;</span>
+                     </span>
+                </a>
+            </span>
+        </div>
+    </div>
+    <table id="adminList"></table>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        $("#adminList").datagrid({
+            idField: 'id',
+            title: '云笔记审核',
+            url: GLOBAL_CONSTANT_URL + "notesController.do?dataGrid&field=id,notes,status,checkTime,updateTime,createTime,",
+            toolbar: "#adminListtb",
+            pagination: true,
+            pageList: [10, 20, 30],
+            rownumbers: true,
+            emptyMsg: "暂无笔记记录",
+            singleSelect: false,
+            fit: true,
+            fitColumns: true,
+            frozenColumns: [[{
+                field: 'ck',
+                checkbox: 'true'
+            }]],
+            columns: [[
+                {field: 'id', title: '主键', sortable: true, hidden: true},
+                {field: 'notes', sortable: true, title: '笔记内容'},
+                {
+                    field: 'status',
+                    title: '笔记状态',
+                    sortable: true,
+                    formatter: function (value, rec, index) {
+                        if (value == '1') {
+                            return '待审核';
+                        }
+                        if (value == '2') {
+                            return '审核通过';
+                        }
+                        if (value == '3') {
+                            return '审核驳回';
+                        }
+                        return "";
+                    }
+                },
+                {field: 'checkTime', title: '审核时间'},
+                {field: 'createTime', title: '创建时间'},
+                {field: 'updateTime', title: '更新时间'}
+            ]],
+        });
+    });
+
+    /**
+     * 查询
+     */
+    function adminListSearch() {
+        var queryParams = $('#adminList').datagrid('options').queryParams;
+        $('#adminListtb').find('*').each(function () {
+            queryParams[$(this).attr('name')] = $(this).val();
+        });
+        $('#adminList').datagrid({
+            url: GLOBAL_CONSTANT_URL + "notesController.do?dataGrid&field=id,notes,status,checkTime,updateTime,createTime,",
+            pageNumber: 1
+        });
+    }
+
+    function searchReset() {
+        $("#adminListtb").find(":input").val("");
+        var queryParams = $('#adminList').datagrid('options').queryParams;
+        $('#adminListtb').find('*').each(function () {
+            queryParams[$(this).attr('name')] = $(this).val();
+        });
+        $('#adminList').datagrid({
+            url: GLOBAL_CONSTANT_URL + "notesController.do?dataGrid&field=id,notes,status,checkTime,updateTime,createTime,",
+            pageNumber: 1
+        });
+    }
+
+    function reloadTable() {
+        try {
+            $('#adminList').datagrid('reload');
+        } catch (ex) {
+        }
+    }
+
+    function pass(title, url, gname) {
+        gridname = gname;
+        var ids = [];
+        var rows = $("#" + gname).datagrid('getSelections');
+        if (rows.length > 0) {
+            $.dialog.setting.zIndex = getzIndex(true);
+            $.dialog.confirm('你确定审核通过该条笔记吗?', function (r) {
+                if (r) {
+                    for (var i = 0; i < rows.length; i++) {
+                        ids.push(rows[i].id);
+                    }
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        data: {
+                            ids: ids.join(',')
+                        },
+                        cache: false,
+                        success: function (data) {
+                            if (data.success == "success") {
+                                toastr.success(data.msg);
+                                $("#" + gname).datagrid('unselectAll');
+                                ids = '';
+                            } else {
+                                if (data.responseText == '' || data.responseText == undefined) {
+                                    toastr.error(data.msg);
+                                } else {
+                                    try {
+                                        toastr.error(data.msg);
+                                    } catch (ex) {
+                                        toastr.error(data.responseText + "");
+                                    }
+                                }
+                                return false;
+                            }
+                            reloadTable();
+                        }
+                    });
+                }
+            });
+        } else {
+            tip("请选择需要审核的笔记！");
+        }
+    }
+
+    function reject(title, url, gname) {
+        gridname = gname;
+        var ids = [];
+        var rows = $("#" + gname).datagrid('getSelections');
+        if (rows.length > 0) {
+            $.dialog.setting.zIndex = getzIndex(true);
+            $.dialog.confirm('你确定审核驳回吗?', function (r) {
+                if (r) {
+                    for (var i = 0; i < rows.length; i++) {
+                        ids.push(rows[i].id);
+                    }
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        data: {
+                            ids: ids.join(',')
+                        },
+                        cache: false,
+                        success: function (data) {
+                            if (data.success == "success") {
+                                toastr.success(data.msg);
+                                $("#" + gname).datagrid('unselectAll');
+                                ids = '';
+                            } else {
+                                if (data.responseText == '' || data.responseText == undefined) {
+                                    toastr.error(data.msg);
+                                } else {
+                                    try {
+                                        toastr.error(data.msg);
+                                    } catch (ex) {
+                                        toastr.error(data.responseText + "");
+                                    }
+                                }
+                                return false;
+                            }
+                            reloadTable();
+                        }
+                    });
+                }
+            });
+        } else {
+            tip("请选择需要审核的笔记！");
+        }
+    }
+</script>

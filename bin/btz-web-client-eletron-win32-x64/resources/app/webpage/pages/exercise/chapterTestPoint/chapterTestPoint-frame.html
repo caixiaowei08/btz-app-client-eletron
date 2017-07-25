@@ -43,7 +43,7 @@
                 <input id="sid" type="hidden" name="sid" data-bind="value:sid">
                 <div style="height:35px;" class="datagrid-toolbar">
                     <span style="float:left;">
-                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"onclick="exportXlsByT();">
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="exportXlsByT();">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-put l-btn-icon-left">增量导入&nbsp;</span>
                              </span>
@@ -54,12 +54,14 @@
                                  <span class="l-btn-text icon-add l-btn-icon-left">新增题目&nbsp;</span>
                              </span>
                         </a>
-                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="update('编辑题目','../pages/global/updateTest.html','chapterExerciseList',600,600)">
+                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                            onclick="update('编辑题目','../pages/global/updateTest.html','chapterExerciseList',600,600)">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-edit l-btn-icon-left">编辑&nbsp;</span>
                              </span>
                         </a>
-                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"onclick="deleteALLSelect('删除题目',GLOBAL_CONSTANT_URL +'exerciseController.do?doDel','chapterExerciseList')">
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                           onclick="deleteALLSelect('删除题目',GLOBAL_CONSTANT_URL +'exerciseController.do?doDel','chapterExerciseList')">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
                              </span>
@@ -147,13 +149,16 @@
                     sortable: true
                 }, {
                     field: 'title',
-                    title: '题干'
+                    title: '题干',
+                    formatter: function (value, row, index) {
+                        return '<input type="text" style="border:none;width=400px;padding:0px;background:none;"  size="50" readonly="readonly" value="' + value + '"/>';
+                    }
                 },
                 {
                     field: 'content',
                     title: '内容',
-                    formatter: function(value, row, index){
-                        return '<textarea>' + value + '</textarea>';
+                    formatter: function (value, row, index) {
+                        return '<input type="text" style="border:none;background:none;" size="50" readonly="readonly" value="' + value + '"/>';
                     }
                 },
                 {
@@ -194,10 +199,16 @@
                 {
                     field: 'answer',
                     title: '答案',
+                    formatter: function (value, row, index) {
+                        return '<input type="text" style="border:none;background:none;" readonly="readonly" size="50" value="' + value + '"/>';
+                    }
                 },
                 {
                     field: 'answerKey',
                     title: '答案解析',
+                    formatter: function (value, row, index) {
+                        return '<div width="400px;"><input type="text" style="border:none;background:none;" readonly="readonly" size="50" value="' + value + '"/></div>';
+                    }
                 },
                 {
                     field: 'orderNo',
@@ -215,7 +226,7 @@
     function loadCourseInfo(rowsData) {
         viewModel.sid(rowsData[0].id);
         viewModel.subCourseName(rowsData[0].name);
-        chapterReloadTable(rowsData[0].id, rowsData[0].name,1);
+        chapterReloadTable(rowsData[0].id, rowsData[0].name, 1);
     }
 
     function reloadDate() {
@@ -230,11 +241,15 @@
 
     }
 
-    function chapterReloadTable(subCourseId, subCourseName,moduleType) {
+    function chapterReloadTable(subCourseId, subCourseName, moduleType) {
         try {
             $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "exerciseController.do?downLoadExcel&belongTo=1&subCourseId=" + subCourseId.substring(1, subCourseId.length));
-            $('#chapterList').treegrid('reload', {"subCourseId": subCourseId, "subCourseName": subCourseName,"moduleType":moduleType});
-            $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId,"moduleType":moduleType});
+            $('#chapterList').treegrid('reload', {
+                "subCourseId": subCourseId,
+                "subCourseName": subCourseName,
+                "moduleType": moduleType
+            });
+            $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId, "moduleType": moduleType});
         } catch (ex) {
         }
     }
@@ -270,4 +285,5 @@
             return;
         }
     }
+
 </script>

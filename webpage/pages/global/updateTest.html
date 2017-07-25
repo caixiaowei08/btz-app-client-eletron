@@ -69,22 +69,25 @@
                         判断题
                     </option>
                     <option value="4">
-                        分录题
+                        填空题
                     </option>
                     <option value="5">
-                        不定项分析题
+                        分录题(数字)
                     </option>
                     <option value="6">
-                        长文本题
+                        分录题(固定格式)
                     </option>
                     <option value="7">
-                        公式题
+                        材料分析题(完形填空、阅读理解等)
                     </option>
                     <option value="8">
                         单选题
                     </option>
                     <option value="9">
-                        不定项表格
+                        长文本题(长文本题（综合题、作文题等)
+                    </option>
+                    <option value="10">
+                        公式题(中级计算题、综合练习题等)
                     </option>
                 </select>
             </td>
@@ -93,7 +96,7 @@
             <td align="center">
                 <span class="filedzt">答案:</span></td>
             <td class="value">
-                <input type="text" name="answer" data-bind="value:answer" style="height: 30px;"class="inputxt">
+                <textarea name="answer" data-bind="value:answer"  class="inputxt" style="height: 80px;width: 300px;" rows="3" cols="20"></textarea>
             </td>
         </tr>
         <tr>

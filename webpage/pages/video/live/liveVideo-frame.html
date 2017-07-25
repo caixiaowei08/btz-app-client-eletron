@@ -32,22 +32,17 @@
     </a>
 </div>
 <div class="row">
-    <div class="col-xs-3">
-        <div style="height: 650px;">
-            <table id="chapterList"></table>
-        </div>
-    </div>
-    <div class="col-xs-8">
+    <div class="col-xs-11">
         <div style="height: 650px;">
             <div id="chapterExerciseListtb" class="datagrid-toolbar">
                 <input id="sid" type="hidden" name="sid" data-bind="value:sid">
                 <div style="height:35px;" class="datagrid-toolbar">
                     <span style="float:left;">
-                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="exportXlsByT();">
+                    <!--    <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="exportXlsByT();">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-put l-btn-icon-left">批量导入&nbsp;</span>
                              </span>
-                        </a>
+                        </a>-->
                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-add"
                            onclick="newVideo('新增视频','../pages/video/live/addLiveVideo.html','chapterExerciseList',600,300);">
                              <span class="l-btn-left" style="">
@@ -67,14 +62,14 @@
                              </span>
                         </a>
                     </span>
-                    <span style="float: right">
+                 <!--   <span style="float: right">
                          <a href="#" id="icon-putout" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
                             onclick="downLoadXlsByT();">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-putout l-btn-icon-left">模板下载&nbsp;</span>
                              </span>
                         </a>
-                    </span>
+                    </span>-->
                 </div>
             </div>
             <table id="chapterExerciseList"></table>
@@ -92,7 +87,7 @@
 
     $(function () {
         courseSearch();
-        $('#chapterList').treegrid({
+        /**$('#chapterList').treegrid({
             title: ' 直播视频分类',
             idField: 'id',
             url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
@@ -116,7 +111,7 @@
                 reloadDate();
             }
         });
-
+*/
         $("#chapterExerciseList").datagrid({
             idField: 'id',
             title: '',
@@ -138,10 +133,13 @@
                 {field: 'id', title: '主键', sortable: true, hidden: true},
                 {
                     field: 'subCourseId',
-                    title: '课程主键'
+                    title: '课程主键',
+                    hidden: true
+
                 }, {
                     field: 'chapterId',
                     title: '直播视频类别',
+                    hidden: true
                 }, {
                     field: 'title',
                     title: '直播名称'
@@ -185,24 +183,14 @@
 
     function reloadDate() {
         var subCourseId = $("#sid").val();
-        var rowsData = $('#chapterList').treegrid('getSelections');
-        var chapterId = "";
-        if (!(!rowsData || rowsData.length == 0)) {
-            chapterId = rowsData[0].id;
-        }
         $('#chapterExerciseList').datagrid('clearSelections');
-        $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId, "chapterId": chapterId});
+        $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId});
     }
 
     function chapterReloadTable(subCourseId, subCourseName, moduleType) {
         try {
-            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?downLoadExcel&subCourseId=" + subCourseId.substring(1, subCourseId.length));
-            $('#chapterList').treegrid('reload', {
-                "subCourseId": subCourseId,
-                "subCourseName": subCourseName,
-                "moduleType": moduleType
-            });
-            $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId, "moduleType": moduleType});
+            //$("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?downLoadExcel&subCourseId=" + subCourseId.substring(1, subCourseId.length));
+            $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId});
         } catch (ex) {
         }
     }
@@ -225,7 +213,7 @@
 
     function newVideo(title, url, gname, width, height) {
         var subCourseId = $("#sid").val();
-        var rowsData = $('#chapterList').treegrid('getSelections');
+/*        var rowsData = $('#chapterList').treegrid('getSelections');
         if (!rowsData || rowsData.length == 0) {
             tip('请选择左侧视频章节！');
             return;
@@ -234,8 +222,9 @@
             console.log(rowsData[0].level);
             tip('请选择直播视频类别，新增直播视频操作！');
             return
-        }
-        url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level;
+        }*/
+        //url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level;
+        url += '?subCourseId=' + subCourseId ;
         add(title, url, gname, width, height);
     }
 </script>
