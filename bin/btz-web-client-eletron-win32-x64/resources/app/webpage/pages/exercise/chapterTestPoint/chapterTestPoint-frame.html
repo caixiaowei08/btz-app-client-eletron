@@ -151,7 +151,7 @@
                     field: 'title',
                     title: '题干',
                     formatter: function (value, row, index) {
-                        return '<input type="text" style="border:none;width=400px;padding:0px;background:none;"  size="50" readonly="readonly" value="' + value + '"/>';
+                        return '<input type="text" style="border:none;background:none;"  size="50" readonly="readonly" value="' + value + '"/>';
                     }
                 },
                 {
@@ -166,6 +166,8 @@
                     title: '题目类型',
                     sortable: true,
                     formatter: function (value, rec, index) {
+
+
                         if (value == '1') {
                             return '单选题';
                         }
@@ -176,22 +178,25 @@
                             return '判断题';
                         }
                         if (value == '4') {
-                            return '分录题';
+                            return '填空题';
                         }
                         if (value == '5') {
-                            return '不定项分析题';
+                            return '分录题(数字)';
                         }
                         if (value == '6') {
-                            return '长文本题';
+                            return '分录题(固定格式)';
                         }
                         if (value == '7') {
-                            return '短文本题';
+                            return '材料分析题';
                         }
                         if (value == '8') {
-                            return '公式题';
+                            return '长文本题';
                         }
                         if (value == '9') {
-                            return '不定项表格';
+                            return '短文本题';
+                        }
+                        if (value == '10') {
+                            return '公式题';
                         }
                         return "";
                     }
@@ -207,7 +212,7 @@
                     field: 'answerKey',
                     title: '答案解析',
                     formatter: function (value, row, index) {
-                        return '<div width="400px;"><input type="text" style="border:none;background:none;" readonly="readonly" size="50" value="' + value + '"/></div>';
+                        return '<input type="text" style="border:none;background:none;" readonly="readonly" size="50" value="' + value + '"/>';
                     }
                 },
                 {

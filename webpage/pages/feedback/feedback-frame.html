@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="panel-fit">
+<head>
+    <meta charset="UTF-8">
+    <title>用户账户信息表</title>
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/main.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/tools/css/metrole/common.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/My97DatePicker/skin/WdatePicker.css">
+    <script type="text/javascript" src="../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-easy-ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-easy-ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <link rel="stylesheet" href="../../plug_in/toastr/toastr.css" />
+    <script type="text/javascript" src="../../plug_in/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/lhgDialog/lhgdialog.min.js"></script>
+    <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
+</head>
+<body>
+<div style="height: 650px;">
+    <div id="userListtb"  class="datagrid-toolbar">
+        <div name="searchColums" id="searchColums">
+            <form >
+                <div style="height: 2px;"></div>
+                    <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
+                          title="状态">处理状态：</span>
+                    <select name="status" width="100" style="width: 104px">
+                                <option value="">
+                                    ---请选择---
+                                </option>
+                                <option value="1">
+                                    未处理
+                                </option>
+                                <option value="2">
+                                    已处理
+                                </option>
+                                <option value="3">
+                                    反馈有误
+                                </option>
+                    </select>
+            </form>
+        </div>
+        <div style="height: 2px;"></div>
+        <div style="height:35px;" class="datagrid-toolbar">
+            <span style="float:left;">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="pass('处理完成',GLOBAL_CONSTANT_URL +'feedbackController.do?doPass','userList')">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-edit l-btn-icon-left">处理完成&nbsp;</span>
+                     </span>
+                </a>
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="reject('反馈有误',GLOBAL_CONSTANT_URL +'feedbackController.do?doReject','userList')">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-edit l-btn-icon-left">反馈有误&nbsp;</span>
+                     </span>
+                </a>
+            </span>
+            <span style="float:right;">
+                <a href="#" class="l-btn" iconcls="icon-search" onclick="ListSearch()">
+                         <span class="l-btn-left" style="">
+                              <span class="l-btn-text icon-search l-btn-icon-left">查询&nbsp;</span>
+                         </span>
+                </a>
+                <a href="#" class="l-btn" iconcls="icon-reload" onclick="searchReset()">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-reload l-btn-icon-left">重置&nbsp;</span>
+                     </span>
+                </a>
+            </span>
+        </div>
+    </div>
+    <table id="userList"></table>
+</div>
+</body>
+</html>
+<script>
+    $(function() {
+        $("#userList").datagrid({
+            idField: 'id',
+            title: '用户信息表',
+            url:GLOBAL_CONSTANT_URL+"feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            toolbar: "#userListtb",
+            pagination: true,
+            pageList: [10,20,30,50,100],
+            rownumbers: true,
+            emptyMsg:"暂无反馈记录！",
+            singleSelect: true,
+            fit : true,
+            fitColumns:true,
+            frozenColumns: [[{
+                field: 'ck',
+                checkbox: 'true'
+            }]],
+            columns:[[
+                {field:'id', title:'主键',sortable:true,hidden: true},
+                {field:'resume',sortable:true,title:'题目简述'},
+                {field:'content',sortable:true,title:'反馈内容'},
+                {field:'userName',sortable:true,title:'反馈用户'},
+                {
+                    field:'status',
+                    title:'状态',
+                    sortable: true,
+                    formatter: function(value, rec, index){
+                        if (value == '1') {
+                            return '未处理';
+                        }
+                        if (value == '2') {
+                            return '已处理';
+                        }
+                        if (value == '3') {
+                            return '反馈有误';
+                        }
+                        return "其他";
+                    }
+                },
+                {field:'dealTime',title:'处理时间'},
+                {field:'updateTime',title:'更新时间'},
+                {field:'createTime',title:'创建时间'}
+            ]],
+        });
+    });
+
+    /**
+     * 查询
+     */
+    function ListSearch() {
+        var queryParams = $('#userList').datagrid('options').queryParams;
+        $('#userListtb').find('*').each(function() {
+            queryParams[$(this).attr('name')] = $(this).val();
+        });
+        $('#userList').datagrid({
+            url: GLOBAL_CONSTANT_URL+"feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            pageNumber: 1
+        });
+    }
+
+    function searchReset() {
+        $("#userListtb").find(":input").val("");
+        var queryParams = $('#userList').datagrid('options').queryParams;
+        $('#userListtb').find('*').each(function() {
+            queryParams[$(this).attr('name')] = $(this).val();
+        });
+        $('#userList').datagrid({
+            url:  GLOBAL_CONSTANT_URL+"feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            pageNumber: 1
+        });
+    }
+
+    function reloadTable() {
+        try {
+            $('#userList').datagrid('reload');
+        } catch(ex) {}
+    }
+
+    function pass(title, url, gname) {
+        gridname = gname;
+        var ids = [];
+        var rows = $("#" + gname).datagrid('getSelections');
+        if (rows.length > 0) {
+            $.dialog.setting.zIndex = getzIndex(true);
+            $.dialog.confirm('你确定处理完成反馈信息吗?', function (r) {
+                if (r) {
+                    for (var i = 0; i < rows.length; i++) {
+                        ids.push(rows[i].id);
+                    }
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        data: {
+                            ids: ids.join(',')
+                        },
+                        cache: false,
+                        success: function (data) {
+                            if (data.success == "success") {
+                                toastr.success(data.msg);
+                                $("#" + gname).datagrid('unselectAll');
+                                ids = '';
+                            } else {
+                                if (data.responseText == '' || data.responseText == undefined) {
+                                    toastr.error(data.msg);
+                                } else {
+                                    try {
+                                        toastr.error(data.msg);
+                                    } catch (ex) {
+                                        toastr.error(data.responseText + "");
+                                    }
+                                }
+                                return false;
+                            }
+                            reloadTable();
+                        }
+                    });
+                }
+            });
+        } else {
+            tip("请选择需要处理的反馈！");
+        }
+    }
+
+    function reject(title, url, gname) {
+        gridname = gname;
+        var ids = [];
+        var rows = $("#" + gname).datagrid('getSelections');
+        if (rows.length > 0) {
+            $.dialog.setting.zIndex = getzIndex(true);
+            $.dialog.confirm('你确定反馈有误吗?', function (r) {
+                if (r) {
+                    for (var i = 0; i < rows.length; i++) {
+                        ids.push(rows[i].id);
+                    }
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        data: {
+                            ids: ids.join(',')
+                        },
+                        cache: false,
+                        success: function (data) {
+                            if (data.success == "success") {
+                                toastr.success(data.msg);
+                                $("#" + gname).datagrid('unselectAll');
+                                ids = '';
+                            } else {
+                                if (data.responseText == '' || data.responseText == undefined) {
+                                    toastr.error(data.msg);
+                                } else {
+                                    try {
+                                        toastr.error(data.msg);
+                                    } catch (ex) {
+                                        toastr.error(data.responseText + "");
+                                    }
+                                }
+                                return false;
+                            }
+                            reloadTable();
+                        }
+                    });
+                }
+            });
+        } else {
+            tip("请选择需要处理的反馈！");
+        }
+    }
+</script>

@@ -78,6 +78,20 @@
         </tr>
         <tr>
             <td align="center">
+                <span class="filedzt">是否试用:</span></td>
+            <td class="value">
+                <select name="tryOut" style="height: 30px;line-height: 30px;" data-bind="value:tryOut">
+                    <option value="1">
+                        是
+                    </option>
+                    <option value="2" >
+                        否
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
                 <span class="filedzt">显示顺序:</span></td>
             <td class="value">
                 <input type="number" value="1" name="orderNo"  data-bind="value:orderNo" id="orderNo" min="1" max="100"
@@ -129,6 +143,7 @@
             lectureUrl: ko.observable(),
             teacherName: ko.observable(),
             status: ko.observable(),
+            tryOut: ko.observable(),
             orderNo: ko.observable()
         };
         ko.applyBindings(viewModel);
@@ -152,6 +167,7 @@
                             viewModel.lectureUrl(res.content.lectureUrl);
                             viewModel.teacherName(res.content.teacherName);
                             viewModel.status(res.content.status);
+                            viewModel.tryOut(res.content.tryOut);
                             viewModel.orderNo(res.content.orderNo);
                         } else if (res.success === "fail") {
                             win.toastr.warning(res.msg);

@@ -86,7 +86,7 @@
         ko.applyBindings(viewModel);
 
         $('#chapterList').treegrid({
-            title: '视频章节信息',
+            title: '录播视频层级信息',
             idField: 'id',
             url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
             collapsible: false,      //是否可折叠
@@ -98,9 +98,10 @@
             fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
             toolbar: "#chapterListtb",
             columns: [[
+                {field: 'id', title: '主键',  hidden: true},
                 {field: 'name', title: '课程分类', width: 100},
                 {field: 'orderNo', title: '显示顺序', width: 100},
-                {field: 'level', title: '视频章节层级', hidden: true}
+                {field: 'level', title: '视频层级', hidden: true}
             ]]
         });
 
@@ -171,22 +172,14 @@
     function newChapter(title, url, width, height) {
         var subCourseId = $("#subCourseId").val();
         var rowsData = $('#chapterList').treegrid('getSelections');
-
         if (!rowsData || rowsData.length == 0) {
-            tip('请选择新增章节的父级章节！');
+            tip('请选择新增层级的父级层级！');
             return;
         }
-
-        console.log(rowsData[0].level);
-        if (rowsData[0].level !== "S") {
+        if (rowsData[0].level === "C") {
             console.log(rowsData[0].level);
-            tip('视频章节只能在课程上面新增，请选中课程！');
+            tip('视频层级只能到章节，不能继续添加！');
             return
-        }
-
-        if (rowsData.length > 1) {
-            tip('请选择课程，再进行新增试卷！');
-            return;
         }
         url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level;
         createwindow(title, url, width, height);
@@ -195,7 +188,7 @@
     function updateChapter(title, url, width, height) {
         var rowsData = $('#chapterList').treegrid('getSelections');
         if (!rowsData || rowsData.length == 0) {
-            tip('请选择章节进行编辑！');
+            tip('请选择视频进行编辑！');
             return;
         }
         if (rowsData.length > 1) {

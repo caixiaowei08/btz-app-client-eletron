@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>用户信息</title>
+    <title></title>
     <script type="text/javascript" src="../../../plug_in/mutiLang/zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="../../../plug_in/jquery/jquery.cookie.js"></script>
@@ -48,12 +48,12 @@
         </tr>
         <tr>
             <td align="center" width="20%">
-                <span class="filedzt">章节名称:</span>
+                <span class="filedzt">视频层级:</span>
             </td>
             <td class="value">
                 <input type="text" name="chapterName" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入试卷名称！"
-                       nullmsg="请输入视频章节名称！">
-                <span class="Validform_checktip">请输入试卷名称！</span>
+                       nullmsg="请输入视频层级名称！">
+                <span class="Validform_checktip">请输入视频层级名称！</span>
             </td>
         </tr>
         <tr>
@@ -62,7 +62,7 @@
             <td class="value">
                 <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100"
                        datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;" class="inputxt"
-                       errormsg="请输入1-100的数字！" nullmsg="请输入视频章节显示顺序（非常重要）">
+                       errormsg="请输入1-100的数字！" nullmsg="请输入视频层级显示顺序（非常重要）">
                 <span class="Validform_checktip">请输入1-100的数字！</span>
             </td>
         </tr>
@@ -81,7 +81,7 @@
     <script type="text/javascript">
         $(function () {
             loadData();
-            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "chapterController.do?doAddPaper");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "chapterController.do?doAdd");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
