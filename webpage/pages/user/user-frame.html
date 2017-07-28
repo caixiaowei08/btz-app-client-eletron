@@ -64,12 +64,12 @@
         <div style="height: 2px;"></div>
         <div style="height:35px;" class="datagrid-toolbar">
             <span style="float:left;">
-                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="lockALLSelect('冻结账户',GLOBAL_CONSTANT_URL +'userController.do?doLock','userList')">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="lockALLSelect('冻结账户',GLOBAL_CONSTANT_URL +'admin/userController.do?doLock','userList')">
                      <span class="l-btn-left" style="">
                          <span class="l-btn-text icon-edit l-btn-icon-left">冻结账户&nbsp;</span>
                      </span>
                 </a>
-                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="unLockALLSelect('激活账户',GLOBAL_CONSTANT_URL +'userController.do?doUnLock','userList')">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="unLockALLSelect('激活账户',GLOBAL_CONSTANT_URL +'admin/userController.do?doUnLock','userList')">
                      <span class="l-btn-left" style="">
                          <span class="l-btn-text icon-edit l-btn-icon-left">激活账户&nbsp;</span>
                      </span>
@@ -104,7 +104,7 @@
         $("#userList").datagrid({
             idField: 'id',
             title: '用户信息表',
-            url:GLOBAL_CONSTANT_URL+"userController.do?datagrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
+            url:GLOBAL_CONSTANT_URL+"admin/userController.do?dataGrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
             toolbar: "#userListtb",
             pagination: true,
             pageList: [10,20,30,50,100],
@@ -113,13 +113,18 @@
             singleSelect: true,
             fit : true,
             fitColumns:true,
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../login/login.html';
+                }
+            },
             frozenColumns: [[{
                 field: 'ck',
                 checkbox: 'true'
             }]],
             columns:[[
                 {field:'id', title:'主键',sortable:true,hidden: true},
-                {field:'userId',sortable:true,title:'账号ID'},
+                {field:'userId',sortable:true,title:'账户ID'},
                 {field:'userName',sortable:true,title:'账号名称'},
                 {field:'phone',sortable:true,title:'手机号码'},
                 {field:'authority',title:'权限'},
@@ -166,7 +171,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#userList').datagrid({
-            url: GLOBAL_CONSTANT_URL+"userController.do?datagrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
+            url: GLOBAL_CONSTANT_URL+"admin/userController.do?dataGrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
             pageNumber: 1
         });
     }
@@ -178,7 +183,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#userList').datagrid({
-            url:  GLOBAL_CONSTANT_URL+"userController.do?datagrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
+            url:  GLOBAL_CONSTANT_URL+"admin/userController.do?dataGrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
             pageNumber: 1
         });
     }

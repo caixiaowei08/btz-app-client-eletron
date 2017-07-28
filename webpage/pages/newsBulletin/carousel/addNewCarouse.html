@@ -39,7 +39,9 @@
                 <span class="filedzt">轮播图片:</span>
             </td>
             <td class="value">
-                <input type="file" id="img" name="img" accept="image/gif,image/png,image/jpeg" style="height: 30px;" plugin='swfupload' class="inputxt"  datatype="*" errormsg="请输入gif.jpg.png等格式图片！" nullmsg="请选择轮播图片！">
+                <input type="file" id="img" name="img" accept="image/gif,image/png,image/jpeg" style="height: 30px;"
+                       plugin='swfupload' class="inputxt" datatype="*" errormsg="请输入gif.jpg.png等格式图片！"
+                       nullmsg="请选择轮播图片！">
                 <span class="Validform_checktip">请选择gif.jpg .png等格式图片</span>
             </td>
         </tr>
@@ -48,7 +50,8 @@
                 <span class="filedzt">跳转链接:</span>
             </td>
             <td class="value">
-                <input type="text" value="" id="url" name="url" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入链接地址！" nullmsg="请输入链接地址！">
+                <input type="text" value="" id="url" name="url" style="height: 30px;" class="inputxt" datatype="*"
+                       errormsg="请输入链接地址！" nullmsg="请输入链接地址！">
                 <span class="Validform_checktip">请输入链接地址！</span>
             </td>
         </tr>
@@ -57,7 +60,7 @@
                 <span class="filedzt">是否展现:</span></td>
             <td class="value">
                 <select name="sfyn" id="sfyn" style="height: 30px;line-height: 30px;">
-                    <option value="1" >
+                    <option value="1">
                         是
                     </option>
                     <option value="2" selected>
@@ -70,7 +73,9 @@
             <td align="center">
                 <span class="filedzt">显示顺序:</span></td>
             <td class="value">
-                <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100" datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;"class="inputxt" errormsg="请输入1-100的数字！" nullmsg="请输入1-100的数字！">
+                <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100"
+                       datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;" class="inputxt"
+                       errormsg="请输入1-100的数字！" nullmsg="请输入1-100的数字！">
                 <span class="Validform_checktip">请输入1-100的数字！</span>
             </td>
         </tr>
@@ -81,18 +86,19 @@
     <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/Validform/js/datatype_zh-cn.js"></script>
-    <script type="text/javascript" src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript"
+            src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
     <script src="../../../plug_in/layer/layer.js"></script>
     <script src="../../../../system/GlobalConstant.js"></script>
     <script type="text/javascript">
-        $(function() {
-            $("#formobj").attr("action",GLOBAL_CONSTANT_URL+"carouselController.do?doAdd");
+        $(function () {
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/carouselController.do?doAdd");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
                 btnReset: "#btn_reset",
                 ajaxPost: true,
-                beforeSubmit:function(curform){
+                beforeSubmit: function (curform) {
                     var img_file = document.getElementById("img").files[0];
                     var reader = new FileReader();
                     reader.readAsDataURL(img_file);
@@ -108,30 +114,29 @@
                         object.orderNo = orderNo;
                         var win = frameElement.api.opener;
                         $.ajax({
-                            url:GLOBAL_CONSTANT_URL+"carouselController.do?doAdd",
-                            type:'post',
-                            dataType:'json',
-                            timeout:10000,
-                            contentType:'application/json;charset=utf-8',
-                            data:JSON.stringify(object),
-                            success:function(data){
-                                if(data.success==="success"){
+                            url: GLOBAL_CONSTANT_URL + "admin/carouselController.do?doAdd",
+                            type: 'post',
+                            dataType: 'json',
+                            timeout: 10000,
+                            contentType: 'application/json;charset=utf-8',
+                            data: JSON.stringify(object),
+                            success: function (data) {
+                                if (data.success === "success") {
                                     frameElement.api.close();
                                     win.toastr.success("新增成功！");
-                                }else{
+                                } else if (data.success === "fail") {
+                                    win.toastr.error(data.msg);
+                                } else if (data.success === "login") {
+                                    window.parent.location.href = '../../../login/login.html';
+                                } else {
                                     win.toastr.error(data.msg);
                                 }
                             },
-                            error:function(jqxhr,textStatus,errorThrow){
+                            error: function (jqxhr, textStatus, errorThrow) {
                                 win.toastr.success("服务器异常,请联系管理员！");
                             },
-                            complete:function () {
+                            complete: function () {
                                 win.reloadTable();
-                               // frameElement.api.close();
-                            },
-                            statusCode:{
-                                404:function(){console.log('not found');},
-                                500:function(){console.log('error by server');},
                             }
                         });
                         return false;

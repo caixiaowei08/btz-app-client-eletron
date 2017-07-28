@@ -131,7 +131,7 @@
 <script type="text/javascript">
     $(function () {
         loadData();
-        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "exerciseController.do?doAdd");
+        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/exerciseController.do?doAdd");
         $("#formobj").Validform({
             tiptype: 4,
             btnSubmit: "#btn_sub",
@@ -142,17 +142,10 @@
                 if (data.success == "success") {
                     frameElement.api.close();
                     win.toastr.success(data.msg);
-                } else {
-                    if (data.responseText == '' || data.responseText == undefined) {
-                        win.toastr.info(data.msg);
-                    } else {
-                        try {
-                            win.toastr.error(data.msg);
-                        } catch (ex) {
-                            win.toastr.error(data.responseText + "");
-                        }
-                    }
-                    return false;
+                } else if (data.success === "fail") {
+                    win.toastr.error(data.msg);
+                } else if (data.success === "login") {
+                    window.parent.location.href = '../../../login/login.html';
                 }
                 win.reloadTable();
             }

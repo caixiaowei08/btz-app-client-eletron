@@ -80,7 +80,7 @@
         $("#userList").datagrid({
             idField: 'id',
             title: '用户信息表',
-            url:GLOBAL_CONSTANT_URL+"feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            url:GLOBAL_CONSTANT_URL+"admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
             toolbar: "#userListtb",
             pagination: true,
             pageList: [10,20,30,50,100],
@@ -131,7 +131,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#userList').datagrid({
-            url: GLOBAL_CONSTANT_URL+"feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            url: GLOBAL_CONSTANT_URL+"admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
             pageNumber: 1
         });
     }
@@ -143,7 +143,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#userList').datagrid({
-            url:  GLOBAL_CONSTANT_URL+"feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            url:  GLOBAL_CONSTANT_URL+"admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
             pageNumber: 1
         });
     }
@@ -177,17 +177,10 @@
                                 toastr.success(data.msg);
                                 $("#" + gname).datagrid('unselectAll');
                                 ids = '';
-                            } else {
-                                if (data.responseText == '' || data.responseText == undefined) {
-                                    toastr.error(data.msg);
-                                } else {
-                                    try {
-                                        toastr.error(data.msg);
-                                    } catch (ex) {
-                                        toastr.error(data.responseText + "");
-                                    }
-                                }
-                                return false;
+                            } else if (data.success === "fail") {
+                                win.toastr.error(data.msg);
+                            } else if (data.success === "login") {
+                                window.parent.location.href = '../../login/login.html';
                             }
                             reloadTable();
                         }

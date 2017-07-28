@@ -62,7 +62,7 @@
                                      </span>
                                 </a>
                                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
-                                   onclick="deleteChapter('删除视频章节',GLOBAL_CONSTANT_URL +'chapterController.do?doDel');">
+                                   onclick="deleteChapter('删除视频章节',GLOBAL_CONSTANT_URL +'admin/chapterController.do?doDel');">
                                      <span class="l-btn-left" style="">
                                          <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
                                      </span>
@@ -88,13 +88,18 @@
         $('#chapterList').treegrid({
             title: '视频章节信息',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?chapterTreeGrid",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
             method: 'post',          //请求方式
             treeField: 'name',       //定义树节点的字段
             fit: true,               //网格自动撑满
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
             fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
             toolbar: "#chapterListtb",
             columns: [[
@@ -107,13 +112,18 @@
         $('#courseList').treegrid({
             title: '课程信息',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?mainCourseTreeGrid&type=6",
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?mainCourseTreeGrid&type=6",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
             method: 'post',          //请求方式
             treeField: 'name',       //定义树节点的字段
             fit: true,               //网格自动撑满
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
             fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
             columns: [[
                 {field: 'name', title: '课程分类', width: 100},
@@ -242,17 +252,10 @@
                                 toastr.success(data.msg);
                                 $("#chapterList").treegrid('unselectAll');
                                 ids = '';
-                            } else {
-                                if (data.responseText == '' || data.responseText == undefined) {
-                                    toastr.info(data.msg);
-                                } else {
-                                    try {
-                                        toastr.error(data.msg);
-                                    } catch (ex) {
-                                        toastr.error(data.responseText + "");
-                                    }
-                                }
-                                return false;
+                            } else if (data.success === "fail") {
+                                toastr.error(data.msg);
+                            } else if (data.success === "login") {
+                                window.parent.location.href = '../../../login/login.html';
                             }
                             chapterReloadTable();
                         }

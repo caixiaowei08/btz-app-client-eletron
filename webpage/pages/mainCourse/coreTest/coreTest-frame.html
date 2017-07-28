@@ -40,7 +40,8 @@
                                 <span class="filedzt">课程名称:</span>
                             </td>
                             <td class="value">
-                                <input type="text" name="subCourseName" id="subCourseName" data-bind="value:subCourseName" style="height: 30px;"
+                                <input type="text" name="subCourseName" id="subCourseName"
+                                       data-bind="value:subCourseName" style="height: 30px;"
                                        readonly="readonly" class="inputxt" placeholder="请选择课程">
                             </td>
                         </tr>
@@ -61,7 +62,7 @@
                                      </span>
                                 </a>
                                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
-                                   onclick="deleteChapter('删除',GLOBAL_CONSTANT_URL +'chapterController.do?doDel');">
+                                   onclick="deleteChapter('删除',GLOBAL_CONSTANT_URL +'admin/chapterController.do?doDel');">
                                      <span class="l-btn-left" style="">
                                          <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
                                      </span>
@@ -87,7 +88,7 @@
         $('#chapterList').treegrid({
             title: '核心考点层级信息',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?chapterTreeGrid",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
@@ -96,6 +97,11 @@
             fit: true,               //网格自动撑满
             fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
             toolbar: "#chapterListtb",
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
             columns: [[
                 {field: 'name', title: '课程分类', width: 100},
                 {field: 'orderNo', title: '显示顺序', width: 100},
@@ -106,7 +112,7 @@
         $('#courseList').treegrid({
             title: '课程信息',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?mainCourseTreeGrid&type=2",
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?mainCourseTreeGrid&type=2",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
@@ -114,6 +120,11 @@
             treeField: 'name',       //定义树节点的字段
             fit: true,               //网格自动撑满
             fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
             columns: [[
                 {field: 'name', title: '课程分类', width: 100},
                 {field: 'leaf', title: '是否是叶子', hidden: true},
@@ -121,14 +132,14 @@
                     field: 'state_s',
                     title: '状态',
                     formatter: function (value, rec, index) {
-                        if(rec.leaf){
+                        if (rec.leaf) {
                             if (value == '1') {
                                 return '可以试用';
                             }
                             if (value == '2') {
                                 return '不能试用';
                             }
-                        }else{
+                        } else {
                             if (value == '1') {
                                 return '正常使用';
                             }
@@ -158,33 +169,37 @@
         try {
             var subCourseId = $("#subCourseId").val();
             var subCourseName = $("#subCourseName").val();
-            $('#chapterList').treegrid('reload',{"subCourseId":subCourseId,"subCourseName":subCourseName,moduleType:2});
+            $('#chapterList').treegrid('reload', {
+                "subCourseId": subCourseId,
+                "subCourseName": subCourseName,
+                moduleType: 2
+            });
         } catch (ex) {
         }
     }
 
-    function newChapter(title,url,width,height) {
+    function newChapter(title, url, width, height) {
         var subCourseId = $("#subCourseId").val();
         var rowsData = $('#chapterList').treegrid('getSelections');
-        if (!rowsData || rowsData.length==0) {
+        if (!rowsData || rowsData.length == 0) {
             tip('请选择新增章节的父级章节！');
             return;
         }
-        if (rowsData.length>1) {
+        if (rowsData.length > 1) {
             tip('请选择一个父级章节，再进行新增！');
             return;
         }
-        url += '?subCourseId='+subCourseId+'&subCourseName='+rowsData[0].name+'&id='+rowsData[0].id+'&level='+rowsData[0].level;
-        createwindow(title,url,width,height);
+        url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level;
+        createwindow(title, url, width, height);
     }
 
-    function updateChapter(title,url,width,height) {
+    function updateChapter(title, url, width, height) {
         var rowsData = $('#chapterList').treegrid('getSelections');
-        if (!rowsData || rowsData.length==0) {
+        if (!rowsData || rowsData.length == 0) {
             tip('请选择章节进行编辑！');
             return;
         }
-        if (rowsData.length>1) {
+        if (rowsData.length > 1) {
             tip('请选择一个章节，再进行编辑！');
             return;
         }
@@ -192,11 +207,11 @@
             tip('不能选择课程根节点进行修改！');
             return;
         }
-        url += '?id='+rowsData[0].id
-        createwindow(title,url,width,height);
+        url += '?id=' + rowsData[0].id
+        createwindow(title, url, width, height);
     }
 
-    function deleteChapter(title,url) {
+    function deleteChapter(title, url) {
         var ids = [];
         var rows = $("#chapterList").treegrid('getSelections');
 
@@ -211,34 +226,27 @@
         }
         if (rows.length > 0) {
             $.dialog.setting.zIndex = getzIndex(true);
-            $.dialog.confirm('你确定永久删除该数据吗?', function(r) {
+            $.dialog.confirm('你确定永久删除该数据吗?', function (r) {
                 if (r) {
-                    for ( var i = 0; i < rows.length; i++) {
+                    for (var i = 0; i < rows.length; i++) {
                         ids.push(rows[i].id);
                     }
                     $.ajax({
-                        url : url,
-                        type : 'post',
-                        data : {
-                            ids : ids.join(',')
+                        url: url,
+                        type: 'post',
+                        data: {
+                            ids: ids.join(',')
                         },
-                        cache : false,
-                        success : function(data) {
+                        cache: false,
+                        success: function (data) {
                             if (data.success == "success") {
                                 toastr.success(data.msg);
                                 $("#chapterList").treegrid('unselectAll');
-                                ids='';
-                            }else{
-                                if (data.responseText == '' || data.responseText == undefined) {
-                                    toastr.info(data.msg);
-                                } else {
-                                    try {
-                                        toastr.error(data.msg);
-                                    } catch(ex) {
-                                        toastr.error(data.responseText+"");
-                                    }
-                                }
-                                return false;
+                                ids = '';
+                            } else if (data.success === "fail") {
+                                toastr.error(data.msg);
+                            } else if (data.success === "login") {
+                                window.parent.location.href = '../../../login/login.html';
                             }
                             chapterReloadTable();
                         }

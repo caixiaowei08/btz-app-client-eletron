@@ -83,7 +83,7 @@
     <script type="text/javascript">
         $(function () {
             loadData();
-            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/adminController.do?changeAdminPwd");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/adminController.do?changeAdminPwdByAdmin");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -108,18 +108,11 @@
                     var win = frameElement.api.opener;
                     if (data.success == "success") {
                         frameElement.api.close();
-                        win.toastr.info(data.msg);
-                    } else {
-                        if (data.responseText == '' || data.responseText == undefined) {
-                            win.toastr.info(data.msg);
-                        } else {
-                            try {
-                                win.toastr.error(data.msg);
-                            } catch (ex) {
-                                win.toastr.error(data.responseText + "");
-                            }
-                        }
-                        return false;
+                        win.toastr.success(data.msg);
+                    } else if (data.success === "fail") {
+                        win.toastr.error(data.msg);
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../../login/login.html';
                     }
                     win.reloadTable();
                 }
@@ -152,7 +145,7 @@
                         } else if (data.success === "fail") {
                             win.toastr.error(data.msg);
                         } else if (data.success === "login") {
-                            win.window.location.href = '../login/login.html';
+                            window.parent.location.href = '../../login/login.html';
                         } else {
                             win.toastr.warning("获取个人信息失败，请重新登录！");
                         }

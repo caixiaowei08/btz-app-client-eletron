@@ -63,7 +63,7 @@
                     <option value="1" selected>
                         是
                     </option>
-                    <option value="2" >
+                    <option value="2">
                         否
                     </option>
                 </select>
@@ -76,28 +76,29 @@
     <script type="text/javascript" src="../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
     <script type="text/javascript" src="../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
     <script type="text/javascript" src="../../plug_in/Validform/js/datatype_zh-cn.js"></script>
-    <script type="text/javascript" src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript"
+            src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
     <script type="text/javascript" src="../../plug_in/knockout/knockout.js"></script>
     <script src="../../plug_in/layer/layer.js"></script>
     <script src="../../../system/GlobalConstant.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             loadData();
-            $("#formobj").attr("action",GLOBAL_CONSTANT_URL+"subCourseController.do?doAdd");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/subCourseController.do?doAdd");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
                 btnReset: "#btn_reset",
                 ajaxPost: true,
-                callback: function(data) {
+                callback: function (data) {
                     var win = frameElement.api.opener;
-                    if (data.success =="success") {
+                    if (data.success === "success") {
                         frameElement.api.close();
                         win.toastr.success(data.msg);
-                    } else if(data.success =="fail"){
+                    } else if (data.success === "fail") {
                         win.toastr.warning(data.msg)
-                    }else{
-                        win.toastr.error("服务器异常，请联系维护人员！");
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../../login/login.html';
                     }
                     win.subCourseReloadTable();
                 }
@@ -113,7 +114,7 @@
             console.log(str);
             var start_index = str.indexOf("id=");
             var start_end = str.indexOf("&_=");
-            var val = str.substring(start_index+3,start_end);
+            var val = str.substring(start_index + 3, start_end);
             viewModel.fid(val);
         }
     </script>

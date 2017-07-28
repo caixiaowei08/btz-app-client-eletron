@@ -107,9 +107,10 @@
                     if (data.success == "success") {
                         frameElement.api.close();
                         win.toastr.success(data.msg);
-                    } else if (data.success == "fail") {
-                        frameElement.api.close();
+                    } else if (data.success === "fail") {
                         win.toastr.error(data.msg);
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../login/login.html';
                     } else {
                         frameElement.api.close();
                         win.toastr.error("修改失败，登录超时！");

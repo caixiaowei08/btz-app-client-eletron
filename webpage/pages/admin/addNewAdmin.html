@@ -152,18 +152,7 @@
                     } else if (data.success === "fail") {
                         win.toastr.error(data.msg);
                     } else if (data.success === "login") {
-                        win.window.location.href = '../login/login.html';
-                    } else {
-                        if (data.responseText == '' || data.responseText == undefined) {
-                            win.toastr.error(data.msg);
-                        } else {
-                            try {
-                                win.toastr.error(data.msg);
-                            } catch (ex) {
-                                win.toastr.error(data.responseText + "");
-                            }
-                        }
-                        return false;
+                        window.parent.location.href = '../../login/login.html';
                     }
                     win.reloadTable();
                 }

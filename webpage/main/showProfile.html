@@ -63,7 +63,7 @@
                 var win = frameElement.api.opener;
                 $(function () {
                     $.ajax({
-                        url: GLOBAL_CONSTANT_URL + "adminController.do?getAdminEntityFromSession",
+                        url: GLOBAL_CONSTANT_URL + "admin/adminController.do?getAdminEntityFromSession",
                         success: function (res) {
                             if (res.success === "success") {
                                 viewModel.accountId(res.content.accountId);

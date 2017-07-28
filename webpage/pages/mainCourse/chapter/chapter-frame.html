@@ -87,7 +87,7 @@
         $('#chapterList').treegrid({
             title: '章节信息',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?chapterTreeGrid",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
@@ -106,7 +106,7 @@
         $('#courseList').treegrid({
             title: '课程信息',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?mainCourseTreeGrid&type=1",
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?mainCourseTreeGrid&type=1",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
@@ -229,17 +229,10 @@
                                 toastr.success(data.msg);
                                 $("#chapterList").treegrid('unselectAll');
                                 ids='';
-                            }else{
-                                if (data.responseText == '' || data.responseText == undefined) {
-                                    toastr.info(data.msg);
-                                } else {
-                                    try {
-                                        toastr.error(data.msg);
-                                    } catch(ex) {
-                                        toastr.error(data.responseText+"");
-                                    }
-                                }
-                                return false;
+                            }else if (data.success === "fail") {
+                                toastr.error(data.msg);
+                            } else if (data.success === "login") {
+                                window.parent.location.href = '../../../login/login.html';
                             }
                             chapterReloadTable();
                         }

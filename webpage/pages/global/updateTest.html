@@ -130,7 +130,7 @@
     <script type="text/javascript">
         $(function () {
             loadData();
-            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "/exerciseController.do?doUpdate");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/exerciseController.do?doUpdate");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -170,7 +170,7 @@
             $(function () {
                 $.ajax({
                     type: "post",
-                    url: GLOBAL_CONSTANT_URL + "/exerciseController.do?doGet",
+                    url: GLOBAL_CONSTANT_URL + "admin/exerciseController.do?doGet",
                     async: true,
                     data: {id: val},
                     success: function (res) {

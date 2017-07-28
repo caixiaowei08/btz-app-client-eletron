@@ -61,7 +61,7 @@
                              </span>
                         </a>
                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                           onclick="deleteALLSelect('删除视频',GLOBAL_CONSTANT_URL +'courseRecordedVideoController.do?doDel','chapterExerciseList');">
+                           onclick="deleteALLSelect('删除视频',GLOBAL_CONSTANT_URL +'admin/courseRecordedVideoController.do?doDel','chapterExerciseList');">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-remove l-btn-icon-left">删除视频&nbsp;</span>
                              </span>
@@ -95,7 +95,7 @@
         $('#chapterList').treegrid({
             title: '视频层级分类',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?chapterTreeGrid",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
@@ -121,7 +121,7 @@
             idField: 'id',
             title: '',
             cache: false,
-            url: GLOBAL_CONSTANT_URL + "courseRecordedVideoController.do?dataGrid&field=id,subCourseId,chapterId,moduleId,moduleType,title,videoUrl,lectureUrl,orderNo,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL + "admin/courseRecordedVideoController.do?dataGrid&field=id,subCourseId,chapterId,moduleId,moduleType,title,videoUrl,lectureUrl,orderNo,updateTime,createTime,",
             toolbar: "#chapterExerciseListtb",
             pagination: true,
             pageSize: 20,
@@ -130,6 +130,11 @@
             emptyMsg: "暂无数据！",
             fit: true,
             fitColumns: true,
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
             frozenColumns: [[{
                 field: 'ck',
                 checkbox: 'true'
@@ -191,7 +196,7 @@
 
     function chapterReloadTable(subCourseId, subCourseName, moduleType) {
         try {
-            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "courseRecordedVideoController.do?downLoadExcel&subCourseId=" + subCourseId.substring(1, subCourseId.length));
+            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "admin/courseRecordedVideoController.do?downLoadExcel&subCourseId=" + subCourseId.substring(1, subCourseId.length));
             $('#chapterList').treegrid('reload', {
                 "subCourseId": subCourseId,
                 "subCourseName": subCourseName,

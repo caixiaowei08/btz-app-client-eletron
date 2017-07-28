@@ -61,7 +61,7 @@
                              </span>
                         </a>
                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                           onclick="deleteALLSelect('删除题目',GLOBAL_CONSTANT_URL +'exerciseController.do?doDel','chapterExerciseList')">
+                           onclick="deleteALLSelect('删除题目',GLOBAL_CONSTANT_URL +'admin/exerciseController.do?doDel','chapterExerciseList')">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
                              </span>
@@ -95,7 +95,7 @@
         $('#chapterList').treegrid({
             title: '章节信息',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?chapterTreeGrid",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
@@ -103,6 +103,11 @@
             treeField: 'name',       //定义树节点的字段
             fit: true,               //网格自动撑满
             fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            onLoadSuccess: function (data) {
+                if (data.success !== undefined && data.success !== "" && data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
             toolbar: "#chapterListtb",
             columns: [[
                 {field: 'name', title: '章节列表'},
@@ -122,7 +127,7 @@
             idField: 'id',
             title: '',
             cache: false,
-            url: GLOBAL_CONSTANT_URL + "exerciseController.do?dataGrid&moduleType=1",
+            url: GLOBAL_CONSTANT_URL + "admin/exerciseController.do?dataGrid&moduleType=1",
             toolbar: "#chapterExerciseListtb",
             pagination: true,
             pageSize: 50,
@@ -130,6 +135,11 @@
             rownumbers: true,
             emptyMsg: "暂无题目！",
             fit: true,
+            onLoadSuccess: function (data) {
+                if (data.success !== undefined && data.success !== "" && data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
             fitColumns: true,
             frozenColumns: [[{
                 field: 'ck',
@@ -248,7 +258,7 @@
 
     function chapterReloadTable(subCourseId, subCourseName, moduleType) {
         try {
-            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "exerciseController.do?downLoadExcel&belongTo=1&subCourseId=" + subCourseId.substring(1, subCourseId.length));
+            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "admin/exerciseController.do?downLoadExcel&belongTo=1&subCourseId=" + subCourseId.substring(1, subCourseId.length));
             $('#chapterList').treegrid('reload', {
                 "subCourseId": subCourseId,
                 "subCourseName": subCourseName,

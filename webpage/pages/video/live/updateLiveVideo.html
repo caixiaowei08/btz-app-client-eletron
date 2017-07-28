@@ -115,7 +115,7 @@
     <script type="text/javascript">
         $(function () {
             loadData();
-            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?doUpdate");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/courseLiveVideoController.do?doUpdate");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -126,10 +126,10 @@
                     if (data.success == "success") {
                         frameElement.api.close();
                         win.toastr.success(data.msg);
-                    } else if (data.success == "fail") {
-                        win.toastr.warning(data.msg)
-                    } else {
-                        win.toastr.error("服务器异常，请联系维护人员！");
+                    } else if (data.success === "fail") {
+                        win.toastr.error(data.msg);
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../../../login/login.html';
                     }
                     win.reloadTable();
                 }
@@ -156,7 +156,7 @@
             $(function () {
                 $.ajax({
                     type: "post",
-                    url: GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?get",
+                    url: GLOBAL_CONSTANT_URL + "admin/courseLiveVideoController.do?get",
                     async: true,
                     data: {id: id_parm},
                     success: function (res) {
@@ -169,10 +169,10 @@
                             viewModel.status(res.content.status);
                             viewModel.tryOut(res.content.tryOut);
                             viewModel.orderNo(res.content.orderNo);
-                        } else if (res.success === "fail") {
-                            win.toastr.warning(res.msg);
-                        } else {
-                            win.toastr.error("获取课程信息超时,请检查网络问题！");
+                        } else if (data.success === "fail") {
+                            win.toastr.error(data.msg);
+                        } else if (data.success === "login") {
+                            window.parent.location.href = '../../../login/login.html';
                         }
                     },
                     error: function () {

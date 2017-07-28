@@ -2,25 +2,75 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/webpage/main/ace_main.html" line="27" />
-    <bookmark url="file://$PROJECT_DIR$/webpage/pages/admin/updateAdmin.html" line="156" />
+    <bookmark url="file://$PROJECT_DIR$/webpage/pages/admin/updateAdmin.html" line="149" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="779fa6be-42db-45f2-acb5-d92b3f60b456" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/.idea/workspace.xml" afterPath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/main/ace_main.html" afterPath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/main/ace_main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/pages/video/live/addLiveVideo.html" afterPath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/pages/video/live/addLiveVideo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/pages/video/live/liveVideo-frame.html" afterPath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/pages/video/live/liveVideo-frame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/pages/video/live/updateLiveVideo.html" afterPath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/pages/video/live/updateLiveVideo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/GlobalConstant.js" afterPath="$PROJECT_DIR$/system/GlobalConstant.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/login/login.js" afterPath="$PROJECT_DIR$/webpage/login/login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/main/ace_main.js" afterPath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/main/ace_main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/main/showProfile.html" afterPath="$PROJECT_DIR$/bin/btz-web-client-eletron-win32-x64/resources/app/webpage/main/showProfile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/main/ace_main.html" afterPath="$PROJECT_DIR$/webpage/main/ace_main.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/main/ace_main.js" afterPath="$PROJECT_DIR$/webpage/main/ace_main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/main/changePwd.html" afterPath="$PROJECT_DIR$/webpage/main/changePwd.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/main/showProfile.html" afterPath="$PROJECT_DIR$/webpage/main/showProfile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/admin/account-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/admin/account-frame.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/admin/addNewAdmin.html" afterPath="$PROJECT_DIR$/webpage/pages/admin/addNewAdmin.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/admin/changePwd.html" afterPath="$PROJECT_DIR$/webpage/pages/admin/changePwd.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/admin/updateAdmin.html" afterPath="$PROJECT_DIR$/webpage/pages/admin/updateAdmin.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/addChapterTestPoint.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/addChapterTestPoint.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chooseCourseChapterTest.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chooseCourseChapterTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/uploadFile.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/uploadFile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/chooseCourse.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/chooseCourse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/addCoreTestPoint.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/addCoreTestPoint.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/chooseCourseCoreTest.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/chooseCourseCoreTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/coreTestPoint-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/coreTestPoint-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/uploadFile.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/uploadFile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/addExamTipsPoint.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/addExamTipsPoint.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/chooseCourseExamTips.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/chooseCourseExamTips.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/examTipsPoint-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/examTipsPoint-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/uploadFile.html" afterPath="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/uploadFile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/feedback/feedback-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/feedback/feedback-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/global/updateTest.html" afterPath="$PROJECT_DIR$/webpage/pages/global/updateTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/addMainCourse.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/addMainCourse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/addSubCourse.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/addSubCourse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/addChapter.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/addChapter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/updateChapter.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/updateChapter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/coreTest/addCoreTest.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/coreTest/addCoreTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/coreTest/coreTest-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/coreTest/coreTest-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/coreTest/updateCoreTest.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/coreTest/updateCoreTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/addCourseClass.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/addCourseClass.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/courseClass-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/courseClass-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/updateCourseClass.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/updateCourseClass.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/examTips/addExamTips.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/examTips/addExamTips.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/examTips/examTips-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/examTips/examTips-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/examTips/updateExamTips.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/examTips/updateExamTips.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/mainCourse-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/mainCourse-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/updateMainCourse.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/updateMainCourse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/updateSubCourse.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/updateSubCourse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/video/addLiveVideo.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/video/addLiveVideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/video/addRecordedVideo.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/video/addRecordedVideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/video/liveVideo-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/video/liveVideo-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/video/recordedVideo-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/video/recordedVideo-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/video/updateLiveVideo.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/video/updateLiveVideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/mainCourse/video/updateRecordedVideo.html" afterPath="$PROJECT_DIR$/webpage/pages/mainCourse/video/updateRecordedVideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/newsBulletin/carousel/addNewCarouse.html" afterPath="$PROJECT_DIR$/webpage/pages/newsBulletin/carousel/addNewCarouse.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/newsBulletin/carousel/carousel-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/newsBulletin/carousel/carousel-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/newsBulletin/carousel/updateCarousel.html" afterPath="$PROJECT_DIR$/webpage/pages/newsBulletin/carousel/updateCarousel.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/notes/notes-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/notes/notes-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/user/changePwd.html" afterPath="$PROJECT_DIR$/webpage/pages/user/changePwd.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/user/user-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/user/user-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/video/live/addLiveVideo.html" afterPath="$PROJECT_DIR$/webpage/pages/video/live/addLiveVideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/video/live/chooseCourseLiveVideo.html" afterPath="$PROJECT_DIR$/webpage/pages/video/live/chooseCourseLiveVideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/video/live/liveVideo-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/video/live/liveVideo-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/video/live/updateLiveVideo.html" afterPath="$PROJECT_DIR$/webpage/pages/video/live/updateLiveVideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/video/live/uploadFile.html" afterPath="$PROJECT_DIR$/webpage/pages/video/live/uploadFile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/video/recorded/addRecordedVideo.html" afterPath="$PROJECT_DIR$/webpage/pages/video/recorded/addRecordedVideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/video/recorded/chooseCourseRecordedVideo.html" afterPath="$PROJECT_DIR$/webpage/pages/video/recorded/chooseCourseRecordedVideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/video/recorded/recordedVideo-frame.html" afterPath="$PROJECT_DIR$/webpage/pages/video/recorded/recordedVideo-frame.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/video/recorded/updateRecordedVideo.html" afterPath="$PROJECT_DIR$/webpage/pages/video/recorded/updateRecordedVideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/pages/video/recorded/uploadFile.html" afterPath="$PROJECT_DIR$/webpage/pages/video/recorded/uploadFile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpage/plug_in/tools/curdtools_zh-cn.js" afterPath="$PROJECT_DIR$/webpage/plug_in/tools/curdtools_zh-cn.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,31 +88,86 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GlobalConstant.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/system/GlobalConstant.js">
+      <file leaf-file-name="chapterTestPoint-frame.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+            <state relative-caret-position="201">
+              <caret line="137" column="5" lean-forward="false" selection-start-line="137" selection-start-column="5" selection-end-line="141" selection-end-column="14" />
+              <folding>
+                <marker date="1501250067496" expanded="true" signature="7990:8018" ph="..." />
+                <marker date="1501250067496" expanded="true" signature="8327:8355" ph="..." />
+                <marker date="1501250067496" expanded="true" signature="10061:10089" ph="..." />
+                <marker date="1501250067496" expanded="true" signature="10401:10429" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chooseCourseCoreTest.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/chooseCourseCoreTest.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-159">
+              <caret line="51" column="100" lean-forward="false" selection-start-line="51" selection-start-column="100" selection-end-line="51" selection-end-column="100" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/login/login.html">
+      <file leaf-file-name="coreTestPoint-frame.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/coreTestPoint-frame.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1089">
-              <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="15" selection-end-column="63" />
+            <state relative-caret-position="471">
+              <caret line="104" column="16" lean-forward="false" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="100" />
+              <folding>
+                <marker date="1501250093337" expanded="true" signature="7882:7934" ph="..." />
+                <marker date="1501250093337" expanded="true" signature="8243:8271" ph="..." />
+                <marker date="1501250093337" expanded="true" signature="9855:9883" ph="..." />
+                <marker date="1501250093337" expanded="true" signature="10215:10243" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="examTipsPoint.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/examTipsPoint.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ace_main.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/webpage/main/ace_main.html">
+      <file leaf-file-name="examTipsPoint-frame.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/examTipsPoint-frame.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="328" column="0" lean-forward="false" selection-start-line="328" selection-start-column="0" selection-end-line="328" selection-end-column="0" />
+            <state relative-caret-position="-3519">
+              <caret line="145" column="33" lean-forward="true" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
+              <folding>
+                <marker date="1501250146713" expanded="true" signature="7766:7818" ph="..." />
+                <marker date="1501250146713" expanded="true" signature="8127:8155" ph="..." />
+                <marker date="1501250146713" expanded="true" signature="9739:9767" ph="..." />
+                <marker date="1501250146713" expanded="true" signature="10079:10107" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="courseClass-frame.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/courseClass-frame.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2331">
+              <caret line="154" column="78" lean-forward="false" selection-start-line="154" selection-start-column="78" selection-end-line="154" selection-end-column="78" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="coreTest-frame.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/coreTest/coreTest-frame.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4320">
+              <caret line="246" column="32" lean-forward="false" selection-start-line="246" selection-start-column="32" selection-end-line="246" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -71,72 +176,28 @@
       <file leaf-file-name="account-frame.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/webpage/pages/admin/account-frame.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="110" column="37" lean-forward="false" selection-start-line="110" selection-start-column="37" selection-end-line="110" selection-end-column="43" />
-              <folding>
-                <element signature="e#4225#4231#0" expanded="true" />
-                <element signature="e#4589#4595#0" expanded="true" />
-                <element signature="e#5332#5338#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addNewAdmin.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/admin/addNewAdmin.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="165" column="37" lean-forward="true" selection-start-line="165" selection-start-column="37" selection-end-line="165" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/login/login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-30">
-              <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ace_main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/main/ace_main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="37" column="42" lean-forward="false" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="changePwd.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/main/changePwd.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="83" column="64" lean-forward="false" selection-start-line="83" selection-start-column="64" selection-end-line="83" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="changePwd.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/admin/changePwd.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="156" column="58" lean-forward="true" selection-start-line="156" selection-start-column="58" selection-end-line="156" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="updateAdmin.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpage/pages/admin/updateAdmin.html">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
-              <caret line="185" column="44" lean-forward="false" selection-start-line="185" selection-start-column="44" selection-end-line="185" selection-end-column="44" />
+              <caret line="118" column="28" lean-forward="false" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chapter-frame.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter-frame.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="96" column="78" lean-forward="false" selection-start-line="96" selection-start-column="78" selection-end-line="96" selection-end-column="78" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="updateCourseClass.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/updateCourseClass.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3060">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -194,57 +255,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/webpage/pages/video/live/LiveVideo-frame.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/RecordedVideo-frame.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/recordedVideo.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/chooseCourseRecordedVideo.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/live/chooseCourseLiveVideo.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/updateRecordedVideo.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/uploadFile.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/live/uploadFile.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/newsBulletin/message/jpush.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/newsBulletin/message/message.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/newsBulletin/message/jPush.html" />
-        <option value="$PROJECT_DIR$/webpage/main/showProfile.html" />
-        <option value="$PROJECT_DIR$/webpage/plug_in/tools/curdtools_zh-cn.js" />
-        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/mainCourse-frame.html" />
-        <option value="$PROJECT_DIR$/readMe.txt" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/webpage/login/login.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/addRecordedVideo.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/addCoreTestPoint.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/addExamTipsPoint.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/updateSubCourse.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/examTipsPoint-frame.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/coreTestPoint-frame.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/notes/addNotes.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/notes/updateNotes.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/notes/notes.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/user/user-frame.html" />
-        <option value="$PROJECT_DIR$/main.js" />
-        <option value="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/uploadFile.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/global/updateTest.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/addChapterTestPoint.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/video/recordedVideo-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/addCourseClass.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/video/updateRecordedVideo.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/video/addLiveVideo.html" />
         <option value="$PROJECT_DIR$/webpage/pages/mainCourse/video/addRecordedVideo.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/recordedVideo-frame.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/live/liveVideo.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/live/addLiveVideo.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/video/live/updateLiveVideo.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/video/updateLiveVideo.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/addMainCourse.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/addSubCourse.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/updateMainCourse.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/updateSubCourse.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/newsBulletin/carousel/carousel-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/video/live/chooseCourseLiveVideo.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/video/live/uploadFile.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/chooseCourseRecordedVideo.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/uploadFile.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/uploadFile.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/uploadFile.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/uploadFile.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/global/updateTest.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/mainCourse-frame.html" />
         <option value="$PROJECT_DIR$/webpage/pages/video/live/liveVideo-frame.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/feedback/feedback.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/notes/notes-frame.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/feedback/feedback-frame.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/admin/addNewAdmin.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/recordedVideo-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/main/changePwd.html" />
         <option value="$PROJECT_DIR$/webpage/pages/admin/changePwd.html" />
         <option value="$PROJECT_DIR$/webpage/pages/admin/updateAdmin.html" />
-        <option value="$PROJECT_DIR$/webpage/pages/admin/account-frame.html" />
-        <option value="$PROJECT_DIR$/system/GlobalConstant.js" />
-        <option value="$PROJECT_DIR$/webpage/login/login.js" />
-        <option value="$PROJECT_DIR$/webpage/main/ace_main.js" />
-        <option value="$PROJECT_DIR$/webpage/main/changePwd.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chooseCourseChapterTest.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/chooseCourseExamTips.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/chooseCourse.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/addChapterTestPoint.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/addCoreTestPoint.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/addExamTipsPoint.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/feedback/feedback-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/addChapter.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/coreTest/coreTest-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/examTips/examTips-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/video/liveVideo-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/video/recordedVideo-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/notes/notes-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/user/user-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/video/live/addLiveVideo.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/video/live/updateLiveVideo.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/addRecordedVideo.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/video/recorded/updateRecordedVideo.html" />
         <option value="$PROJECT_DIR$/webpage/main/ace_main.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/admin/addNewAdmin.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/chooseCourseCoreTest.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/coreTestPoint-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/examTipsPoint-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/admin/account-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter-frame.html" />
+        <option value="$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/courseClass-frame.html" />
       </list>
     </option>
   </component>
@@ -260,10 +321,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1928" />
-    <option name="y" value="231" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="2576" />
+    <option name="height" value="1416" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -346,29 +407,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="btz-app-client-eletron" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="btz-app-client-eletron" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webpage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="notes" />
+              <option name="myItemId" value="mainCourse" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -393,6 +432,10 @@
               <option name="myItemId" value="mainCourse" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="examTips" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -412,7 +455,63 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="feedback" />
+              <option name="myItemId" value="mainCourse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="courseClass" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="btz-app-client-eletron" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="btz-app-client-eletron" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mainCourse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coreTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="btz-app-client-eletron" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="btz-app-client-eletron" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webpage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mainCourse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chapter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -670,25 +769,26 @@
       <workItem from="1500947883160" duration="11345000" />
       <workItem from="1501071990768" duration="694000" />
       <workItem from="1501142123963" duration="4769000" />
-      <workItem from="1501205292425" duration="4431000" />
+      <workItem from="1501205292425" duration="22044000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="483474000" />
+    <option name="totallyTimeSpent" value="501087000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="231" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20126449" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15051222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43425414" sideWeight="0.5361484" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.59447515" sideWeight="0.49575672" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3364486" sideWeight="0.46385157" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25253314" sideWeight="0.46385157" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -696,7 +796,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -731,275 +830,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/addExamTipsPoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="36" column="67" lean-forward="false" selection-start-line="36" selection-start-column="67" selection-end-line="36" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/updateSubCourse.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="43" column="42" lean-forward="false" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/mainCourse-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="229" column="43" lean-forward="false" selection-start-line="229" selection-start-column="43" selection-end-line="229" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/examTipsPoint-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="199" column="19" lean-forward="false" selection-start-line="199" selection-start-column="19" selection-end-line="201" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/coreTestPoint-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="201" column="21" lean-forward="false" selection-start-line="201" selection-start-column="21" selection-end-line="201" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/notes/addNotes.html" />
-    <entry file="file://$PROJECT_DIR$/webpage/pages/notes/updateNotes.html" />
-    <entry file="file://$PROJECT_DIR$/webpage/pages/newsBulletin/carousel/addNewCarouse.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
-          <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/newsBulletin/carousel/carousel.html">
+    <entry file="file://$PROJECT_DIR$/webpage/main/ace_main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/newsBulletin/message/jPush.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/notes/notes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="14" column="16" lean-forward="false" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/plug_in/tools/curdtools_zh-cn.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13980">
-          <caret line="466" column="1" lean-forward="false" selection-start-line="423" selection-start-column="0" selection-end-line="466" selection-end-column="1" />
-          <folding>
-            <marker date="1500367528838" expanded="true" signature="27641:27674" ph="..." />
-            <marker date="1500367528838" expanded="true" signature="28185:28218" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/main/ace_main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/uploadFile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2580">
-          <caret line="86" column="46" lean-forward="false" selection-start-line="86" selection-start-column="46" selection-end-line="86" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/global/updateTest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2460">
-          <caret line="82" column="38" lean-forward="false" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/addChapterTestPoint.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="81" column="38" lean-forward="true" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/video/liveVideo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/video/recordedVideo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/video/addRecordedVideo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="681">
-          <caret line="42" column="50" lean-forward="true" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/video/liveVideo-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/video/recordedVideo-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2871">
-          <caret line="177" column="9" lean-forward="false" selection-start-line="177" selection-start-column="9" selection-end-line="177" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/video/recorded/recordedVideo-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="151" column="18" lean-forward="false" selection-start-line="151" selection-start-column="18" selection-end-line="151" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/video/live/liveVideo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="17" column="16" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/video/live/chooseCourseLiveVideo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="72" column="26" lean-forward="false" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/video/live/updateLiveVideo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5250">
-          <caret line="175" column="25" lean-forward="false" selection-start-line="175" selection-start-column="25" selection-end-line="175" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/video/live/addLiveVideo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2580">
-          <caret line="86" column="39" lean-forward="false" selection-start-line="86" selection-start-column="39" selection-end-line="86" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/video/live/liveVideo-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5160">
-          <caret line="172" column="85" lean-forward="false" selection-start-line="172" selection-start-column="57" selection-end-line="172" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/video/recorded/addRecordedVideo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3630">
-          <caret line="121" column="38" lean-forward="false" selection-start-line="121" selection-start-column="38" selection-end-line="121" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/user/user.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/user/user-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
-          <caret line="57" column="26" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="190" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/feedback/feedback.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="22" column="54" lean-forward="false" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/coreTest/coreTest-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3210">
-          <caret line="107" column="26" lean-forward="false" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4680">
-          <caret line="156" column="17" lean-forward="false" selection-start-line="156" selection-start-column="17" selection-end-line="156" selection-end-column="17" />
-          <folding>
-            <marker date="1500866943152" expanded="true" signature="7456:7484" ph="..." />
-            <marker date="1500866943152" expanded="true" signature="7793:7821" ph="..." />
-            <marker date="1500866943152" expanded="true" signature="9527:9555" ph="..." />
-            <marker date="1500866943152" expanded="true" signature="9867:9895" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/notes/notes-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="54" column="91" lean-forward="false" selection-start-line="54" selection-start-column="83" selection-end-line="54" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/feedback/feedback-frame.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1590">
-          <caret line="53" column="129" lean-forward="false" selection-start-line="53" selection-start-column="129" selection-end-line="53" selection-end-column="129" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#form#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readMe.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="23" />
+          <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -1012,15 +846,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/admin/account.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-69">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/admin/account.css">
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1028,86 +854,403 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/admin/changePwd.html">
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/coreTestPoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chooseCourseChapterTest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="50" column="10" lean-forward="false" selection-start-line="50" selection-start-column="10" selection-end-line="54" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/uploadFile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="71" column="34" lean-forward="true" selection-start-line="71" selection-start-column="34" selection-end-line="71" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/uploadFile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="69" column="46" lean-forward="false" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/addCoreTestPoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="148" column="17" lean-forward="true" selection-start-line="144" selection-start-column="18" selection-end-line="148" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chooseCourse.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
-          <caret line="156" column="58" lean-forward="true" selection-start-line="156" selection-start-column="58" selection-end-line="156" selection-end-column="58" />
+          <caret line="52" column="51" lean-forward="false" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/admin/updateAdmin.html">
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/addExamTipsPoint.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="185" column="44" lean-forward="false" selection-start-line="185" selection-start-column="44" selection-end-line="185" selection-end-column="44" />
+        <state relative-caret-position="381">
+          <caret line="148" column="17" lean-forward="true" selection-start-line="144" selection-start-column="18" selection-end-line="148" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/admin/addNewAdmin.html">
+    <entry file="file://$PROJECT_DIR$/webpage/pages/feedback/feedback-frame.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="165" column="37" lean-forward="true" selection-start-line="165" selection-start-column="37" selection-end-line="165" selection-end-column="37" />
+        <state relative-caret-position="420">
+          <caret line="182" column="63" lean-forward="false" selection-start-line="182" selection-start-column="63" selection-end-line="182" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/pages/admin/account-frame.html">
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/chapter/addChapter.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="110" column="37" lean-forward="false" selection-start-line="110" selection-start-column="37" selection-end-line="110" selection-end-column="43" />
+        <state relative-caret-position="300">
+          <caret line="94" column="22" lean-forward="false" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/examTips/examTips-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="255" column="32" lean-forward="false" selection-start-line="255" selection-start-column="32" selection-end-line="255" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/video/addRecordedVideo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2250">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/video/liveVideo-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="255" column="32" lean-forward="false" selection-start-line="255" selection-start-column="32" selection-end-line="255" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/video/recordedVideo-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="251" column="29" lean-forward="false" selection-start-line="251" selection-start-column="29" selection-end-line="251" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/mainCourse-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3429">
+          <caret line="154" column="9" lean-forward="true" selection-start-line="154" selection-start-column="9" selection-end-line="158" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/updateSubCourse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1260">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/newsBulletin/carousel/carousel-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1689">
+          <caret line="97" column="9" lean-forward="false" selection-start-line="97" selection-start-column="9" selection-end-line="101" selection-end-column="14" />
           <folding>
-            <element signature="e#4225#4231#0" expanded="true" />
-            <element signature="e#4589#4595#0" expanded="true" />
-            <element signature="e#5332#5338#0" expanded="true" />
+            <marker date="1501246519744" expanded="true" signature="5727:5753" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/main/ace_main.js">
+    <entry file="file://$PROJECT_DIR$/webpage/pages/notes/notes-frame.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="37" column="42" lean-forward="false" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
+        <state relative-caret-position="537">
+          <caret line="192" column="33" lean-forward="false" selection-start-line="192" selection-start-column="33" selection-end-line="192" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/main/changePwd.html">
+    <entry file="file://$PROJECT_DIR$/webpage/pages/user/user-frame.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="83" column="64" lean-forward="false" selection-start-line="83" selection-start-column="64" selection-end-line="83" selection-end-column="70" />
+        <state relative-caret-position="-1779">
+          <caret line="112" column="31" lean-forward="false" selection-start-line="112" selection-start-column="31" selection-end-line="112" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/system/GlobalConstant.js">
+    <entry file="file://$PROJECT_DIR$/webpage/pages/video/live/addLiveVideo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="3" column="2" lean-forward="false" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+        <state relative-caret-position="51">
+          <caret line="132" column="17" lean-forward="false" selection-start-line="132" selection-start-column="17" selection-end-line="132" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpage/login/login.html">
+    <entry file="file://$PROJECT_DIR$/webpage/pages/video/live/chooseCourseLiveVideo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1089">
-          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="15" selection-end-column="63" />
+        <state relative-caret-position="990">
+          <caret line="42" column="46" lean-forward="false" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/video/live/liveVideo-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2439">
+          <caret line="98" column="14" lean-forward="false" selection-start-line="98" selection-start-column="14" selection-end-line="98" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/video/live/updateLiveVideo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="175" column="25" lean-forward="false" selection-start-line="175" selection-start-column="25" selection-end-line="175" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/video/live/uploadFile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2250">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/video/recorded/addRecordedVideo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-429">
+          <caret line="113" column="21" lean-forward="false" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/video/recorded/chooseCourseRecordedVideo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1539">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/video/recorded/recordedVideo-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-99">
+          <caret line="156" column="18" lean-forward="true" selection-start-line="156" selection-start-column="18" selection-end-line="156" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/video/recorded/uploadFile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2289">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/video/recorded/updateRecordedVideo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="141" column="25" lean-forward="false" selection-start-line="141" selection-start-column="25" selection-end-line="141" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webpage/login/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
+        <state relative-caret-position="-270">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/webpage/main/ace_main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="651">
-          <caret line="328" column="0" lean-forward="false" selection-start-line="328" selection-start-column="0" selection-end-line="328" selection-end-column="0" />
+        <state relative-caret-position="-5709">
+          <caret line="108" column="25" lean-forward="false" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/main/showProfile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/main/changePwd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="112" column="55" lean-forward="false" selection-start-line="112" selection-start-column="55" selection-end-line="112" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/admin/addNewAdmin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="149" column="49" lean-forward="false" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/admin/changePwd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="115" column="21" lean-forward="false" selection-start-line="111" selection-start-column="22" selection-end-line="115" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/admin/updateAdmin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="177" column="25" lean-forward="true" selection-start-line="173" selection-start-column="26" selection-end-line="177" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/addChapterTestPoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-450">
+          <caret line="147" column="51" lean-forward="false" selection-start-line="147" selection-start-column="51" selection-end-line="147" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/chooseCourseExamTips.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="54" column="14" lean-forward="false" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/courseClass.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/chapterTestPoint/chapterTestPoint-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="137" column="5" lean-forward="false" selection-start-line="137" selection-start-column="5" selection-end-line="141" selection-end-column="14" />
+          <folding>
+            <marker date="1501250067496" expanded="true" signature="7990:8018" ph="..." />
+            <marker date="1501250067496" expanded="true" signature="8327:8355" ph="..." />
+            <marker date="1501250067496" expanded="true" signature="10061:10089" ph="..." />
+            <marker date="1501250067496" expanded="true" signature="10401:10429" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/chooseCourseCoreTest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-159">
+          <caret line="51" column="100" lean-forward="false" selection-start-line="51" selection-start-column="100" selection-end-line="51" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/examTipsPoint.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/examTipsPoint/examTipsPoint-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3519">
+          <caret line="145" column="33" lean-forward="true" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
+          <folding>
+            <marker date="1501250146713" expanded="true" signature="7766:7818" ph="..." />
+            <marker date="1501250146713" expanded="true" signature="8127:8155" ph="..." />
+            <marker date="1501250146713" expanded="true" signature="9739:9767" ph="..." />
+            <marker date="1501250146713" expanded="true" signature="10079:10107" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/exercise/coreTestPoint/coreTestPoint-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="104" column="16" lean-forward="false" selection-start-line="104" selection-start-column="16" selection-end-line="104" selection-end-column="100" />
+          <folding>
+            <marker date="1501250093337" expanded="true" signature="7882:7934" ph="..." />
+            <marker date="1501250093337" expanded="true" signature="8243:8271" ph="..." />
+            <marker date="1501250093337" expanded="true" signature="9855:9883" ph="..." />
+            <marker date="1501250093337" expanded="true" signature="10215:10243" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/admin/account-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="118" column="28" lean-forward="false" selection-start-line="118" selection-start-column="28" selection-end-line="118" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/chapter/chapter-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="96" column="78" lean-forward="false" selection-start-line="96" selection-start-column="78" selection-end-line="96" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/courseClass-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2331">
+          <caret line="154" column="78" lean-forward="false" selection-start-line="154" selection-start-column="78" selection-end-line="154" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/courseClass/updateCourseClass.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3060">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpage/pages/mainCourse/coreTest/coreTest-frame.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4320">
+          <caret line="246" column="32" lean-forward="false" selection-start-line="246" selection-start-column="32" selection-end-line="246" selection-end-column="32" />
           <folding />
         </state>
       </provider>

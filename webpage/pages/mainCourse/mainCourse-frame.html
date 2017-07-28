@@ -144,7 +144,7 @@
         $("#mainCourseList").datagrid({
             idField: 'id',
             title: '课程分类信息',
-            url: GLOBAL_CONSTANT_URL + "mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL + "admin/mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
             toolbar: "#mainCourseListtb",
             pagination: true,
             pageSize: 20,
@@ -152,6 +152,11 @@
             rownumbers: true,
             emptyMsg: "无查询结果！",
             singleSelect: true,
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../login/login.html';
+                }
+            },
             fit: true,
             fitColumns: true,
             onClickRow: function (rowIndex, field, value) {
@@ -188,21 +193,24 @@
                         }
                         return "";
                     }
-                }/*,
-                {field: 'updateTime', title: '更新时间'},
-                {field: 'createTime', title: '创建时间'}*/
+                }
             ]],
         });
 
         $("#subCourseList").datagrid({
             idField: 'id',
             title: '课程档案信息',
-            url: GLOBAL_CONSTANT_URL + "subCourseController.do?datagrid&field=id,fid,subName,orderNo,isTryOut,createTime,updateTime,",
+            url: GLOBAL_CONSTANT_URL + "admin/subCourseController.do?datagrid&field=id,fid,subName,orderNo,isTryOut,createTime,updateTime,",
             toolbar: "#subCourseListtb",
             rownumbers: true,
             singleSelect: true,
             fit: true,
             fitColumns: true,
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../login/login.html';
+                }
+            },
             frozenColumns: [[{
                 field: 'ck',
                 checkbox: 'true'
@@ -249,7 +257,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#mainCourseList').datagrid({
-            url: GLOBAL_CONSTANT_URL + "mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL + "admin/mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
             pageNumber: 1
         });
     }
@@ -261,7 +269,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#mainCourseList').datagrid({
-            url: GLOBAL_CONSTANT_URL + "mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL + "admin/mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
             pageNumber: 1
         });
     }

@@ -55,7 +55,7 @@
 </form>
 <script type="text/javascript">
     $(function () {
-        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "courseRecordedVideoController.do?uploadExcel");
+        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/courseRecordedVideoController.do?uploadExcel");
     });
 
     $("#btn_sub").click(function () {
@@ -67,7 +67,7 @@
             return;
         }
         $.ajaxFileUpload({
-            url: GLOBAL_CONSTANT_URL + "courseRecordedVideoController.do?uploadExcel",
+            url: GLOBAL_CONSTANT_URL + "admin/courseRecordedVideoController.do?uploadExcel",
             secureuri: false,
             fileElementId: 'file',
             type: "post",
@@ -85,7 +85,6 @@
             },
             error: function (jqxhr, textStatus, errorThrow) {
                 var data = JSON.parse(jqxhr.responseText);
-                console.log(data);
                 if (data.success === "success") {
                     win.toastr.success("上传成功！");
                     win.reloadDate();

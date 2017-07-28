@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>用户信息</title>
+    <title></title>
     <script type="text/javascript" src="../../../plug_in/mutiLang/zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="../../../plug_in/jquery/jquery.cookie.js"></script>
@@ -49,7 +49,8 @@
                 <span class="filedzt">跳转链接:</span>
             </td>
             <td class="value">
-                <input type="text" name="url" data-bind="value:url" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入链接地址！" nullmsg="请输入链接地址！">
+                <input type="text" name="url" data-bind="value:url" style="height: 30px;" class="inputxt" datatype="*"
+                       errormsg="请输入链接地址！" nullmsg="请输入链接地址！">
                 <span class="Validform_checktip">请输入链接地址！</span>
             </td>
         </tr>
@@ -58,7 +59,7 @@
                 <span class="filedzt">是否展现:</span></td>
             <td class="value">
                 <select name="sfyn" style="height: 30px;line-height: 30px;" data-bind="value:sfyn">
-                    <option value="1" >
+                    <option value="1">
                         是
                     </option>
                     <option value="2" selected>
@@ -71,7 +72,8 @@
             <td align="center">
                 <span class="filedzt">显示顺序:</span></td>
             <td class="value">
-                <input type="number" data-bind="value:orderNo" name="orderNo" min="1" max="100" datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;"class="inputxt" >
+                <input type="number" data-bind="value:orderNo" name="orderNo" min="1" max="100"
+                       datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;" class="inputxt">
                 <span class="Validform_checktip">请输入1-100的数字！</span>
             </td>
         </tr>
@@ -82,32 +84,37 @@
     <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/Validform/js/datatype_zh-cn.js"></script>
-    <script type="text/javascript" src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript"
+            src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
     <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
     <script src="../../../plug_in/layer/layer.js"></script>
     <script src="../../../../system/GlobalConstant.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             loadData();
-            $("#formobj").attr("action",GLOBAL_CONSTANT_URL+"carouselController.do?doUpdate");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/carouselController.do?doUpdate");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
                 btnReset: "#btn_reset",
                 ajaxPost: true,
-                callback: function(data) {
+                callback: function (data) {
                     var win = frameElement.api.opener;
-                    if (data.success =="success") {
+                    if (data.success == "success") {
                         frameElement.api.close();
                         win.toastr.info(data.msg);
+                    } else if (data.success === "fail") {
+                        win.toastr.error(data.msg);
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../login/login.html';
                     } else {
                         if (data.responseText == '' || data.responseText == undefined) {
                             win.toastr.info(data.msg);
                         } else {
                             try {
                                 win.toastr.error(data.msg);
-                            } catch(ex) {
-                                win.toastr.error(data.responseText+"");
+                            } catch (ex) {
+                                win.toastr.error(data.responseText + "");
                             }
                         }
                         return false;
@@ -131,34 +138,37 @@
             var str = window.document.location.href;
             var start_index = str.indexOf("id=");
             var start_end = str.indexOf("&_=");
-            var val = str.substring(start_index+3,start_end);
-            $(function(){
+            var val = str.substring(start_index + 3, start_end);
+            $(function () {
                 $.ajax({
-                    type:"post",
-                    url:GLOBAL_CONSTANT_URL+"carouselController.do?get",
-                    async:true,
-                    timeout:10000,
-                    data:{id:val},
-                    success: function(res){
-                        if(res.success === "success"){
+                    type: "post",
+                    url: GLOBAL_CONSTANT_URL + "admin/carouselController.do?get",
+                    async: true,
+                    timeout: 10000,
+                    data: {id: val},
+                    success: function (res) {
+                        console.log(res.success);
+                        if (res.success === "success") {
                             viewModel.id(res.content.id);
                             viewModel.img(res.content.img);
                             viewModel.url(res.content.url);
                             viewModel.sfyn(res.content.sfyn);
                             viewModel.orderNo(res.content.orderNo);
-                        }else{
-                            win.toastr.warning("获取个人信息失败，请重新登录！");
+                        } else if (res.success === "fail") {
+                            win.toastr.error(res.msg);
+                        } else if (res.success === "login") {
+                            window.parent.location.href = '../../../login/login.html';
                         }
                     },
-                    error:function () {
+                    error: function () {
                         win.toastr.warning("服务器异常，请联系维护人员！");
                     },
-                    complete:function (XMLHttpRequest, textStatus) {
-                        if(status=='timeout'){//超时,status还有success,error等值的情况
+                    complete: function (XMLHttpRequest, textStatus) {
+                        if (status == 'timeout') {//超时,status还有success,error等值的情况
                             win.toastr.warning("获取个人信息超时,请检查网络问题！");
                         }
                     }
-                },'json');
+                }, 'json');
             });
         }
     </script>
