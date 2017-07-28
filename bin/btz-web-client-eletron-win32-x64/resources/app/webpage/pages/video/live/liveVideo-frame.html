@@ -62,14 +62,6 @@
                              </span>
                         </a>
                     </span>
-                 <!--   <span style="float: right">
-                         <a href="#" id="icon-putout" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                            onclick="downLoadXlsByT();">
-                             <span class="l-btn-left" style="">
-                                 <span class="l-btn-text icon-putout l-btn-icon-left">模板下载&nbsp;</span>
-                             </span>
-                        </a>
-                    </span>-->
                 </div>
             </div>
             <table id="chapterExerciseList"></table>
@@ -87,36 +79,11 @@
 
     $(function () {
         courseSearch();
-        /**$('#chapterList').treegrid({
-            title: ' 直播视频分类',
-            idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?chapterTreeGrid",
-            collapsible: false,      //是否可折叠
-            rownumbers: true,        //行号
-            pagination: false,        //分页控件
-            method: 'post',          //请求方式
-            treeField: 'name',       //定义树节点的字段
-            fit: true,               //网格自动撑满
-            fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
-            toolbar: "#chapterListtb",
-            columns: [[
-                {field: 'name', title: '直播视频类别'},
-                {field: 'orderNo', title: '显示顺序'},
-                {field: 'level', title: '层级', hidden: true}
-            ]],
-            onBeforeSelect: function (node) {
-                return node.leaf || node.level === 'S';
-            },
-            onSelect: function (row) {
-                reloadDate();
-            }
-        });
-*/
         $("#chapterExerciseList").datagrid({
             idField: 'id',
             title: '',
             cache: false,
-            url: GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?dataGrid&field=id,subCourseId,chapterId,moduleId,moduleType,title,teacherName,videoUrl,status,orderNo,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?dataGrid&field=id,subCourseId,chapterId,moduleId,moduleType,title,teacherName,videoUrl,status,tryOut,orderNo,updateTime,createTime,",
             toolbar: "#chapterExerciseListtb",
             pagination: true,
             pageSize: 20,
@@ -155,6 +122,19 @@
                         }
                         if (value == '2') {
                             return '关闭';
+                        }
+                        return "";
+                    }
+                },
+                {
+                    field: 'tryOut',
+                    title: '是否试用',
+                    formatter: function (value, rec, index) {
+                        if (value == '1') {
+                            return '是';
+                        }
+                        if (value == '2') {
+                            return '否';
                         }
                         return "";
                     }

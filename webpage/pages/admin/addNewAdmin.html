@@ -40,7 +40,8 @@
                 <span class="filedzt">账户名称:</span>
             </td>
             <td class="value">
-                <input type="text" value="" name="accountName" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入账户名称" nullmsg="请输入账户名称！">
+                <input type="text" value="" name="accountName" style="height: 30px;" class="inputxt" datatype="*"
+                       errormsg="请输入账户名称" nullmsg="请输入账户名称！">
                 <span class="Validform_checktip">请输入账户名称</span>
             </td>
         </tr>
@@ -49,7 +50,8 @@
                 <span class="filedzt">账户ID:</span>
             </td>
             <td class="value">
-                <input type="text" value="" name="accountId" style="height: 30px;" class="inputxt" datatype="/^[A-Za-z0-9]{4,30}$/" errormsg="只能是4-30位的数字和字母组合" nullmsg="请输入账户ID">
+                <input type="text" value="" name="accountId" style="height: 30px;" class="inputxt"
+                       datatype="/^[A-Za-z0-9]{4,30}$/" errormsg="只能是4-30位的数字和字母组合" nullmsg="请输入账户ID">
                 <span class="Validform_checktip">请输入账户ID</span>
             </td>
         </tr>
@@ -57,7 +59,8 @@
             <td align="center">
                 <span class="filedzt">密&nbsp;&nbsp;&nbsp;码:</span></td>
             <td class="value">
-                <input type="password" value="" name="accountPwd" style="height: 30px;" class="inputxt" plugin="passwordStrength" datatype="*6-18" errormsg="密码至少6个字符,最多18个字符！">
+                <input type="password" value="" name="accountPwd" style="height: 30px;" class="inputxt"
+                       plugin="passwordStrength" datatype="*6-18" errormsg="密码至少6个字符,最多18个字符！">
                 <span class="Validform_checktip">密码至少6个字符,最多18个字符！</span>
                 <span class="passwordStrength" style="display: none;">
                 <b>密码强度：</b>
@@ -70,7 +73,8 @@
             <td align="center">
                 <span class="filedzt">重复密码:</span></td>
             <td class="value">
-                <input id="newpassword" type="password" style="height: 30px;" recheck="accountPwd" class="inputxt" datatype="*6-18" errormsg="两次输入的密码不一致！">
+                <input id="newpassword" type="password" style="height: 30px;" recheck="accountPwd" class="inputxt"
+                       datatype="*6-18" errormsg="两次输入的密码不一致！">
                 <span class="Validform_checktip"></span>
             </td>
         </tr>
@@ -78,7 +82,7 @@
             <td align="center">
                 <span class="filedzt">账户类型:</span></td>
             <td class="value">
-                <select name="type"  style="height: 30px;line-height: 30px;">
+                <select name="type" style="height: 30px;line-height: 30px;">
                     <option value="2" selected>
                         录入员
                     </option>
@@ -89,7 +93,7 @@
             <td align="center">
                 <span class="filedzt">账户状态:</span></td>
             <td class="value">
-                <select name="state"  style="height: 30px;line-height: 30px;">
+                <select name="state" style="height: 30px;line-height: 30px;">
                     <option value="1" selected>
                         有效
                     </option>
@@ -99,11 +103,11 @@
                 </select>
             </td>
         </tr>
-        <tr >
+        <tr>
             <td class="value" colspan="2">
-                 <div style="height: 30px;">
-                     <span style="color: red;">说明：只有管理员才能新增录入员</span>
-                 </div>
+                <div style="height: 30px;">
+                    <span style="color: red;">说明：只有管理员才能新增录入员</span>
+                </div>
             </td>
         </tr>
         </tbody>
@@ -113,12 +117,13 @@
     <script type="text/javascript" src="../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
     <script type="text/javascript" src="../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
     <script type="text/javascript" src="../../plug_in/Validform/js/datatype_zh-cn.js"></script>
-    <script type="text/javascript" src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript"
+            src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
     <script src="../../plug_in/layer/layer.js"></script>
     <script src="../../../system/GlobalConstant.js"></script>
     <script type="text/javascript">
-        $(function() {
-            $("#formobj").attr("action",GLOBAL_CONSTANT_URL+"adminController.do?doAdd");
+        $(function () {
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/adminController.do?doAdd");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -128,7 +133,7 @@
                     passwordstrength: {
                         minLen: 6,
                         maxLen: 18,
-                        trigger: function(obj, error) {
+                        trigger: function (obj, error) {
                             if (error) {
                                 obj.parent().next().find(".Validform_checktip").show();
                                 obj.find(".passwordStrength").hide();
@@ -139,25 +144,29 @@
                         }
                     }
                 },
-                callback: function(data) {
-                        var win = frameElement.api.opener;
-                        if (data.success =="success") {
-                            frameElement.api.close();
-                            win.toastr.info(data.msg);
+                callback: function (data) {
+                    var win = frameElement.api.opener;
+                    if (data.success === "success") {
+                        frameElement.api.close();
+                        win.toastr.success(data.msg);
+                    } else if (data.success === "fail") {
+                        win.toastr.error(data.msg);
+                    } else if (data.success === "login") {
+                        win.window.location.href = '../login/login.html';
+                    } else {
+                        if (data.responseText == '' || data.responseText == undefined) {
+                            win.toastr.error(data.msg);
                         } else {
-                            if (data.responseText == '' || data.responseText == undefined) {
-                                win.toastr.info(data.msg);
-                            } else {
-                                try {
-                                    win.toastr.error(data.msg);
-                                } catch(ex) {
-                                    win.toastr.error(data.responseText+"");
-                                }
+                            try {
+                                win.toastr.error(data.msg);
+                            } catch (ex) {
+                                win.toastr.error(data.responseText + "");
                             }
-                            return false;
                         }
-                        win.reloadTable();
+                        return false;
                     }
+                    win.reloadTable();
+                }
             });
         });
     </script>

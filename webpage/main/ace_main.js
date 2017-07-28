@@ -7,7 +7,7 @@ $(function () {
 
     $.ajax({
         type: "post",
-        url: GLOBAL_CONSTANT_URL + "adminController.do?getAdminEntityFromSession",
+        url: GLOBAL_CONSTANT_URL + "admin/adminController.do?getAdminEntityFromSession",
         success: function (res) {
             if (res.success === "success") {
                 appViewModel.accountId(res.content.accountId);
@@ -35,7 +35,7 @@ $(function () {
 function loginOff() {
     $.ajax({
         type: "post",
-        url: GLOBAL_CONSTANT_URL + "adminController.do?loginOff",
+        url: GLOBAL_CONSTANT_URL + "admin/adminController.do?loginOff",
         success: function (res) {
             window.location.href = '../login/login.html';
         },

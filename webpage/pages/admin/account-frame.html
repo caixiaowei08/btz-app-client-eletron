@@ -64,14 +64,14 @@
         <div style="height: 2px;"></div>
         <div style="height:35px;" class="datagrid-toolbar">
             <span style="float:left;">
-                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="add('新增系统账户','../pages/admin/addNewAdmin.html','adminList',600,350);">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="add('新增录入员','../pages/admin/addNewAdmin.html','adminList',600,350);">
                      <span class="l-btn-left" style="">
-                         <span class="l-btn-text icon-add l-btn-icon-left">新增&nbsp;</span>
+                         <span class="l-btn-text icon-add l-btn-icon-left">新增录入员&nbsp;</span>
                      </span>
                 </a>
-                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="update('系统账户编辑','../pages/admin/updateAdmin.html','adminList',600,350)">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="update('修改账户','../pages/admin/updateAdmin.html','adminList',600,350)">
                      <span class="l-btn-left" style="">
-                         <span class="l-btn-text icon-edit l-btn-icon-left">修改&nbsp;</span>
+                         <span class="l-btn-text icon-edit l-btn-icon-left">修改账户&nbsp;</span>
                      </span>
                 </a>
                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="update('修改密码','../pages/admin/changePwd.html','adminList',600,200)">
@@ -81,7 +81,7 @@
                 </a>
                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="deleteALLSelect('删除账户',GLOBAL_CONSTANT_URL +'adminController.do?doDel','adminList')">
                      <span class="l-btn-left" style="">
-                         <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
+                         <span class="l-btn-text icon-remove l-btn-icon-left">删除账户&nbsp;</span>
                      </span>
                 </a>
             </span>
@@ -108,7 +108,7 @@
         $("#adminList").datagrid({
             idField: 'id',
             title: '系统管理账户信息表',
-            url:GLOBAL_CONSTANT_URL+"adminController.do?datagrid&field=id,accountId,accountName,type,state,updateTime,createTime,",
+            url:GLOBAL_CONSTANT_URL+"admin/adminController.do?dataGrid&field=id,accountId,accountName,type,state,updateTime,createTime,",
             toolbar: "#adminListtb",
             pagination: true,
             pageList: [10, 20, 30],
@@ -117,6 +117,9 @@
             singleSelect: true,
             fit : true,
             fitColumns:true,
+            onLoadError:function () {
+                console.log("--------1111111111----------");
+            },
             frozenColumns: [[{
                 field: 'ck',
                 checkbox: 'true'
@@ -167,7 +170,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#adminList').datagrid({
-            url: GLOBAL_CONSTANT_URL+"adminController.do?datagrid&field=id,accountId,accountName,type,state,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL+"admin/adminController.do?dataGrid&field=id,accountId,accountName,type,state,updateTime,createTime,",
             pageNumber: 1
         });
     }
@@ -179,7 +182,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#adminList').datagrid({
-            url:  GLOBAL_CONSTANT_URL+"adminController.do?datagrid&field=id,accountId,accountName,type,state,updateTime,createTime,",
+            url:  GLOBAL_CONSTANT_URL+"admin/adminController.do?dataGrid&field=id,accountId,accountName,type,state,updateTime,createTime,",
             pageNumber: 1
         });
     }
