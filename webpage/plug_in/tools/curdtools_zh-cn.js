@@ -186,7 +186,9 @@ function deleteALLSelect(title, url, gname) {
                             ids = '';
                         } else {
                             if (data.responseText == '' || data.responseText == undefined) {
-                                toastr.info(data.msg);
+                                toastr.error(data.msg);
+                            } else if (data.success === "fail") {
+                                toastr.error(data.msg);
                             } else {
                                 try {
                                     toastr.error(data.msg);
@@ -194,7 +196,6 @@ function deleteALLSelect(title, url, gname) {
                                     toastr.error(data.responseText + "");
                                 }
                             }
-                            return false;
                         }
                         reloadTable();
                     }

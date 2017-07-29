@@ -56,7 +56,7 @@
                              </span>
                         </a>
                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                           onclick="deleteALLSelect('删除视频',GLOBAL_CONSTANT_URL +'courseLiveVideoController.do?doDel','chapterExerciseList');">
+                           onclick="deleteALLSelect('删除视频',GLOBAL_CONSTANT_URL +'admin/courseLiveVideoController.do?doDel','chapterExerciseList');">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-remove l-btn-icon-left">删除视频&nbsp;</span>
                              </span>
@@ -174,7 +174,6 @@
 
     function chapterReloadTable(subCourseId, subCourseName, moduleType) {
         try {
-            //$("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?downLoadExcel&subCourseId=" + subCourseId.substring(1, subCourseId.length));
             $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId});
         } catch (ex) {
         }

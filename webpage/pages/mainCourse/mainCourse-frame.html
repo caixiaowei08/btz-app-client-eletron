@@ -63,7 +63,7 @@
                                  </span>
                             </a>
                             <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
-                               onclick="deleteALLSelect('删除',GLOBAL_CONSTANT_URL +'mainCourseController.do?doDel','mainCourseList')">
+                               onclick="deleteALLSelect('删除',GLOBAL_CONSTANT_URL +'admin/mainCourseController.do?doDel','mainCourseList')">
                                  <span class="l-btn-left" style="">
                                      <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
                                  </span>
@@ -118,7 +118,7 @@
                                      </span>
                                 </a>
                                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
-                                   onclick="deleteALLSelectSubCourse('删除',GLOBAL_CONSTANT_URL +'subCourseController.do?doDel','subCourseList')">
+                                   onclick="deleteALLSelectSubCourse('删除',GLOBAL_CONSTANT_URL +'admin/subCourseController.do?doDel','subCourseList')">
                                      <span class="l-btn-left" style="">
                                          <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
                                      </span>
@@ -147,7 +147,9 @@
             url: GLOBAL_CONSTANT_URL + "admin/mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
             toolbar: "#mainCourseListtb",
             pagination: true,
-            pageSize: 20,
+            pageSize: 10,
+            sortName:"orderNo",
+            sortOrder:"asc",
             pageList: [10, 20, 30, 50, 100],
             rownumbers: true,
             emptyMsg: "无查询结果！",

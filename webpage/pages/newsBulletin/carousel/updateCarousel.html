@@ -102,22 +102,11 @@
                     var win = frameElement.api.opener;
                     if (data.success == "success") {
                         frameElement.api.close();
-                        win.toastr.info(data.msg);
+                        win.toastr.success(data.msg);
                     } else if (data.success === "fail") {
                         win.toastr.error(data.msg);
                     } else if (data.success === "login") {
-                        window.parent.location.href = '../login/login.html';
-                    } else {
-                        if (data.responseText == '' || data.responseText == undefined) {
-                            win.toastr.info(data.msg);
-                        } else {
-                            try {
-                                win.toastr.error(data.msg);
-                            } catch (ex) {
-                                win.toastr.error(data.responseText + "");
-                            }
-                        }
-                        return false;
+                        window.parent.location.href = '../../../login/login.html';
                     }
                     win.reloadTable();
                 }
@@ -147,7 +136,6 @@
                     timeout: 10000,
                     data: {id: val},
                     success: function (res) {
-                        console.log(res.success);
                         if (res.success === "success") {
                             viewModel.id(res.content.id);
                             viewModel.img(res.content.img);

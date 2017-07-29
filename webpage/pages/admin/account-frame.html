@@ -79,7 +79,7 @@
                          <span class="l-btn-text icon-edit l-btn-icon-left">修改密码&nbsp;</span>
                      </span>
                 </a>
-                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="deleteALLSelect('删除账户',GLOBAL_CONSTANT_URL +'adminController.do?doDel','adminList')">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="deleteALLSelect('删除账户',GLOBAL_CONSTANT_URL +'/admin/adminController.do?doDel','adminList')">
                      <span class="l-btn-left" style="">
                          <span class="l-btn-text icon-remove l-btn-icon-left">删除账户&nbsp;</span>
                      </span>
@@ -111,7 +111,7 @@
             url:GLOBAL_CONSTANT_URL+"admin/adminController.do?dataGrid&field=id,accountId,accountName,type,state,updateTime,createTime,",
             toolbar: "#adminListtb",
             pagination: true,
-            pageList: [10, 20, 30],
+            pageList: [10, 20, 30,50,100],
             rownumbers: true,
             emptyMsg:"无查询结果！",
             singleSelect: true,
