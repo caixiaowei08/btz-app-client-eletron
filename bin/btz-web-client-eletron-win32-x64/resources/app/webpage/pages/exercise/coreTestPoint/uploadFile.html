@@ -55,7 +55,7 @@
 </form>
 <script type="text/javascript">
     $(function () {
-        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "exerciseController.do?uploadExcel");
+        $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/exerciseController.do?uploadExcel");
     });
 
     $("#btn_sub").click(function () {
@@ -67,7 +67,7 @@
             return;
         }
         $.ajaxFileUpload({
-            url: GLOBAL_CONSTANT_URL + "exerciseController.do?uploadExcel",
+            url: GLOBAL_CONSTANT_URL + "admin/exerciseController.do?uploadExcel",
             secureuri: false,
             fileElementId: 'file',
             type: "post",

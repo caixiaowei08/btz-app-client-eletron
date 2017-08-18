@@ -98,7 +98,7 @@
     <script type="text/javascript">
         $(function () {
             loadData();
-            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "moduleController.do?doAdd");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/moduleController.do?doAdd");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -111,8 +111,8 @@
                         win.toastr.success(data.msg);
                     } else if (data.success == "fail") {
                         win.toastr.warning(data.msg);
-                    } else {
-                        win.toastr.warning("服务器错误或者网络问题,请联系管理员！");
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../../../login/login.html';
                     }
                     win.courseClassReloadTable();
                 }

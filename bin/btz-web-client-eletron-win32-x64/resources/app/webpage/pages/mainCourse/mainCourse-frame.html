@@ -63,7 +63,7 @@
                                  </span>
                             </a>
                             <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
-                               onclick="deleteALLSelect('删除',GLOBAL_CONSTANT_URL +'mainCourseController.do?doDel','mainCourseList')">
+                               onclick="deleteALLSelect('删除',GLOBAL_CONSTANT_URL +'admin/mainCourseController.do?doDel','mainCourseList')">
                                  <span class="l-btn-left" style="">
                                      <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
                                  </span>
@@ -118,7 +118,7 @@
                                      </span>
                                 </a>
                                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
-                                   onclick="deleteALLSelectSubCourse('删除',GLOBAL_CONSTANT_URL +'subCourseController.do?doDel','subCourseList')">
+                                   onclick="deleteALLSelectSubCourse('删除',GLOBAL_CONSTANT_URL +'admin/subCourseController.do?doDel','subCourseList')">
                                      <span class="l-btn-left" style="">
                                          <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
                                      </span>
@@ -144,14 +144,21 @@
         $("#mainCourseList").datagrid({
             idField: 'id',
             title: '课程分类信息',
-            url: GLOBAL_CONSTANT_URL + "mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL + "admin/mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
             toolbar: "#mainCourseListtb",
             pagination: true,
-            pageSize: 20,
+            pageSize: 10,
+            sortName:"orderNo",
+            sortOrder:"asc",
             pageList: [10, 20, 30, 50, 100],
             rownumbers: true,
             emptyMsg: "无查询结果！",
             singleSelect: true,
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../login/login.html';
+                }
+            },
             fit: true,
             fitColumns: true,
             onClickRow: function (rowIndex, field, value) {
@@ -188,21 +195,24 @@
                         }
                         return "";
                     }
-                }/*,
-                {field: 'updateTime', title: '更新时间'},
-                {field: 'createTime', title: '创建时间'}*/
+                }
             ]],
         });
 
         $("#subCourseList").datagrid({
             idField: 'id',
             title: '课程档案信息',
-            url: GLOBAL_CONSTANT_URL + "subCourseController.do?datagrid&field=id,fid,subName,orderNo,isTryOut,createTime,updateTime,",
+            url: GLOBAL_CONSTANT_URL + "admin/subCourseController.do?datagrid&field=id,fid,subName,orderNo,isTryOut,createTime,updateTime,",
             toolbar: "#subCourseListtb",
             rownumbers: true,
             singleSelect: true,
             fit: true,
             fitColumns: true,
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../login/login.html';
+                }
+            },
             frozenColumns: [[{
                 field: 'ck',
                 checkbox: 'true'
@@ -249,7 +259,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#mainCourseList').datagrid({
-            url: GLOBAL_CONSTANT_URL + "mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL + "admin/mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
             pageNumber: 1
         });
     }
@@ -261,7 +271,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#mainCourseList').datagrid({
-            url: GLOBAL_CONSTANT_URL + "mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL + "admin/mainCourseController.do?datagrid&field=id,name,orderNo,state,updateTime,createTime,",
             pageNumber: 1
         });
     }

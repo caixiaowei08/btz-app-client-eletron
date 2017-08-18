@@ -56,7 +56,7 @@
                              </span>
                         </a>
                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                           onclick="deleteALLSelect('删除视频',GLOBAL_CONSTANT_URL +'courseLiveVideoController.do?doDel','chapterExerciseList');">
+                           onclick="deleteALLSelect('删除视频',GLOBAL_CONSTANT_URL +'admin/courseLiveVideoController.do?doDel','chapterExerciseList');">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-remove l-btn-icon-left">删除视频&nbsp;</span>
                              </span>
@@ -83,7 +83,7 @@
             idField: 'id',
             title: '',
             cache: false,
-            url: GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?dataGrid&field=id,subCourseId,chapterId,moduleId,moduleType,title,teacherName,videoUrl,status,tryOut,orderNo,updateTime,createTime,",
+            url: GLOBAL_CONSTANT_URL + "admin/courseLiveVideoController.do?dataGrid&field=id,subCourseId,chapterId,moduleId,moduleType,title,teacherName,videoUrl,status,tryOut,orderNo,updateTime,createTime,",
             toolbar: "#chapterExerciseListtb",
             pagination: true,
             pageSize: 20,
@@ -92,6 +92,11 @@
             emptyMsg: "暂无数据！",
             fit: true,
             fitColumns: true,
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
             frozenColumns: [[{
                 field: 'ck',
                 checkbox: 'true'
@@ -169,7 +174,6 @@
 
     function chapterReloadTable(subCourseId, subCourseName, moduleType) {
         try {
-            //$("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "courseLiveVideoController.do?downLoadExcel&subCourseId=" + subCourseId.substring(1, subCourseId.length));
             $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId});
         } catch (ex) {
         }
@@ -193,17 +197,6 @@
 
     function newVideo(title, url, gname, width, height) {
         var subCourseId = $("#sid").val();
-/*        var rowsData = $('#chapterList').treegrid('getSelections');
-        if (!rowsData || rowsData.length == 0) {
-            tip('请选择左侧视频章节！');
-            return;
-        }
-        if (rowsData[0].level === "S") {
-            console.log(rowsData[0].level);
-            tip('请选择直播视频类别，新增直播视频操作！');
-            return
-        }*/
-        //url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level;
         url += '?subCourseId=' + subCourseId ;
         add(title, url, gname, width, height);
     }

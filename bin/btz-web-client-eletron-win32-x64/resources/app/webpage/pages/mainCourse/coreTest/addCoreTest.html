@@ -43,7 +43,8 @@
                 <span class="filedzt">父级章节:</span>
             </td>
             <td class="value">
-                <input type="text" name="subCourseName" style="height: 30px;"  readonly="readonly" data-bind="value:subCourseName" class="inputxt" >
+                <input type="text" name="subCourseName" style="height: 30px;" readonly="readonly"
+                       data-bind="value:subCourseName" class="inputxt">
             </td>
         </tr>
         <tr>
@@ -51,7 +52,8 @@
                 <span class="filedzt">章节名称:</span>
             </td>
             <td class="value">
-                <input type="text" name="chapterName" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入章节名称！"
+                <input type="text" name="chapterName" style="height: 30px;" class="inputxt" datatype="*"
+                       errormsg="请输入章节名称！"
                        nullmsg="请输入章节名称！">
                 <span class="Validform_checktip">请输入章节名称！</span>
             </td>
@@ -81,7 +83,7 @@
     <script type="text/javascript">
         $(function () {
             loadData();
-            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "chapterController.do?doAdd");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/chapterController.do?doAdd");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -92,10 +94,10 @@
                     if (data.success == "success") {
                         frameElement.api.close();
                         win.toastr.success(data.msg);
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../../../login/login.html';
                     } else if (data.success == "fail") {
                         win.toastr.warning(data.msg);
-                    } else {
-                        win.toastr.warning("服务器错误或者网络问题,请联系管理员！");
                     }
                     win.chapterReloadTable();
                 }
@@ -110,22 +112,21 @@
         };
         ko.applyBindings(viewModel);
         function loadData() {
-            //'?subCourseId='+subCourseId+'&subCourseName='+subCourseName+'&id='+rowsData[0].id+'&level='+rowsData[0].level;
             var str = window.document.location.href;
             var start_subCourseId = str.indexOf("subCourseId=");
             var end_subCourseId = str.indexOf("&subCourseName");
-            var subCourseId = str.substring(start_subCourseId+13,end_subCourseId);
+            var subCourseId = str.substring(start_subCourseId + 13, end_subCourseId);
             var start_subCourseName = str.indexOf("subCourseName=");
             var end_subCourseName = str.indexOf("&id=");
-            var subCourseName = str.substring(start_subCourseName+14,end_subCourseName);
+            var subCourseName = str.substring(start_subCourseName + 14, end_subCourseName);
             var start_id = str.indexOf("id=");
             var end_id = str.indexOf("&level=");
-            var id = str.substring(start_id+4,end_id);
+            var id = str.substring(start_id + 4, end_id);
             var start_level = str.indexOf("level=");
             var end_level = str.indexOf("&_=");
-            var level = str.substring(start_level+6,end_level);
+            var level = str.substring(start_level + 6, end_level);
             viewModel.subCourseId(subCourseId);
-            viewModel.subCourseName( decodeURI(subCourseName));
+            viewModel.subCourseName(decodeURI(subCourseName));
             viewModel.id(id);
             viewModel.level(level);
         }

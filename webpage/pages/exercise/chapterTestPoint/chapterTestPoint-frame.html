@@ -177,35 +177,60 @@
                     formatter: function (value, rec, index) {
                         if (value == '1') {
                             return '单选题';
-                        }
-                        if (value == '2') {
+                        } else if (value == '2') {
                             return '多选题';
-                        }
-                        if (value == '3') {
+                        } else if (value == '3') {
+                            return '不定项选择题';
+                        } else if (value == '4') {
                             return '判断题';
-                        }
-                        if (value == '4') {
-                            return '填空题';
-                        }
-                        if (value == '5') {
+                        } else if (value == '5') {
                             return '分录题(数字)';
-                        }
-                        if (value == '6') {
-                            return '分录题(固定格式)';
-                        }
-                        if (value == '7') {
+                        } else if (value == '6') {
+                            return '分录题(固定)';
+                        } else if (value == '7') {
+                            return '简答题';
+                        } else if (value == '8') {
+                            return '综合题';
+                        } else if (value == '9') {
+                            return '计算题';
+                        } else if (value == '10') {
+                            return '案例分析题';
+                        } else if (value == '11') {
+                            return '补全短文';
+                        } else if (value == '12') {
+                            return '概括大意与完成句子';
+                        } else if (value == '13') {
+                            return '完型填空';
+                        } else if (value == '14') {
+                            return '阅读理解';
+                        } else if (value == '15') {
+                            return '阅读判断';
+                        } else if (value == '16') {
+                            return '作文题';
+                        } else if (value == '17') {
+                            return '英译中';
+                        } else if (value == '18') {
+                            return '交际英语';
+                        } else if (value == '19') {
+                            return '词汇与结构';
+                        } else if (value == '20') {
+                            return '组合单选题';
+                        } else if (value == '21') {
+                            return '中级计算题';
+                        } else if (value == '22') {
+                            return '中级简答题';
+                        } else if (value == '23') {
+                            return '填空题';
+                        } else if (value == '24') {
+                            return '活动设计题';
+                        } else if (value == '25') {
+                            return '论述题';
+                        } else if (value == '26') {
+                            return '教学设计题';
+                        } else if (value == '27') {
                             return '材料分析题';
                         }
-                        if (value == '8') {
-                            return '长文本题';
-                        }
-                        if (value == '9') {
-                            return '短文本题';
-                        }
-                        if (value == '10') {
-                            return '公式题';
-                        }
-                        return "";
+                        return "未知题型";
                     }
                 },
                 {

@@ -51,9 +51,9 @@
                 <span class="filedzt">视频层级:</span>
             </td>
             <td class="value">
-                <input type="text" name="chapterName" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入试卷名称！"
+                <input type="text" name="chapterName" style="height: 30px;" class="inputxt" placeholder="年份-》班次-》视频章节" datatype="*" errormsg="请输入视频层级名称！"
                        nullmsg="请输入视频层级名称！">
-                <span class="Validform_checktip">请输入视频层级名称！</span>
+                <span class="Validform_checktip">年份-》班次-》视频章节</span>
             </td>
         </tr>
         <tr>
@@ -81,7 +81,7 @@
     <script type="text/javascript">
         $(function () {
             loadData();
-            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "chapterController.do?doAdd");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/chapterController.do?doAdd");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -94,8 +94,8 @@
                         win.toastr.success(data.msg);
                     } else if (data.success === "fail") {
                         win.toastr.warning(data.msg);
-                    } else {
-                        win.toastr.warning("服务器错误或者网络问题,请联系管理员！");
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../../../login/login.html';
                     }
                     win.chapterReloadTable();
                 }

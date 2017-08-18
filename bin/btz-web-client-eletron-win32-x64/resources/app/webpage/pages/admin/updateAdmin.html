@@ -40,7 +40,8 @@
                 <span class="filedzt">账户名称:</span>
             </td>
             <td class="value">
-                <input type="text" value="" data-bind="value:accountName" name="accountName" style="height: 30px;" class="inputxt" datatype="*" errormsg="请输入账户名称" nullmsg="请输入账户名称！">
+                <input type="text" value="" data-bind="value:accountName" name="accountName" style="height: 30px;"
+                       class="inputxt" datatype="*" errormsg="请输入账户名称" nullmsg="请输入账户名称！">
                 <span class="Validform_checktip">请输入账户名称</span>
             </td>
         </tr>
@@ -49,7 +50,9 @@
                 <span class="filedzt">账户ID:</span>
             </td>
             <td class="value">
-                <input type="text" readonly="true" disabled="true" data-bind="value:accountId" name="accountId" style="height: 30px;" class="inputxt" datatype="/^[A-Za-z0-9]{4,30}$/" errormsg="只能是4-30位的数字和字母组合" nullmsg="请输入账户ID">
+                <input type="text" readonly="true" disabled="true" data-bind="value:accountId" name="accountId"
+                       style="height: 30px;" class="inputxt" datatype="/^[A-Za-z0-9]{4,30}$/"
+                       errormsg="只能是4-30位的数字和字母组合" nullmsg="请输入账户ID">
                 <span class="Validform_checktip" style="color:brown">账户ID不能修改</span>
             </td>
         </tr>
@@ -71,7 +74,7 @@
             <td align="center">
                 <span class="filedzt">账户状态:</span></td>
             <td class="value">
-                <select name="state"  style="height: 30px;line-height: 30px;" data-bind="value:status">
+                <select name="state" style="height: 30px;line-height: 30px;" data-bind="value:status">
                     <option value="1">
                         有效
                     </option>
@@ -81,7 +84,7 @@
                 </select>
             </td>
         </tr>
-        <tr >
+        <tr>
             <td class="value" colspan="2">
                 <div style="height: 30px;">
                     <span style="color: red;">说明：只有管理员才能新增录入员</span>
@@ -95,14 +98,15 @@
     <script type="text/javascript" src="../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
     <script type="text/javascript" src="../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
     <script type="text/javascript" src="../../plug_in/Validform/js/datatype_zh-cn.js"></script>
-    <script type="text/javascript" src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript"
+            src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
     <script type="text/javascript" src="../../plug_in/knockout/knockout.js"></script>
     <script src="../../plug_in/layer/layer.js"></script>
     <script src="../../../system/GlobalConstant.js"></script>
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             loadData();
-            $("#formobj").attr("action",GLOBAL_CONSTANT_URL+"adminController.do?doUpdate");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/adminController.do?doUpdate");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -112,7 +116,7 @@
                     passwordstrength: {
                         minLen: 6,
                         maxLen: 18,
-                        trigger: function(obj, error) {
+                        trigger: function (obj, error) {
                             if (error) {
                                 obj.parent().next().find(".Validform_checktip").show();
                                 obj.find(".passwordStrength").hide();
@@ -123,22 +127,15 @@
                         }
                     }
                 },
-                callback: function(data) {
+                callback: function (data) {
                     var win = frameElement.api.opener;
-                    if (data.success =="success") {
+                    if (data.success == "success") {
                         frameElement.api.close();
-                        win.toastr.info(data.msg);
-                    } else {
-                        if (data.responseText == '' || data.responseText == undefined) {
-                            win.toastr.info(data.msg);
-                        } else {
-                            try {
-                                win.toastr.error(data.msg);
-                            } catch(ex) {
-                                win.toastr.error(data.responseText+"");
-                            }
-                        }
-                        return false;
+                        win.toastr.success(data.msg);
+                    } else if (data.success === "fail") {
+                        win.toastr.error(data.msg);
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../../login/login.html';
                     }
                     win.reloadTable();
                 }
@@ -156,37 +153,39 @@
         ko.applyBindings(viewModel);
         var win = frameElement.api.opener;
         function loadData() {
-           var str = window.document.location.href;
-           var start_index = str.indexOf("id=");
-           var start_end = str.indexOf("&_=");
-           var val = str.substring(start_index+3,start_end);
-            $(function(){
+            var str = window.document.location.href;
+            var start_index = str.indexOf("id=");
+            var start_end = str.indexOf("&_=");
+            var val = str.substring(start_index + 3, start_end);
+            $(function () {
                 $.ajax({
-                    type:"post",
-                    url:GLOBAL_CONSTANT_URL+"adminController.do?get",
-                    async:true,
-                    timeout:10000,
-                    data:{id:val},
-                    success: function(res){
-                        if(res.success === "success"){
+                    type: "post",
+                    url: GLOBAL_CONSTANT_URL + "admin/adminController.do?get",
+                    async: true,
+                    timeout: 10000,
+                    data: {id: val},
+                    success: function (res) {
+                        if (res.success === "success") {
                             viewModel.id(res.content.id);
                             viewModel.accountId(res.content.accountId);
                             viewModel.accountName(res.content.accountName);
                             viewModel.type(res.content.type);
                             viewModel.state(res.content.state);
-                        }else{
-                            win.toastr.warning("获取个人信息失败，请重新登录！");
+                        } else if (data.success === "fail") {
+                            win.toastr.error(data.msg);
+                        } else if (data.success === "login") {
+                            window.parent.location.href = '../../login/login.html';
                         }
                     },
-                    error:function () {
+                    error: function () {
                         win.toastr.warning("服务器异常，请联系维护人员！");
                     },
-                    complete:function (XMLHttpRequest, textStatus) {
-                        if(status=='timeout'){//超时,status还有success,error等值的情况
+                    complete: function (XMLHttpRequest, textStatus) {
+                        if (status == 'timeout') {//超时,status还有success,error等值的情况
                             win.toastr.warning("获取个人信息超时,请检查网络问题！");
                         }
                     }
-                },'json');
+                }, 'json');
             });
         }
     </script>

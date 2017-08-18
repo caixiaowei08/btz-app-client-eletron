@@ -62,9 +62,6 @@
                     <option value="2">
                         多选题
                     </option>
-                    <option value="1">
-                        单选题
-                    </option>
                     <option value="3">
                         判断题
                     </option>
@@ -130,7 +127,7 @@
     <script type="text/javascript">
         $(function () {
             loadData();
-            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "/exerciseController.do?doUpdate");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/exerciseController.do?doUpdate");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -142,10 +139,10 @@
                         frameElement.api.close();
                         win.toastr.success(data.msg);
                         win.reloadTable();
-                    } else if (data.success == "fail") {
-                        win.toastr.warning(data.msg)
-                    } else {
-                        win.toastr.error("服务器异常，请联系维护人员！");
+                    } else if (data.success === "fail") {
+                        win.toastr.error(data.msg);
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../../login/login.html';
                     }
                 }
             });
@@ -170,7 +167,7 @@
             $(function () {
                 $.ajax({
                     type: "post",
-                    url: GLOBAL_CONSTANT_URL + "/exerciseController.do?doGet",
+                    url: GLOBAL_CONSTANT_URL + "admin/exerciseController.do?doGet",
                     async: true,
                     data: {id: val},
                     success: function (res) {
@@ -183,9 +180,9 @@
                             viewModel.answerKey(res.content.answerKey);
                             viewModel.orderNo(res.content.orderNo);
                         } else if (res.success === "fail") {
-                            win.toastr.warning(res.msg);
-                        } else {
-                            win.toastr.error("获取课程信息超时,请检查网络问题！");
+                            win.toastr.error(data.msg);
+                        } else if (res.success === "login") {
+                            window.parent.location.href = '../../login/login.html';
                         }
                     },
                     error: function () {

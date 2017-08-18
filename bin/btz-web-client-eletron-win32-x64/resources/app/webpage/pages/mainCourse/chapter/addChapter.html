@@ -81,7 +81,7 @@
     <script type="text/javascript">
         $(function () {
             loadData();
-            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "chapterController.do?doAdd");
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/chapterController.do?doAdd");
             $("#formobj").Validform({
                 tiptype: 4,
                 btnSubmit: "#btn_sub",
@@ -89,13 +89,13 @@
                 ajaxPost: true,
                 callback: function (data) {
                     var win = frameElement.api.opener;
-                    if (data.success == "success") {
+                    if (data.success === "success") {
                         frameElement.api.close();
                         win.toastr.success(data.msg);
-                    } else if (data.success == "fail") {
-                        win.toastr.warning(data.msg);
-                    } else {
-                        win.toastr.warning("服务器错误或者网络问题,请联系管理员！");
+                    } else if (data.success === "fail") {
+                        win.toastr.error(data.msg);
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../../../login/login.html';
                     }
                     win.chapterReloadTable();
                 }
@@ -110,7 +110,6 @@
         };
         ko.applyBindings(viewModel);
         function loadData() {
-            //'?subCourseId='+subCourseId+'&subCourseName='+subCourseName+'&id='+rowsData[0].id+'&level='+rowsData[0].level;
             var str = window.document.location.href;
             var start_subCourseId = str.indexOf("subCourseId=");
             var end_subCourseId = str.indexOf("&subCourseName");

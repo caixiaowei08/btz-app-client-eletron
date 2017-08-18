@@ -40,7 +40,8 @@
                 <span class="filedzt">题干:</span>
             </td>
             <td class="value">
-                <textarea name="title" data-bind="value:title"  class="inputxt" style="height: 80px;width: 300px;" datatype="*" rows="3" cols="20" errormsg="请输入题干信息！" nullmsg="请输入题干信息！"></textarea>
+                <textarea name="title" data-bind="value:title" class="inputxt" style="height: 80px;width: 300px;"
+                          datatype="*" rows="3" cols="20" errormsg="请输入题干信息！" nullmsg="请输入题干信息！"></textarea>
                 <span class="Validform_checktip">请输入题干信息！</span>
             </td>
         </tr>
@@ -48,7 +49,8 @@
             <td align="center">
                 <span class="filedzt">内容:</span></td>
             <td class="value">
-                <textarea name="content" data-bind="value:content"  class="inputxt" style="height: 80px;width: 300px;" rows="3" cols="20"></textarea>
+                <textarea name="content" data-bind="value:content" class="inputxt" style="height: 80px;width: 300px;"
+                          rows="3" cols="20"></textarea>
             </td>
         </tr>
         <tr>
@@ -63,28 +65,79 @@
                         多选题
                     </option>
                     <option value="3">
-                        判断题
+                        不定项选择题
                     </option>
                     <option value="4">
-                        填空题
+                        判断题
                     </option>
                     <option value="5">
                         分录题(数字)
                     </option>
                     <option value="6">
-                        分录题(固定格式)
+                        分录题(固定)
                     </option>
                     <option value="7">
-                        材料分析题(完形填空、阅读理解等)
+                        简答题
                     </option>
                     <option value="8">
-                        单选题
+                        综合题
                     </option>
                     <option value="9">
-                        长文本题(长文本题（综合题、作文题等)
+                        计算题
                     </option>
                     <option value="10">
-                        公式题(中级计算题、综合练习题等)
+                        案例分析题
+                    </option>
+                    <option value="11">
+                        补全短文
+                    </option>
+                    <option value="12">
+                        概括大意与完成句子
+                    </option>
+                    <option value="13">
+                        完型填空
+                    </option>
+                    <option value="14">
+                        阅读理解
+                    </option>
+                    <option value="15">
+                        阅读判断
+                    </option>
+                    <option value="16">
+                        作文题
+                    </option>
+                    <option value="17">
+                        英译中
+                    </option>
+                    <option value="18">
+                        交际英语
+                    </option>
+                    <option value="19">
+                        词汇与结构
+                    </option>
+                    <option value="20">
+                        组合单选题
+                    </option>
+                    <option value="21">
+                        中级计算题
+                    </option>
+                    <option value="22">
+                        中级简答题
+                    </option>
+                    <option value="23">
+                        填空题
+                    </option>
+                    <option value="24">
+                        活动设计题
+                    </option>
+                    <option value="25">
+                        论述题
+                    </option>
+                    <option value="26">
+                        教学设计题
+                    </option>
+                    <option value="27">
+                        材料分析题
                     </option>
                 </select>
             </td>
@@ -93,7 +146,8 @@
             <td align="center">
                 <span class="filedzt">答案:</span></td>
             <td class="value">
-                <textarea name="answer" data-bind="value:answer"  class="inputxt" style="height: 80px;width: 300px;" rows="3" cols="20"></textarea>
+                <textarea name="answer" data-bind="value:answer" class="inputxt" style="height: 80px;width: 300px;"
+                          rows="3" cols="20"></textarea>
             </td>
         </tr>
         <tr>
@@ -101,7 +155,8 @@
                 <span class="filedzt">答案解析:</span>
             </td>
             <td class="value">
-                <textarea name="answerKey" data-bind="value:answerKey"  class="inputxt" style="height: 80px;width: 300px;" rows="3" cols="20"></textarea>
+                <textarea name="answerKey" data-bind="value:answerKey" class="inputxt"
+                          style="height: 80px;width: 300px;" rows="3" cols="20"></textarea>
             </td>
         </tr>
         <tr>
@@ -109,7 +164,8 @@
                 <span class="filedzt">显示顺序:</span>
             </td>
             <td class="value">
-                <input type="number" style="height: 30px;" min="1" name="orderNo"  data-bind="value:orderNo" style="height: 30px;"class="inputxt">
+                <input type="number" style="height: 30px;" min="1" name="orderNo" data-bind="value:orderNo"
+                       style="height: 30px;" class="inputxt">
             </td>
         </tr>
         </tbody>
@@ -149,7 +205,7 @@
         });
 
         var viewModel = {
-            id:ko.observable(""),
+            id: ko.observable(""),
             title: ko.observable(""),
             type: ko.observable(""),
             content: ko.observable(""),

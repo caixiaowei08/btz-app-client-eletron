@@ -35,7 +35,7 @@ $(function () {
 function loginOff() {
     $.ajax({
         type: "post",
-        url: GLOBAL_CONSTANT_URL + "adminController.do?loginOff",
+        url: GLOBAL_CONSTANT_URL + "admin/adminController.do?loginOff",
         success: function (res) {
             window.location.href = '../login/login.html';
         },

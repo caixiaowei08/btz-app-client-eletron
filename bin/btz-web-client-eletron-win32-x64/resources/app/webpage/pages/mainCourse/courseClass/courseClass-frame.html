@@ -40,7 +40,8 @@
                                 <span class="filedzt">课程名称:</span>
                             </td>
                             <td class="value">
-                                <input type="text" name="subCourseName" id="subCourseName" data-bind="value:subCourseName" style="height: 30px;"
+                                <input type="text" name="subCourseName" id="subCourseName"
+                                       data-bind="value:subCourseName" style="height: 30px;"
                                        readonly="readonly" class="inputxt" placeholder="请选择课程">
                             </td>
                         </tr>
@@ -60,12 +61,6 @@
                                      <span class="l-btn-text icon-edit l-btn-icon-left">编辑&nbsp;</span>
                                  </span>
                             </a>
-                            <!--<a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
-                               onclick="deleteChapter('删除模块',GLOBAL_CONSTANT_URL +'moduleController.do?doDel');">
-                                 <span class="l-btn-left" style="">
-                                     <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
-                                 </span>
-                            </a>-->
                         </span>
                 </div>
             </div>
@@ -87,7 +82,7 @@
         $('#courseClassList').treegrid({
             title: '模块信息',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "moduleController.do?treeGrid",
+            url: GLOBAL_CONSTANT_URL + "admin/moduleController.do?treeGrid",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
@@ -95,6 +90,11 @@
             treeField: 'name',       //定义树节点的字段
             fit: true,               //网格自动撑满
             fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            onLoadSuccess: function (row, data) {
+                if (data.success !== undefined && data.success !== "" && data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
             toolbar: "#courseClassListtb",
             columns: [[
                 {
@@ -145,7 +145,7 @@
         $('#courseList').treegrid({
             title: '课程信息',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "cascadeMainSubCourseController.do?mainCourseTreeGrid&type=0",
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?mainCourseTreeGrid&type=0",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
@@ -153,6 +153,11 @@
             treeField: 'name',       //定义树节点的字段
             fit: true,               //网格自动撑满
             fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            onLoadSuccess: function (row, data) {
+                if (data.success !== undefined && data.success !== "" && data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
             columns: [[
                 {field: 'name', title: '课程分类', width: 100},
                 {field: 'leaf', title: '是否是叶子', hidden: true},
@@ -160,14 +165,14 @@
                     field: 'state_s',
                     title: '状态',
                     formatter: function (value, rec, index) {
-                        if(rec.leaf){
+                        if (rec.leaf) {
                             if (value == '1') {
                                 return '可以试用';
                             }
                             if (value == '2') {
                                 return '不能试用';
                             }
-                        }else{
+                        } else {
                             if (value == '1') {
                                 return '正常使用';
                             }
@@ -196,39 +201,39 @@
         try {
             var subCourseId = $("#subCourseId").val();
             if (subCourseId === null || subCourseId === undefined || subCourseId === '') {
-                  toastr.warning("没有选中的课程！");
-                  return;
+                toastr.warning("没有选中的课程！");
+                return;
             }
-            subCourseId = subCourseId.substring(1,subCourseId.length);
-            $('#courseClassList').treegrid('reload',{"subCourseId":subCourseId});
+            subCourseId = subCourseId.substring(1, subCourseId.length);
+            $('#courseClassList').treegrid('reload', {"subCourseId": subCourseId});
         } catch (ex) {
         }
     }
 
-    function newCourseClass(title,url,width,height) {
+    function newCourseClass(title, url, width, height) {
         var subCourseId = $("#subCourseId").val();
         var subCourseName = $("#subCourseName").val();
         if (subCourseId === null || subCourseId === undefined || subCourseId === '') {
             tip('请选择课程，再新增模块操作！');
             return;
         }
-        url += '?subCourseId='+subCourseId+'&subCourseName='+subCourseName;
-        createwindow(title,url,width,height);
+        url += '?subCourseId=' + subCourseId + '&subCourseName=' + subCourseName;
+        createwindow(title, url, width, height);
     }
 
-    function updateCourseClass(title,url,width,height) {
+    function updateCourseClass(title, url, width, height) {
         var rowsData = $('#courseClassList').treegrid('getSelections');
         var subCourseName = $("#subCourseName").val();
-        if (!rowsData || rowsData.length==0) {
+        if (!rowsData || rowsData.length == 0) {
             tip('请选择模块进行编辑！');
             return;
         }
-        if (rowsData.length>1) {
+        if (rowsData.length > 1) {
             tip('请选择一个章节，再进行编辑！');
             return;
         }
-        url += '?id='+rowsData[0].id+'&subCourseName='+subCourseName;
-        createwindow(title,url,width,height);
+        url += '?id=' + rowsData[0].id + '&subCourseName=' + subCourseName;
+        createwindow(title, url, width, height);
     }
 
 </script>
