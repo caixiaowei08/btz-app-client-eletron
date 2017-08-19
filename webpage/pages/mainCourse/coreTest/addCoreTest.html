@@ -60,12 +60,13 @@
         </tr>
         <tr>
             <td align="center">
-                <span class="filedzt">显示顺序:</span></td>
+                <span class="filedzt">显示顺序:</span>
+            </td>
             <td class="value">
-                <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100"
-                       datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;" class="inputxt"
-                       errormsg="请输入1-100的数字！" nullmsg="请输入1-100的数字！">
-                <span class="Validform_checktip">请输入1-100的数字！</span>
+                <input type="number" data-bind="value:orderNo" name="orderNo" id="orderNo" min="1"
+                       datatype="/^\+?[1-9]\d*$/" style="height: 30px;" class="inputxt"
+                       errormsg="请输入大于0的数字！" nullmsg="请输入大于0的数字！">
+                <span class="Validform_checktip">请输入大于0的数字！</span>
             </td>
         </tr>
         </tbody>
@@ -108,7 +109,8 @@
             subCourseId: ko.observable(),
             subCourseName: ko.observable(),
             id: ko.observable(),
-            level: ko.observable()
+            level: ko.observable(),
+            orderNo: ko.observable()
         };
         ko.applyBindings(viewModel);
         function loadData() {
@@ -123,12 +125,16 @@
             var end_id = str.indexOf("&level=");
             var id = str.substring(start_id + 4, end_id);
             var start_level = str.indexOf("level=");
-            var end_level = str.indexOf("&_=");
+            var end_level = str.indexOf("&orderNo=");
             var level = str.substring(start_level + 6, end_level);
+            var start_orderNo = str.indexOf("orderNo=");
+            var end_orderNo = str.indexOf("&_=");
+            var orderNo = str.substring(start_orderNo + 8, end_orderNo);
             viewModel.subCourseId(subCourseId);
             viewModel.subCourseName(decodeURI(subCourseName));
             viewModel.id(id);
             viewModel.level(level);
+            viewModel.orderNo(orderNo);
         }
     </script>
 </form>

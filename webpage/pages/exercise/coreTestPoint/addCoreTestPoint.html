@@ -224,10 +224,6 @@
         var start_level = str.indexOf("level=");
         var end_level = str.indexOf("&_=");
         var level = str.substring(start_level + 6, end_level);
-        console.log(subCourseId);
-        console.log(decodeURI(subCourseName));
-        console.log(id);
-        console.log(level);
         viewModel.subCourseId(subCourseId);
         viewModel.subCourseName(decodeURI(subCourseName));
         viewModel.id(id);
