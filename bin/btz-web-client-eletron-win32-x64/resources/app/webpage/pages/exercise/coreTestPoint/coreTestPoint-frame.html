@@ -39,8 +39,102 @@
     </div>
     <div class="col-xs-8">
         <div style="height: 650px;">
+            <input id="sid" type="hidden" name="sid" data-bind="value:sid">
             <div id="chapterExerciseListtb" class="datagrid-toolbar">
-                <input id="sid" type="hidden" name="sid" data-bind="value:sid">
+                <div name="searchColums" id="searchColums">
+                    <form>
+                        <div style="height: 10px;"></div>
+                        <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "title="题目类型">题目类型：</span>
+                        <select name="type" width="100" id="type" style="width: 104px">
+                            <option value="">
+                                --请选择--
+                            </option>
+                            <option value="1">
+                                单选题
+                            </option>
+                            <option value="2">
+                                多选题
+                            </option>
+                            <option value="3">
+                                不定项选择题
+                            </option>
+                            <option value="4">
+                                判断题
+                            </option>
+                            <option value="5">
+                                分录题(数字)
+                            </option>
+                            <option value="6">
+                                分录题(固定)
+                            </option>
+                            <option value="7">
+                                简答题
+                            </option>
+                            <option value="8">
+                                综合题
+                            </option>
+                            <option value="9">
+                                计算题
+                            </option>
+                            <option value="10">
+                                案例分析题
+                            </option>
+                            <option value="11">
+                                补全短文
+                            </option>
+                            <option value="12">
+                                概括大意与完成句子
+                            </option>
+                            <option value="13">
+                                完型填空
+                            </option>
+                            <option value="14">
+                                阅读理解
+                            </option>
+                            <option value="15">
+                                阅读判断
+                            </option>
+                            <option value="16">
+                                作文题
+                            </option>
+                            <option value="17">
+                                英译中
+                            </option>
+                            <option value="18">
+                                交际英语
+                            </option>
+                            <option value="19">
+                                词汇与结构
+                            </option>
+                            <option value="20">
+                                组合单选题
+                            </option>
+                            <option value="21">
+                                中级计算题
+                            </option>
+                            <option value="22">
+                                中级简答题
+                            </option>
+                            <option value="23">
+                                填空题
+                            </option>
+                            <option value="24">
+                                活动设计题
+                            </option>
+                            <option value="25">
+                                论述题
+                            </option>
+                            <option value="26">
+                                教学设计题
+                            </option>
+                            <option value="27">
+                                材料分析题
+                            </option>
+                        </select>
+                        </span>
+                    </form>
+                </div>
+                <div style="height: 2px;"></div>
                 <div style="height:35px;" class="datagrid-toolbar">
                     <span style="float:left;">
                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="exportXlsByT();">
@@ -66,14 +160,24 @@
                                  <span class="l-btn-text icon-remove l-btn-icon-left">删除题目&nbsp;</span>
                              </span>
                         </a>
-                    </span>
-                    <span style="float: right">
-                         <a href="#" id="icon-putout" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                            onclick="downLoadXlsByT();">
+                        <a href="#" id="icon-putout" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                           onclick="downLoadXlsByT();">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-putout l-btn-icon-left">模板下载&nbsp;</span>
                              </span>
                         </a>
+                    </span>
+                    <span style="float: right">
+                        <a href="#" class="l-btn" iconcls="icon-search" onclick="listSearch()">
+                             <span class="l-btn-left" style="">
+                                  <span class="l-btn-text icon-search l-btn-icon-left">查询&nbsp;</span>
+                             </span>
+                         </a>
+                         <a href="#" class="l-btn" iconcls="icon-reload" onclick="searchReset()">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-reload l-btn-icon-left">重置&nbsp;</span>
+                             </span>
+                         </a>
                     </span>
                 </div>
             </div>
@@ -118,7 +222,6 @@
                 return node.leaf || node.level == 'S';
             },
             onSelect: function (row) {
-                console.log(row);
                 reloadDate();
             }
         });
@@ -136,11 +239,6 @@
             emptyMsg: "无查询结果！",
             fit: true,
             fitColumns: true,
-            onLoadSuccess: function (row, data) {
-                if (data.success !== undefined && data.success !== "" && data.success === 'login') {
-                    window.parent.location.href = '../../../login/login.html';
-                }
-            },
             frozenColumns: [[{
                 field: 'ck',
                 checkbox: 'true'
@@ -178,35 +276,60 @@
                     formatter: function (value, rec, index) {
                         if (value == '1') {
                             return '单选题';
-                        }
-                        if (value == '2') {
+                        } else if (value == '2') {
                             return '多选题';
-                        }
-                        if (value == '3') {
+                        } else if (value == '3') {
+                            return '不定项选择题';
+                        } else if (value == '4') {
                             return '判断题';
-                        }
-                        if (value == '4') {
-                            return '填空题';
-                        }
-                        if (value == '5') {
+                        } else if (value == '5') {
                             return '分录题(数字)';
-                        }
-                        if (value == '6') {
-                            return '分录题(固定格式)';
-                        }
-                        if (value == '7') {
+                        } else if (value == '6') {
+                            return '分录题(固定)';
+                        } else if (value == '7') {
+                            return '简答题';
+                        } else if (value == '8') {
+                            return '综合题';
+                        } else if (value == '9') {
+                            return '计算题';
+                        } else if (value == '10') {
+                            return '案例分析题';
+                        } else if (value == '11') {
+                            return '补全短文';
+                        } else if (value == '12') {
+                            return '概括大意与完成句子';
+                        } else if (value == '13') {
+                            return '完型填空';
+                        } else if (value == '14') {
+                            return '阅读理解';
+                        } else if (value == '15') {
+                            return '阅读判断';
+                        } else if (value == '16') {
+                            return '作文题';
+                        } else if (value == '17') {
+                            return '英译中';
+                        } else if (value == '18') {
+                            return '交际英语';
+                        } else if (value == '19') {
+                            return '词汇与结构';
+                        } else if (value == '20') {
+                            return '组合单选题';
+                        } else if (value == '21') {
+                            return '中级计算题';
+                        } else if (value == '22') {
+                            return '中级简答题';
+                        } else if (value == '23') {
+                            return '填空题';
+                        } else if (value == '24') {
+                            return '活动设计题';
+                        } else if (value == '25') {
+                            return '论述题';
+                        } else if (value == '26') {
+                            return '教学设计题';
+                        } else if (value == '27') {
                             return '材料分析题';
                         }
-                        if (value == '8') {
-                            return '长文本题';
-                        }
-                        if (value == '9') {
-                            return '短文本题';
-                        }
-                        if (value == '10') {
-                            return '公式题';
-                        }
-                        return "";
+                        return "未知题型";
                     }
                 },
                 {
@@ -244,17 +367,19 @@
 
     function reloadDate() {
         var subCourseId = $("#sid").val();
+        var type = $("#type").val();
         var rowsData = $('#chapterList').treegrid('getSelections');
         var chapterId = "";
         if (!(!rowsData || rowsData.length == 0)) {
             chapterId = rowsData[0].id;
         }
         $('#chapterExerciseList').datagrid('clearSelections');
-        $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId, "chapterId": chapterId});
+        $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId, "chapterId": chapterId,"examType":type});
 
     }
 
     function chapterReloadTable(subCourseId, subCourseName, moduleType) {
+        console.log("----chapterReloadTable----")
         try {
             $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "admin/exerciseController.do?downLoadExcel&belongTo=2&subCourseId=" + subCourseId.substring(1, subCourseId.length));
             $('#chapterList').treegrid('reload', {
@@ -262,7 +387,8 @@
                 "subCourseName": subCourseName,
                 "moduleType": moduleType
             });
-            $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId, "moduleType": moduleType});
+            var type = $("#type").val();
+            $('#chapterExerciseList').datagrid('reload', {"subCourseId": subCourseId, "moduleType": moduleType,"examType":type});
         } catch (ex) {
         }
     }
@@ -278,7 +404,6 @@
             tip('请选择左侧题目章节！');
             return;
         }
-        console.log(rowsData[0].leaf);
         if (!rowsData[0].leaf) {
             tip('只能在根章节上面添加题目！');
             return
@@ -294,8 +419,20 @@
     function downLoadXlsByT() {
         var val = $("#icon-putout").attr("href");
         if (val === '#') {
-            toastr.warning("请选择课程,再点击模板下载!")
+            toastr.warning("请选择课程,再点击模板下载!");
             return;
         }
+    }
+
+    /**
+     * 查询
+     */
+    function listSearch() {
+        reloadDate();
+    }
+
+    function searchReset() {
+        $("#chapterExerciseListtb").find(":input").val("");
+        reloadDate();
     }
 </script>

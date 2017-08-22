@@ -189,7 +189,14 @@
             tip('请选择一个父级章节，再进行新增！');
             return;
         }
-        url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level;
+        var children = rowsData[0].children;
+        var orderNo = 1;
+        if (children === undefined) {
+            orderNo = 1;
+        } else {
+            orderNo = children[children.length - 1].orderNo + 1;
+        }
+        url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level + '&orderNo=' + orderNo;
         createwindow(title, url, width, height);
     }
 

@@ -40,7 +40,8 @@
                                 <span class="filedzt">课程名称:</span>
                             </td>
                             <td class="value">
-                                <input type="text" name="subCourseName" id="subCourseName" data-bind="value:subCourseName" style="height: 30px;"
+                                <input type="text" name="subCourseName" id="subCourseName"
+                                       data-bind="value:subCourseName" style="height: 30px;"
                                        readonly="readonly" class="inputxt" placeholder="请选择课程">
                             </td>
                         </tr>
@@ -131,14 +132,14 @@
                     field: 'state_s',
                     title: '状态',
                     formatter: function (value, rec, index) {
-                        if(rec.leaf){
+                        if (rec.leaf) {
                             if (value == '1') {
                                 return '可以试用';
                             }
                             if (value == '2') {
                                 return '不能试用';
                             }
-                        }else{
+                        } else {
                             if (value == '1') {
                                 return '正常使用';
                             }
@@ -168,33 +169,45 @@
         try {
             var subCourseId = $("#subCourseId").val();
             var subCourseName = $("#subCourseName").val();
-            $('#chapterList').treegrid('reload',{"subCourseId":subCourseId,"subCourseName":subCourseName,moduleType:1});
+            $('#chapterList').treegrid('reload', {
+                "subCourseId": subCourseId,
+                "subCourseName": subCourseName,
+                moduleType: 1
+            });
         } catch (ex) {
         }
     }
 
-    function newChapter(title,url,width,height) {
+    function newChapter(title, url, width, height) {
         var subCourseId = $("#subCourseId").val();
         var rowsData = $('#chapterList').treegrid('getSelections');
-        if (!rowsData || rowsData.length==0) {
+        console.log(rowsData);
+        if (!rowsData || rowsData.length == 0) {
             tip('请选择新增章节的父级章节！');
             return;
         }
-        if (rowsData.length>1) {
+        if (rowsData.length > 1) {
             tip('请选择一个父级章节，再进行新增！');
             return;
         }
-        url += '?subCourseId='+subCourseId+'&subCourseName='+rowsData[0].name+'&id='+rowsData[0].id+'&level='+rowsData[0].level;
-        createwindow(title,url,width,height);
+        var children = rowsData[0].children;
+        var orderNo = 1;
+        if (children === undefined) {
+            orderNo = 1;
+        } else {
+            orderNo = children[children.length - 1].orderNo + 1;
+        }
+        url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level + '&orderNo=' + orderNo;
+        createwindow(title, url, width, height);
     }
 
-    function updateChapter(title,url,width,height) {
+    function updateChapter(title, url, width, height) {
         var rowsData = $('#chapterList').treegrid('getSelections');
-        if (!rowsData || rowsData.length==0) {
+        if (!rowsData || rowsData.length == 0) {
             tip('请选择章节进行编辑！');
             return;
         }
-        if (rowsData.length>1) {
+        if (rowsData.length > 1) {
             tip('请选择一个章节，再进行编辑！');
             return;
         }
@@ -202,11 +215,11 @@
             tip('不能选择课程根节点进行修改！');
             return;
         }
-        url += '?id='+rowsData[0].id
-        createwindow(title,url,width,height);
+        url += '?id=' + rowsData[0].id
+        createwindow(title, url, width, height);
     }
-    
-    function deleteChapter(title,url) {
+
+    function deleteChapter(title, url) {
         var ids = [];
         var rows = $("#chapterList").treegrid('getSelections');
 
@@ -222,24 +235,24 @@
 
         if (rows.length > 0) {
             $.dialog.setting.zIndex = getzIndex(true);
-            $.dialog.confirm('你确定永久删除该数据吗?', function(r) {
+            $.dialog.confirm('你确定永久删除该数据吗?', function (r) {
                 if (r) {
-                    for ( var i = 0; i < rows.length; i++) {
+                    for (var i = 0; i < rows.length; i++) {
                         ids.push(rows[i].id);
                     }
                     $.ajax({
-                        url : url,
-                        type : 'post',
-                        data : {
-                            ids : ids.join(',')
+                        url: url,
+                        type: 'post',
+                        data: {
+                            ids: ids.join(',')
                         },
-                        cache : false,
-                        success : function(data) {
+                        cache: false,
+                        success: function (data) {
                             if (data.success == "success") {
                                 toastr.success(data.msg);
                                 $("#chapterList").treegrid('unselectAll');
-                                ids='';
-                            }else if (data.success === "fail") {
+                                ids = '';
+                            } else if (data.success === "fail") {
                                 toastr.error(data.msg);
                             } else if (data.success === "login") {
                                 window.parent.location.href = '../../../login/login.html';
@@ -253,8 +266,8 @@
             tip("请选择需要删除的数据");
         }
     }
-    
-    
+
+
 </script>
 
 
