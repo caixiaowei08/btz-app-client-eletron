@@ -266,14 +266,14 @@
                     field: 'title',
                     title: '题干',
                     formatter: function (value, row, index) {
-                        return '<input type="text" style="border:none;width=400px;padding:0px;background:none;"  size="50" readonly="readonly" value="' + value + '"/>';
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
                     }
                 },
                 {
                     field: 'content',
                     title: '内容',
                     formatter: function (value, row, index) {
-                        return '<input type="text" style="border:none;background:none;" size="50" readonly="readonly" value="' + value + '"/>';
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
                     }
                 },
                 {
@@ -343,14 +343,14 @@
                     field: 'answer',
                     title: '答案',
                     formatter: function (value, row, index) {
-                        return '<input type="text" style="border:none;background:none;" readonly="readonly" size="50" value="' + value + '"/>';
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
                     }
                 },
                 {
                     field: 'answerKey',
                     title: '答案解析',
                     formatter: function (value, row, index) {
-                        return '<div width="400px;"><input type="text" style="border:none;background:none;" readonly="readonly" size="50" value="' + value + '"/></div>';
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
                     }
                 },
                 {

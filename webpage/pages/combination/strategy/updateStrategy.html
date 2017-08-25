@@ -1,0 +1,260 @@
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="../../../plug_in/mutiLang/zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-plugs/storage/jquery.storageapi.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/dataformat.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/easyui/themes/metrole/easyui.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/easyui/themes/metrole/main.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/easyui/themes/metrole/icon.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/accordion/css/accordion.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/accordion/css/icons.css">
+    <script type="text/javascript" src="../../../plug_in/easyui/jquery.easyui.min.1.3.2.js"></script>
+    <script type="text/javascript" src="../../../plug_in/easyui/locale/zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/syUtil.js"></script>
+    <script type="text/javascript" src="../../../plug_in/easyui/extends/datagrid-scrollview.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/tools/css/metrole/common.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/ace/css/font-awesome.css" type="text/css">
+    <script type="text/javascript" src="../../../plug_in/lhgDialog/lhgdialog.min.js?skin=metrole"></script>
+    <script type="text/javascript" src="../../../plug_in/ace/js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="../../../plug_in/layer/layer.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/layer/skin/layer.css" id="layui_layer_skinlayercss">
+    <script type="text/javascript" src="../../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/easyuiextend.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-plugs/hftable/jquery-hftable.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/json2.js"></script>
+    <script type="text/javascript" src="../../../plug_in/toastr/toastr.min.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/toastr/toastr.css" type="text/css">
+</head>
+
+<body style="overflow-y: hidden" scroll="no">
+<form id="formobj" action="" name="formobj" method="post">
+    <input type="hidden" id="btn_sub" class="btn_sub">
+    <input id="id" type="hidden" name="id" data-bind="value:id">
+    <table style="width: 400px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
+        <tbody>
+        <tr>
+            <td align="center">
+                <span class="filedzt">题目类型:</span></td>
+            <td class="value">
+                <select style="height: 30px;line-height: 30px;" data-bind="value:examType" readonly="true"
+                        disabled="disabled">
+                    <option value="1">
+                        单选题
+                    </option>
+                    <option value="2">
+                        多选题
+                    </option>
+                    <option value="3">
+                        不定项选择题
+                    </option>
+                    <option value="4">
+                        判断题
+                    </option>
+                    <option value="5">
+                        分录题(数字)
+                    </option>
+                    <option value="6">
+                        分录题(固定)
+                    </option>
+                    <option value="7">
+                        简答题
+                    </option>
+                    <option value="8">
+                        综合题
+                    </option>
+                    <option value="9">
+                        计算题
+                    </option>
+                    <option value="10">
+                        案例分析题
+                    </option>
+                    <option value="11">
+                        补全短文
+                    </option>
+                    <option value="12">
+                        概括大意与完成句子
+                    </option>
+                    <option value="13">
+                        完型填空
+                    </option>
+                    <option value="14">
+                        阅读理解
+                    </option>
+                    <option value="15">
+                        阅读判断
+                    </option>
+                    <option value="16">
+                        作文题
+                    </option>
+                    <option value="17">
+                        英译中
+                    </option>
+                    <option value="18">
+                        交际英语
+                    </option>
+                    <option value="19">
+                        词汇与结构
+                    </option>
+                    <option value="20">
+                        组合单选题
+                    </option>
+                    <option value="21">
+                        中级计算题
+                    </option>
+                    <option value="22">
+                        中级简答题
+                    </option>
+                    <option value="23">
+                        填空题
+                    </option>
+                    <option value="24">
+                        活动设计题
+                    </option>
+                    <option value="25">
+                        论述题
+                    </option>
+                    <option value="26">
+                        教学设计题
+                    </option>
+                    <option value="27">
+                        材料分析题
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">单个分值:</span>
+            </td>
+            <td class="value">
+                <input type="number" style="height: 30px;" datatype="/^[0-9]+([.]{1}[0-9]{1,2})?$/" min="1" name="point"
+                       data-bind="value:point"
+                       class="inputxt"
+                       errormsg="保留两位小数正数!" nullmsg="请填写分值！" placeholder="请填写分值!">
+            </td>
+        </tr>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">题目数量:</span>
+            </td>
+            <td class="value">
+                <input type="number" style="height: 30px;" datatype="/^[1-9]\d*$/" min="1" step="1" name="examNo"
+                       data-bind="value:examNo" class="inputxt"
+                       errormsg="请输入大于0的正数！" nullmsg="请填写题目数量！" placeholder="请填写题目数量!"
+                >
+            </td>
+        </tr>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">小计分值:</span>
+            </td>
+            <td class="value">
+                <input type="number" style="height: 30px;" readonly class="inputxt" data-bind="value:itemTotalPoint">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <link rel="stylesheet" href="../../../plug_in/Validform/css/metrole/style.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/Validform/css/metrole/tablefrom.css" type="text/css">
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/datatype_zh-cn.js"></script>
+    <script type="text/javascript"
+            src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
+    <script src="../../../plug_in/layer/layer.js"></script>
+    <script src="../../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadData();
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/strategyController.do?doUpdateItem");
+            $("#formobj").Validform({
+                tiptype: 4,
+                btnSubmit: "#btn_sub",
+                btnReset: "#btn_reset",
+                ajaxPost: true,
+                callback: function (data) {
+                    var win = frameElement.api.opener;
+                    if (data.success == "success") {
+                        frameElement.api.close();
+                        win.toastr.success(data.msg);
+                    } else if (data.success == "fail") {
+                        win.toastr.warning(data.msg)
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../../../login/login.html';
+                    } else {
+                        win.toastr.error("服务器异常，请联系维护人员！");
+                    }
+                    win.reloadTable();
+                }
+            });
+        });
+
+
+        var viewModel = function (id, examType, point, examNo) {
+            this.id = ko.observable(id);
+            this.examType = ko.observable(examType);
+            this.point = ko.observable(point);
+            this.examNo = ko.observable(examNo);
+            this.itemTotalPoint = ko.computed(function () {
+                var m = 0,
+                    s1 = this.point().toString(),
+                    s2 = this.examNo().toString();
+                try {
+                    m += s1.split(".")[1].length
+                } catch (e) {
+                }
+                try {
+                    m += s2.split(".")[1].length
+                } catch (e) {
+                }
+                return (Math.ceil((Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)) * 100)) / Math.pow(10, 2);
+            }, this);
+        }
+
+        var win = frameElement.api.opener;
+        function loadData() {
+            var str = window.document.location.href;
+            var start_index = str.indexOf("id=");
+            var start_end = str.indexOf("&_=");
+            var id_parm = str.substring(start_index + 3, start_end);
+            console.log(str);
+            console.log(id_parm);
+            $(function () {
+                $.ajax({
+                    type: "post",
+                    url: GLOBAL_CONSTANT_URL + "admin/strategyController.do?doGetItem",
+                    async: true,
+                    data: {id: id_parm},
+                    success: function (res) {
+                        if (res.success === "success") {
+                            ko.applyBindings(new viewModel(
+                                res.content.id,
+                                res.content.examType,
+                                res.content.point,
+                                res.content.examNo
+                            ));
+                        } else if (res.success === "fail") {
+                            win.toastr.warning(res.msg);
+                        } else if (res.success === "login") {
+                            window.parent.location.href = '../../../login/login.html';
+                        }
+                    },
+                    error: function () {
+                        win.toastr.error("服务器异常，请联系维护人员！");
+                    },
+                    complete: function (XMLHttpRequest, textStatus) {
+                        if (status == 'timeout') {//超时,status还有success,error等值的情况
+                            win.toastr.error("获取信息超时,请检查网络问题！");
+                        }
+                    }
+                }, 'json');
+            });
+        }
+    </script>
+</form>
+</body>
+</html>

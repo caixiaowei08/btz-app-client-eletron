@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html class="panel-fit">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metrole/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metrole/main.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/tools/css/metrole/common.css">
+    <link rel="stylesheet" type="text/css" href="../../mainCourse/gridSystem.css">
+    <link rel="stylesheet" href="../../../plug_in/toastr/toastr.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/My97DatePicker/skin/WdatePicker.css">
+    <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-easy-ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-easy-ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/lhgDialog/lhgdialog.min.js"></script>
+    <script type="text/javascript" src="../../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
+
+</head>
+<body>
+<div class="row">
+    <div class="col-xs-3">
+        <div style="height: 650px;">
+            <table id="courseList"></table>
+        </div>
+    </div>
+    <div class="col-xs-8">
+        <div style="height: 650px;">
+            <div id="strategyListTb" class="datagrid-toolbar">
+                <input type="hidden" id="subCourseId" name="subCourseId" data-bind="value:subCourseId">
+                <div style="height: 35px;">
+                    <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
+                        <tr>
+                            <td align="center" width="20%">
+                                <span class="filedzt">课程名称:</span>
+                            </td>
+                            <td class="value">
+                                <input type="text" name="subCourseName" id="subCourseName"
+                                       data-bind="value:subCourseName" style="height: 30px;"
+                                       readonly="readonly" class="inputxt" placeholder="请选择课程">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="height:35px;" class="datagrid-toolbar">
+                    <span style="float:left;">
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                           onclick="addStrategy('新增题型','../pages/combination/strategy/addStrategy.html',600,400);">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-add l-btn-icon-left">新增题型&nbsp;</span>
+                             </span>
+                        </a>
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                           onclick="updateStrategy('编辑题型','../pages/combination/strategy/updateStrategy.html',600,400)">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-edit l-btn-icon-left">编辑题型&nbsp;</span>
+                             </span>
+                        </a>
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
+                           onclick="deleteALLSelect('删除题型',GLOBAL_CONSTANT_URL +'admin/strategyController.do?doDelItem','strategyList');">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-remove l-btn-icon-left">删除题型&nbsp;</span>
+                             </span>
+                        </a>
+                    </span>
+                    <span style="float:right;">
+                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                            onclick="updateStrategyTime('设置时间','../pages/combination/strategy/updateStrategyTime.html',600,400);">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-edit l-btn-icon-left">设置时间&nbsp;</span>
+                             </span>
+                        </a>
+                    </span>
+                </div>
+                <div style="height: 35px;">
+                    <table cellpadding="" cellspacing="2">
+                        <tr>
+                            <td>
+                                <span class="filedzt">试卷总分值:</span>
+                                <input type="text" name="totalPoint" data-bind="value:totalPoint">
+                            </td>
+                            <td>
+                                <span class="filedzt">做题时间(分钟):</span>
+                                <input type="text" name="totalTime" data-bind="value:totalTime">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <table id="strategyList">
+
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        ko.applyBindings(viewModel);
+        $('#courseList').treegrid({
+            title: '课程信息',
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?mainCourseTreeGrid&type=0",
+            idField: 'id',
+            collapsible: false,      //是否可折叠
+            rownumbers: true,        //行号
+            pagination: false,        //分页控件
+            method: 'post',          //请求方式
+            treeField: 'name',       //定义树节点的字段
+            fit: true,               //网格自动撑满
+            fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            onLoadSuccess: function (row, data) {
+                if (data.success !== undefined && data.success !== "" && data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
+            columns: [[
+                {field: 'name', title: '课程分类', width: 100}
+            ]],
+            onSelect: function (node) {
+                if (node.leaf) {
+                    viewModel.subCourseId(node.id);
+                    viewModel.subCourseName(node.name);
+                    reloadTable();
+                }
+            },
+            onBeforeSelect: function (node) {
+                return node.leaf;
+            }
+        });
+
+        $("#strategyList").datagrid({
+            idField: 'id',
+            title: '试卷题型组合',
+            cache: false,
+            url: GLOBAL_CONSTANT_URL + "admin/strategyController.do?dataGrid",
+            toolbar: "#strategyListTb",
+            singleSelect: true,
+            emptyMsg: "暂未设置组卷策略",
+            fit: true,
+            fitColumns: true,
+            frozenColumns: [[{
+                field: 'ck',
+                checkbox: 'true'
+            }]],
+            columns: [[
+                {field: 'id', title: '主键', sortable: true, hidden: true},
+                {
+                    field: 'examType',
+                    title: '题目类型',
+                    sortable: true,
+                    formatter: function (value, rec, index) {
+                        if (value == '1') {
+                            return '单选题';
+                        } else if (value == '2') {
+                            return '多选题';
+                        } else if (value == '3') {
+                            return '不定项选择题';
+                        } else if (value == '4') {
+                            return '判断题';
+                        } else if (value == '5') {
+                            return '分录题(数字)';
+                        } else if (value == '6') {
+                            return '分录题(固定)';
+                        } else if (value == '7') {
+                            return '简答题';
+                        } else if (value == '8') {
+                            return '综合题';
+                        } else if (value == '9') {
+                            return '计算题';
+                        } else if (value == '10') {
+                            return '案例分析题';
+                        } else if (value == '11') {
+                            return '补全短文';
+                        } else if (value == '12') {
+                            return '概括大意与完成句子';
+                        } else if (value == '13') {
+                            return '完型填空';
+                        } else if (value == '14') {
+                            return '阅读理解';
+                        } else if (value == '15') {
+                            return '阅读判断';
+                        } else if (value == '16') {
+                            return '作文题';
+                        } else if (value == '17') {
+                            return '英译中';
+                        } else if (value == '18') {
+                            return '交际英语';
+                        } else if (value == '19') {
+                            return '词汇与结构';
+                        } else if (value == '20') {
+                            return '组合单选题';
+                        } else if (value == '21') {
+                            return '中级计算题';
+                        } else if (value == '22') {
+                            return '中级简答题';
+                        } else if (value == '23') {
+                            return '填空题';
+                        } else if (value == '24') {
+                            return '活动设计题';
+                        } else if (value == '25') {
+                            return '论述题';
+                        } else if (value == '26') {
+                            return '教学设计题';
+                        } else if (value == '27') {
+                            return '材料分析题';
+                        }
+                        return "未知题型";
+                    }
+                },
+                {
+                    field: 'point',
+                    title: '单题分值'
+                },
+                {
+                    field: 'examNo',
+                    title: '题目个数'
+                }
+            ]],
+        });
+    });
+
+    var viewModel = {
+        subCourseId: ko.observable(),
+        totalPoint: ko.observable(),
+        totalTime: ko.observable(),
+        subCourseName: ko.observable()
+    };
+
+    function reloadTable() {
+        var subCourseId = $("#subCourseId").val();
+        subCourseId = subCourseId.substring(1, subCourseId.length);
+        $('#strategyList').datagrid('clearSelections');
+        $('#strategyList').datagrid('reload', {
+            "subCourseId": subCourseId
+        });
+        //加载信息
+        loadMainInfo();
+    }
+
+    function loadMainInfo() {
+        var subCourseId = $("#subCourseId").val();
+        subCourseId = subCourseId.substring(1, subCourseId.length);
+        $.ajax({
+            type: "post",
+            url: GLOBAL_CONSTANT_URL + "admin/strategyController.do?doGetMain",
+            async: true,
+            data: {subCourseId: subCourseId},
+            success: function (res) {
+                if (res.success === "success") {
+                    viewModel.totalPoint(res.content.totalPoint);
+                    viewModel.totalTime(res.content.totalTime);
+                } else if (res.success === "fail") {
+                    win.toastr.warning(res.msg);
+                } else if (res.success === "login") {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
+            error: function () {
+                win.toastr.error("服务器异常，请联系维护人员！");
+            },
+            complete: function (XMLHttpRequest, textStatus) {
+                if (status == 'timeout') {//超时,status还有success,error等值的情况
+                    win.toastr.error("获取信息超时,请检查网络问题！");
+                }
+            }
+        }, 'json');
+    }
+
+    //新增策略
+    function addStrategy(title, url, gname, width, height) {
+        var subCourseId = $("#subCourseId").val();
+        if (subCourseId === undefined || subCourseId === "" || subCourseId === null) {
+            tip('请先选择课程！');
+            return;
+        }
+        url += '?subCourseId=' + subCourseId
+        add(title, url, gname, width, height);
+    }
+
+    function updateStrategy(title, url, width, height) {
+        var rowsData = $('#strategyList').treegrid('getSelections');
+        if (!rowsData || rowsData.length == 0) {
+            tip('请选择题型进行编辑！');
+            return;
+        }
+        if (rowsData.length > 1) {
+            tip('请选择一种题型，再进行编辑！');
+            return;
+        }
+        url += '?id=' + rowsData[0].id
+        createwindow(title, url, width, height);
+    }
+
+    function updateStrategyTime(title, url, width, height) {
+        var subCourseId = $("#subCourseId").val();
+        if (subCourseId === undefined || subCourseId === "" || subCourseId === null) {
+            tip('请先选择课程！');
+            return;
+        }
+        url += '?subCourseId=' + subCourseId
+        createwindow(title, url, width, height);
+    }
+
+
+</script>

@@ -161,6 +161,12 @@
                                  <span class="l-btn-text icon-remove l-btn-icon-left">删除题目&nbsp;</span>
                              </span>
                         </a>
+                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                            onclick="deleteALLByCourseIdAndModuleId(GLOBAL_CONSTANT_URL +'admin/exerciseController.do?doDelAll','chapterExerciseList')">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-remove l-btn-icon-left">全部删除&nbsp;</span>
+                             </span>
+                        </a>
                          <a href="#" id="icon-putout" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
                             onclick="downLoadXlsByT();">
                              <span class="l-btn-left" style="">
@@ -194,7 +200,6 @@
         subCourseName: ko.observable("请选择课程")
     };
     ko.applyBindings(viewModel);
-
     $(function () {
         courseSearch();
         $('#chapterList').treegrid({
@@ -236,6 +241,7 @@
             toolbar: "#chapterExerciseListtb",
             pagination: true,
             pageSize: 10,
+            singleSelect: true,
             pageList: [10, 20, 30, 50, 100, 200],
             rownumbers: true,
             emptyMsg: "无查询结果！",
@@ -266,14 +272,14 @@
                     field: 'title',
                     title: '题干',
                     formatter: function (value, row, index) {
-                        return '<input type="text" style="border:none;width=400px;padding:0px;background:none;"  size="50" readonly="readonly" value="' + value + '"/>';
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
                     }
                 },
                 {
                     field: 'content',
                     title: '内容',
                     formatter: function (value, row, index) {
-                        return '<input type="text" style="border:none;background:none;" size="50" readonly="readonly" value="' + value + '"/>';
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
                     }
                 },
                 {
@@ -343,14 +349,14 @@
                     field: 'answer',
                     title: '答案',
                     formatter: function (value, row, index) {
-                        return '<input type="text" style="border:none;background:none;" readonly="readonly" size="50" value="' + value + '"/>';
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
                     }
                 },
                 {
                     field: 'answerKey',
                     title: '答案解析',
                     formatter: function (value, row, index) {
-                        return '<input type="text" style="border:none;background:none;" readonly="readonly" size="50" value="' + value + '"/>';
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
                     }
                 },
                 {
@@ -386,7 +392,41 @@
             "chapterId": chapterId,
             "examType": type
         });
+    }
 
+    function deleteALLByCourseIdAndModuleId(url, gname) {
+        var subCourseId = $("#sid").val();
+        if (subCourseId === undefined || subCourseId === '' || subCourseId.length <= 0) {
+            tip("请先选择课程！");
+        } else {
+            $.dialog.setting.zIndex = getzIndex(true);
+            $.dialog.confirm('你确定删除全部题目吗?', function (r) {
+                subCourseId = subCourseId.substring(1, subCourseId.length);
+                if (r) {
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        data: {
+                            subCourseId: subCourseId, moduleType: 4
+                        },
+                        cache: false,
+                        success: function (data) {
+                            if (data.success == "success") {
+                                toastr.success(data.msg);
+                            } else if (data.success == "fail") {
+                                toastr.error(data.msg);
+                            } else if (data.success == "login") {
+                                window.parent.location.href = '../../../login/login.html';
+                            } else {
+                                toastr.error(data.responseText + "");
+                            }
+                            $("#" + gname).datagrid('unselectAll');
+                            reloadTable();
+                        }
+                    });
+                }
+            });
+        }
     }
 
     function chapterReloadTable(subCourseId, subCourseName, moduleType) {
