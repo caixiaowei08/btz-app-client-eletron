@@ -43,7 +43,8 @@
                 <span class="filedzt">课程名称:</span>
             </td>
             <td class="value">
-                <input type="text" name="subCourseName" style="height: 30px;"  readonly="readonly" data-bind="value:subCourseName" class="inputxt" >
+                <input type="text" name="subCourseName" style="height: 30px;" readonly="readonly"
+                       data-bind="value:subCourseName" class="inputxt">
             </td>
         </tr>
         <tr>
@@ -51,19 +52,21 @@
                 <span class="filedzt">视频层级:</span>
             </td>
             <td class="value">
-                <input type="text" name="chapterName" style="height: 30px;" class="inputxt" placeholder="年份-》班次-》视频章节" datatype="*" errormsg="请输入视频层级名称！"
+                <input type="text" name="chapterName" style="height: 30px;" class="inputxt" placeholder="年份-》班次-》视频章节"
+                       datatype="*" errormsg="请输入视频层级名称！"
                        nullmsg="请输入视频层级名称！">
                 <span class="Validform_checktip">年份-》班次-》视频章节</span>
             </td>
         </tr>
         <tr>
             <td align="center">
-                <span class="filedzt">显示顺序:</span></td>
+                <span class="filedzt">显示顺序:</span>
+            </td>
             <td class="value">
-                <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100"
-                       datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;" class="inputxt"
-                       errormsg="请输入1-100的数字！" nullmsg="请输入视频层级显示顺序（非常重要）">
-                <span class="Validform_checktip">请输入1-100的数字！</span>
+                <input type="number" data-bind="value:orderNo" name="orderNo" id="orderNo" min="1"
+                       datatype="/^\+?[1-9]\d*$/" style="height: 30px;" class="inputxt"
+                       errormsg="请输入大于0的数字！" nullmsg="请输入大于0的数字！">
+                <span class="Validform_checktip">请输入大于0的数字！</span>
             </td>
         </tr>
         </tbody>
@@ -106,27 +109,32 @@
             subCourseId: ko.observable(),
             subCourseName: ko.observable(),
             id: ko.observable(),
-            level: ko.observable()
+            level: ko.observable(),
+            orderNo: ko.observable()
         };
         ko.applyBindings(viewModel);
         function loadData() {
             var str = window.document.location.href;
             var start_subCourseId = str.indexOf("subCourseId=");
             var end_subCourseId = str.indexOf("&subCourseName");
-            var subCourseId = str.substring(start_subCourseId+13,end_subCourseId);
+            var subCourseId = str.substring(start_subCourseId + 13, end_subCourseId);
             var start_subCourseName = str.indexOf("subCourseName=");
             var end_subCourseName = str.indexOf("&id=");
-            var subCourseName = str.substring(start_subCourseName+14,end_subCourseName);
+            var subCourseName = str.substring(start_subCourseName + 14, end_subCourseName);
             var start_id = str.indexOf("id=");
             var end_id = str.indexOf("&level=");
-            var id = str.substring(start_id+4,end_id);
+            var id = str.substring(start_id + 4, end_id);
             var start_level = str.indexOf("level=");
-            var end_level = str.indexOf("&_=");
-            var level = str.substring(start_level+6,end_level);
+            var end_level = str.indexOf("&orderNo=");
+            var level = str.substring(start_level + 6, end_level);
+            var start_orderNo = str.indexOf("orderNo=");
+            var end_orderNo = str.indexOf("&_=");
+            var orderNo = str.substring(start_orderNo + 8, end_orderNo);
             viewModel.subCourseId(subCourseId);
-            viewModel.subCourseName( decodeURI(subCourseName));
+            viewModel.subCourseName(decodeURI(subCourseName));
             viewModel.id(id);
             viewModel.level(level);
+            viewModel.orderNo(orderNo);
         }
     </script>
 </form>

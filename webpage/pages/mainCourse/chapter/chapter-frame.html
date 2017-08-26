@@ -180,7 +180,6 @@
     function newChapter(title, url, width, height) {
         var subCourseId = $("#subCourseId").val();
         var rowsData = $('#chapterList').treegrid('getSelections');
-        console.log(rowsData);
         if (!rowsData || rowsData.length == 0) {
             tip('请选择新增章节的父级章节！');
             return;

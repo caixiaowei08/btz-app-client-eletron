@@ -51,7 +51,7 @@
                     <div style="height:35px;" class="datagrid-toolbar">
                         <span style="float:left;">
                             <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                               onclick="add('新增课程大类','../pages/mainCourse/addMainCourse.html','mainCourseList',600,350);">
+                               onclick="newMainCourse('新增课程大类','../pages/mainCourse/addMainCourse.html',600,350);">
                                  <span class="l-btn-left" style="">
                                      <span class="l-btn-text icon-add l-btn-icon-left">新增&nbsp;</span>
                                  </span>
@@ -106,7 +106,7 @@
                     <div style="height:35px;" class="datagrid-toolbar">
                             <span style="float:left;">
                                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                                   onclick="addUpdate('新增课程','../pages/mainCourse/addSubCourse.html','mainCourseList',600,350);">
+                                   onclick="addSubCourse('新增课程','../pages/mainCourse/addSubCourse.html',600,350);">
                                      <span class="l-btn-left" style="">
                                          <span class="l-btn-text icon-add l-btn-icon-left">新增&nbsp;</span>
                                      </span>
@@ -148,8 +148,8 @@
             toolbar: "#mainCourseListtb",
             pagination: true,
             pageSize: 10,
-            sortName:"orderNo",
-            sortOrder:"asc",
+            sortName: "orderNo",
+            sortOrder: "asc",
             pageList: [10, 20, 30, 50, 100],
             rownumbers: true,
             emptyMsg: "无查询结果！",
@@ -292,4 +292,44 @@
         } catch (ex) {
         }
     }
+
+    function newMainCourse(title, url, width, height) {
+        var rows = $('#mainCourseList').datagrid("getRows");
+        var orderNo = 1;
+        if (rows === undefined || rows.length < 1) {
+            orderNo = 1;
+        } else {
+            orderNo = rows[rows.length - 1].orderNo + 1;
+        }
+        url += '?orderNo=' + orderNo;
+        createwindow(title, url, width, height);
+    }
+
+    function addSubCourse(title, url, width, height) {
+        var rows = $('#subCourseList').datagrid("getRows");
+        var rowsData = $('#mainCourseList').datagrid('getSelections');
+        if (!rowsData || rowsData.length == 0) {
+            tip('请选择主课程！');
+            return;
+        }
+        if (rowsData.length > 1) {
+            tip('不能选中多个主课程！');
+            return;
+        }
+
+        console.log(rows);
+        var orderNo = 1;
+        if (rows === undefined || rows.length < 1) {
+            orderNo = 1;
+        } else {
+            orderNo = rows[rows.length - 1].orderNo + 1;
+        }
+
+        console.log(rowsData);
+        console.log(orderNo);
+        url += '?id=' + rowsData[0].id + '&orderNo=' + orderNo;
+        createwindow(title, url, width, height);
+    }
+
+
 </script>

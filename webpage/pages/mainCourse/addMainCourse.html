@@ -46,12 +46,13 @@
         </tr>
         <tr>
             <td align="center">
-                <span class="filedzt">显示顺序:</span></td>
+                <span class="filedzt">显示顺序:</span>
+            </td>
             <td class="value">
-                <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100"
-                       datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;" class="inputxt"
-                       errormsg="请输入1-100的数字！" nullmsg="请输入1-100的数字！">
-                <span class="Validform_checktip">请输入1-100的数字！</span>
+                <input type="number" data-bind="value:orderNo" name="orderNo" id="orderNo" min="1"
+                       datatype="/^\+?[1-9]\d*$/" style="height: 30px;" class="inputxt"
+                       errormsg="请输入大于0的数字！" nullmsg="请输入大于0的数字！">
+                <span class="Validform_checktip">请输入大于0的数字！</span>
             </td>
         </tr>
         <tr>
@@ -75,12 +76,13 @@
     <script type="text/javascript" src="../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
     <script type="text/javascript" src="../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
     <script type="text/javascript" src="../../plug_in/Validform/js/datatype_zh-cn.js"></script>
-    <script type="text/javascript"
-            src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript" src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
     <script src="../../plug_in/layer/layer.js"></script>
+    <script type="text/javascript" src="../../plug_in/knockout/knockout.js"></script>
     <script src="../../../system/GlobalConstant.js"></script>
     <script type="text/javascript">
         $(function () {
+            loadData();
             $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/mainCourseController.do?doAdd");
             $("#formobj").Validform({
                 tiptype: 4,
@@ -101,6 +103,19 @@
                 }
             });
         });
+
+        var viewModel = {
+            orderNo: ko.observable()
+        };
+        ko.applyBindings(viewModel);
+        function loadData() {
+            var str = window.document.location.href;
+            var start_orderNo = str.indexOf("orderNo=");
+            var end_orderNo = str.indexOf("&_=");
+            var orderNo = str.substring(start_orderNo + 8, end_orderNo);
+            viewModel.orderNo(orderNo);
+        }
+
     </script>
 </form>
 </body>
