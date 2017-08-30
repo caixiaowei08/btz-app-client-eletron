@@ -2,7 +2,7 @@
 <html class="panel-fit">
 <head>
     <meta charset="UTF-8">
-    <title>用户账户信息表</title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metro/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/icon.css">
     <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/main.css">
@@ -14,51 +14,52 @@
     <script type="text/javascript" src="../../plug_in/jquery-easy-ui/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
     <script type="text/javascript" src="../../plug_in/tools/curdtools_zh-cn.js"></script>
-    <link rel="stylesheet" href="../../plug_in/toastr/toastr.css" />
+    <link rel="stylesheet" href="../../plug_in/toastr/toastr.css"/>
     <script type="text/javascript" src="../../plug_in/toastr/toastr.min.js"></script>
     <script type="text/javascript" src="../../plug_in/lhgDialog/lhgdialog.min.js"></script>
     <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
 </head>
 <body>
 <div style="height: 650px;">
-    <div id="userListtb"  class="datagrid-toolbar">
+    <div id="userListtb" class="datagrid-toolbar">
         <div name="searchColums" id="searchColums">
-            <form >
+            <form>
                 <div style="height: 2px;"></div>
-                    <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
-                          title="状态">处理状态：</span>
-                    <select name="status" width="100" style="width: 104px">
-                                <option value="">
-                                    ---请选择---
-                                </option>
-                                <option value="1">
-                                    未处理
-                                </option>
-                                <option value="2">
-                                    已处理
-                                </option>
-                                <option value="3">
-                                    反馈有误
-                                </option>
-                    </select>
+                <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
+                      title="状态">处理状态：</span>
+                <select name="status" width="100" style="width: 104px">
+                    <option value="">
+                        ---请选择---
+                    </option>
+                    <option value="1">
+                        未回复
+                    </option>
+                    <option value="2">
+                        已回复
+                    </option>
+                </select>
+                <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; " title="">处理状态：</span>
+
             </form>
         </div>
         <div style="height: 2px;"></div>
         <div style="height:35px;" class="datagrid-toolbar">
             <span style="float:left;">
-                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="pass('处理完成',GLOBAL_CONSTANT_URL +'admin/feedbackController.do?doPass','userList')">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                   onclick="feedback('回复反馈','../pages/feedback/updateFeedBack.html','userList',600,350)">
                      <span class="l-btn-left" style="">
-                         <span class="l-btn-text icon-edit l-btn-icon-left">处理完成&nbsp;</span>
+                         <span class="l-btn-text icon-edit l-btn-icon-left">回复反馈&nbsp;</span>
                      </span>
                 </a>
-                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="reject('反馈有误',GLOBAL_CONSTANT_URL +'admin/feedbackController.do?doReject','userList')">
+                  <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                     onclick="deleteALLSelect('删除问题反馈',GLOBAL_CONSTANT_URL +'admin/feedbackController.do?doDel','userList')">
                      <span class="l-btn-left" style="">
-                         <span class="l-btn-text icon-edit l-btn-icon-left">反馈有误&nbsp;</span>
+                         <span class="l-btn-text icon-remove l-btn-icon-left">删除问题反馈&nbsp;</span>
                      </span>
-                </a>
+                  </a>
             </span>
             <span style="float:right;">
-                <a href="#" class="l-btn" iconcls="icon-search" onclick="ListSearch()">
+                <a href="#" class="l-btn" iconcls="icon-search" onclick="listSearch()">
                          <span class="l-btn-left" style="">
                               <span class="l-btn-text icon-search l-btn-icon-left">查询&nbsp;</span>
                          </span>
@@ -76,48 +77,53 @@
 </body>
 </html>
 <script>
-    $(function() {
+    $(function () {
         $("#userList").datagrid({
             idField: 'id',
             title: '用户信息表',
-            url:GLOBAL_CONSTANT_URL+"admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,answer,userName,status,dealTime,createTime,updateTime",
             toolbar: "#userListtb",
             pagination: true,
-            pageList: [10,20,30,50,100],
+            sortName: 'status',
+            sortOrder: 'asc',
+            pageList: [10, 20, 30, 50, 100],
+            emptyMsg: "暂无反馈记录！",
             rownumbers: true,
-            emptyMsg:"暂无反馈记录！",
             singleSelect: true,
-            fit : true,
-            fitColumns:true,
+            onLoadSuccess: function (data) {
+                if (data.success === 'login') {
+                    window.parent.location.href = '../../login/login.html';
+                }
+            },
+            fit: true,
+            fitColumns: true,
             frozenColumns: [[{
                 field: 'ck',
                 checkbox: 'true'
             }]],
-            columns:[[
-                {field:'id', title:'主键',sortable:true,hidden: true},
-                {field:'resume',sortable:true,title:'题目简述'},
-                {field:'content',sortable:true,title:'反馈内容'},
-                {field:'userName',sortable:true,title:'反馈用户'},
+            columns: [[
+                {field: 'id', title: '主键', sortable: true, hidden: true},
+                {field: 'content', sortable: true, title: '反馈问题'},
+                {field: 'answer', sortable: true, title: '回复问题'},
+                {field: 'resume', sortable: true, title: '题目简述'},
+                {field: 'userName', sortable: true, title: '反馈用户'},
                 {
-                    field:'status',
-                    title:'状态',
+                    field: 'status',
+                    title: '状态',
                     sortable: true,
-                    formatter: function(value, rec, index){
+                    formatter: function (value, rec, index) {
                         if (value == '1') {
-                            return '未处理';
+                            return '未回复';
                         }
                         if (value == '2') {
-                            return '已处理';
+                            return '已回复';
                         }
-                        if (value == '3') {
-                            return '反馈有误';
-                        }
-                        return "其他";
+                        return "";
                     }
                 },
-                {field:'dealTime',title:'处理时间'},
-                {field:'updateTime',title:'更新时间'},
-                {field:'createTime',title:'创建时间'}
+                {field: 'dealTime', title: '处理时间'},
+                {field: 'updateTime', title: '更新时间'},
+                {field: 'createTime', title: '创建时间'}
             ]],
         });
     });
@@ -125,13 +131,13 @@
     /**
      * 查询
      */
-    function ListSearch() {
+    function listSearch() {
         var queryParams = $('#userList').datagrid('options').queryParams;
-        $('#userListtb').find('*').each(function() {
+        $('#userListtb').find('*').each(function () {
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#userList').datagrid({
-            url: GLOBAL_CONSTANT_URL+"admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
             pageNumber: 1
         });
     }
@@ -139,11 +145,11 @@
     function searchReset() {
         $("#userListtb").find(":input").val("");
         var queryParams = $('#userList').datagrid('options').queryParams;
-        $('#userListtb').find('*').each(function() {
+        $('#userListtb').find('*').each(function () {
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#userList').datagrid({
-            url:  GLOBAL_CONSTANT_URL+"admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
             pageNumber: 1
         });
     }
@@ -151,7 +157,8 @@
     function reloadTable() {
         try {
             $('#userList').datagrid('reload');
-        } catch(ex) {}
+        } catch (ex) {
+        }
     }
 
     function pass(title, url, gname) {
@@ -236,4 +243,21 @@
             tip("请选择需要处理的反馈！");
         }
     }
+
+    function feedback(title, url, id, width, height) {
+        gridname = id;
+        var rowsData = $('#' + id).datagrid('getSelections');
+        if (!rowsData || rowsData.length == 0) {
+            tip('请选择回复的问题！');
+            return;
+        }
+        if (rowsData.length > 1) {
+            tip('请选择一条记录再回复！');
+            return;
+        }
+        url += '?id=' + rowsData[0].id;
+        createwindow(title, url, width, height);
+    }
+
+
 </script>

@@ -41,6 +41,11 @@
                         审核驳回
                     </option>
                 </select>
+                <span style="display:-moz-inline-box;display:inline-block;">
+                    <span style="display:-moz-inline-box;display:inline-block;">
+                    <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "title="关键词:">关键词: </span>
+                    <input type="text" name="notes" style="width: 120px" class="inuptxt">
+                </span>
             </form>
         </div>
         <div style="height: 2px;"></div>
@@ -56,6 +61,12 @@
                    onclick="reject('审核驳回',GLOBAL_CONSTANT_URL +'admin/notesController.do?doReject','adminList')">
                      <span class="l-btn-left" style="">
                          <span class="l-btn-text icon-edit l-btn-icon-left">审核驳回&nbsp;</span>
+                     </span>
+                </a>
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                   onclick="deleteALLSelect('删除笔记',GLOBAL_CONSTANT_URL +'admin/notesController.do?doDel','adminList')">
+                     <span class="l-btn-left" style="">
+                         <span class="l-btn-text icon-edit l-btn-icon-left">删除笔记&nbsp;</span>
                      </span>
                 </a>
             </span>
@@ -85,10 +96,10 @@
             url: GLOBAL_CONSTANT_URL + "admin/notesController.do?dataGrid&field=id,notes,status,checkTime,updateTime,createTime,",
             toolbar: "#adminListtb",
             pagination: true,
-            pageList: [10, 20, 30],
+            pageList: [10, 20, 30,50,100],
             rownumbers: true,
+            singleSelect: true,
             emptyMsg: "暂无笔记记录",
-            singleSelect: false,
             onLoadSuccess: function (data) {
                 if (data.success === 'login') {
                     window.parent.location.href = '../../login/login.html';
