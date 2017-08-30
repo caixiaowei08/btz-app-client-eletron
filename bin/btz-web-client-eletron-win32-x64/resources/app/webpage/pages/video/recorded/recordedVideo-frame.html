@@ -96,21 +96,22 @@
             title: '视频层级分类',
             idField: 'id',
             url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?chapterTreeGrid",
+            toolbar: "#chapterListtb",
             collapsible: false,      //是否可折叠
+            singleSelect: true,
             rownumbers: true,        //行号
             pagination: false,        //分页控件
             method: 'post',          //请求方式
             treeField: 'name',       //定义树节点的字段
             fit: true,               //网格自动撑满
             fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
-            toolbar: "#chapterListtb",
             columns: [[
                 {field: 'name', title: '视频归类列表'},
                 {field: 'orderNo', title: '显示顺序'},
                 {field: 'level', title: '章节层级', hidden: true}
             ]],
             onBeforeSelect: function (node) {
-                return node.leaf || node.level === 'S';
+                return node.level === 'C' || node.level === 'S';
             },
             onSelect: function (row) {
                 reloadDate();
@@ -124,6 +125,7 @@
             url: GLOBAL_CONSTANT_URL + "admin/courseRecordedVideoController.do?dataGrid&field=id,subCourseId,chapterId,moduleId,moduleType,title,videoUrl,lectureUrl,orderNo,updateTime,createTime,",
             toolbar: "#chapterExerciseListtb",
             pagination: true,
+            singleSelect: true,
             pageSize: 20,
             pageList: [10, 20, 30, 50, 100, 200],
             rownumbers: true,

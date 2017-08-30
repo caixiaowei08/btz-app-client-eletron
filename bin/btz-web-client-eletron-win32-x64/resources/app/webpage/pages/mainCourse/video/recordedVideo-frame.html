@@ -48,32 +48,31 @@
                     </table>
                 </div>
                 <div style="height:35px;" class="datagrid-toolbar">
-                            <span style="float:left;">
-                                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                                   onclick="newChapter('新增视频章节','../pages/mainCourse/video/addRecordedVideo.html',600,350);">
-                                     <span class="l-btn-left" style="">
-                                         <span class="l-btn-text icon-add l-btn-icon-left">新增&nbsp;</span>
-                                     </span>
-                                </a>
-                                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                                   onclick="updateChapter('编辑视频章节','../pages/mainCourse/video/updateRecordedVideo.html',600,350)">
-                                     <span class="l-btn-left" style="">
-                                         <span class="l-btn-text icon-edit l-btn-icon-left">编辑&nbsp;</span>
-                                     </span>
-                                </a>
-                                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
-                                   onclick="deleteChapter('删除视频章节',GLOBAL_CONSTANT_URL +'admin/chapterController.do?doDel');">
-                                     <span class="l-btn-left" style="">
-                                         <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
-                                     </span>
-                                </a>
-                            </span>
+                        <span style="float:left;">
+                            <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                               onclick="newChapter('新增视频章节','../pages/mainCourse/video/addRecordedVideo.html',600,350);">
+                                 <span class="l-btn-left" style="">
+                                     <span class="l-btn-text icon-add l-btn-icon-left">新增&nbsp;</span>
+                                 </span>
+                            </a>
+                            <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                               onclick="updateChapter('编辑视频章节','../pages/mainCourse/video/updateRecordedVideo.html',600,350)">
+                                 <span class="l-btn-left" style="">
+                                     <span class="l-btn-text icon-edit l-btn-icon-left">编辑&nbsp;</span>
+                                 </span>
+                            </a>
+                            <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-remove"
+                               onclick="deleteChapter('删除视频章节',GLOBAL_CONSTANT_URL +'admin/chapterController.do?doDel');">
+                                 <span class="l-btn-left" style="">
+                                     <span class="l-btn-text icon-remove l-btn-icon-left">删除&nbsp;</span>
+                                 </span>
+                            </a>
+                        </span>
                 </div>
             </div>
             <table id="chapterList"></table>
         </div>
     </div>
-
 </div>
 </body>
 </html>
@@ -187,11 +186,20 @@
             return;
         }
         if (rowsData[0].level === "C") {
-            console.log(rowsData[0].level);
             tip('视频层级只能到章节，不能继续添加！');
             return
         }
-        url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level;
+
+        var children = rowsData[0].children;
+        var orderNo = 1;
+        if (children === undefined) {
+            orderNo = 1;
+        } else {
+            orderNo = children[children.length - 1].orderNo + 1;
+        }
+
+
+        url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level + '&orderNo=' + orderNo;
         createwindow(title, url, width, height);
     }
 

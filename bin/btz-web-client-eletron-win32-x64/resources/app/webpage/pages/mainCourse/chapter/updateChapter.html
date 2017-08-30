@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>修改课程信息</title>
+    <title></title>
     <script type="text/javascript" src="../../../plug_in/mutiLang/zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="../../../plug_in/jquery/jquery.cookie.js"></script>
@@ -115,7 +115,7 @@
                             viewModel.orderNo(res.content.orderNo);
                         }else if(res.success === "fail"){
                             win.toastr.warning(res.msg);
-                        } else if (data.success === "login") {
+                        } else if (res.success === "login") {
                             window.parent.location.href = '../../../login/login.html';
                         }
                     },

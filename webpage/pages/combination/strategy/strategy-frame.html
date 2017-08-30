@@ -255,17 +255,17 @@
                     viewModel.totalPoint(res.content.totalPoint);
                     viewModel.totalTime(res.content.totalTime);
                 } else if (res.success === "fail") {
-                    win.toastr.warning(res.msg);
+                    toastr.warning(res.msg);
                 } else if (res.success === "login") {
                     window.parent.location.href = '../../../login/login.html';
                 }
             },
             error: function () {
-                win.toastr.error("服务器异常，请联系维护人员！");
+                toastr.error("服务器异常，请联系维护人员！");
             },
             complete: function (XMLHttpRequest, textStatus) {
                 if (status == 'timeout') {//超时,status还有success,error等值的情况
-                    win.toastr.error("获取信息超时,请检查网络问题！");
+                    toastr.error("获取信息超时,请检查网络问题！");
                 }
             }
         }, 'json');
