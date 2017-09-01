@@ -38,15 +38,13 @@
                         已回复
                     </option>
                 </select>
-                <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; " title="">处理状态：</span>
-
             </form>
         </div>
         <div style="height: 2px;"></div>
         <div style="height:35px;" class="datagrid-toolbar">
             <span style="float:left;">
                 <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                   onclick="feedback('回复反馈','../pages/feedback/updateFeedBack.html','userList',600,350)">
+                   onclick="feedback('回复反馈','../pages/feedback/updateFeedBack.html','userList',600,800)">
                      <span class="l-btn-left" style="">
                          <span class="l-btn-text icon-edit l-btn-icon-left">回复反馈&nbsp;</span>
                      </span>
@@ -80,7 +78,7 @@
     $(function () {
         $("#userList").datagrid({
             idField: 'id',
-            title: '用户信息表',
+            title: '反馈信息表',
             url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,answer,userName,status,dealTime,createTime,updateTime",
             toolbar: "#userListtb",
             pagination: true,
@@ -137,7 +135,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#userList').datagrid({
-            url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,answer,userName,status,dealTime,createTime,updateTime",
             pageNumber: 1
         });
     }
@@ -149,7 +147,7 @@
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#userList').datagrid({
-            url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,answer,userName,status,dealTime,createTime,updateTime",
             pageNumber: 1
         });
     }

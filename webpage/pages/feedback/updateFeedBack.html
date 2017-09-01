@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>修改课程信息</title>
+    <title></title>
     <link rel="stylesheet" href="../../plug_in/easyui/themes/metrole/easyui.css" type="text/css">
     <link rel="stylesheet" href="../../plug_in/easyui/themes/metrole/main.css" type="text/css">
     <link rel="stylesheet" href="../../plug_in/easyui/themes/metrole/icon.css" type="text/css">
@@ -32,14 +32,13 @@
     <script type="text/javascript" src="../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
     <script type="text/javascript" src="../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
     <script type="text/javascript" src="../../plug_in/Validform/js/datatype_zh-cn.js"></script>
-    <script type="text/javascript"
-            src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript" src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
     <script type="text/javascript" src="../../plug_in/knockout/knockout.js"></script>
     <script type="text/javascript" src="../../plug_in/layer/layer.js"></script>
     <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
 </head>
 
-<body style="overflow-y: hidden" scroll="no">
+<body style="overflow-y: hidden">
 <form id="formobj" action="" name="formobj" method="post">
     <input type="hidden" id="btn_sub" class="btn_sub">
     <input id="id" type="hidden" name="id" data-bind="value:id">
@@ -47,11 +46,134 @@
         <tbody>
         <tr>
             <td align="center" width="20%">
+                <span class="filedzt">题干:</span>
+            </td>
+            <td class="value">
+                <textarea name="title" data-bind="value:title_q" class="inputxt" style="height: 100px;width: 400px;" disabled="disabled" readonly="readonly"></textarea>
+
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">内容:</span></td>
+            <td class="value">
+                <textarea data-bind="value:content_q" class="inputxt" style="height: 100px;width: 400px;"
+                          rows="5" cols="50" disabled="disabled" readonly="readonly"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">题目类型:</span></td>
+            <td class="value">
+                <select  style="height: 30px;line-height: 30px;" data-bind="value:type_q" disabled="disabled">
+                    <option value="1">
+                        单选题
+                    </option>
+                    <option value="2">
+                        多选题
+                    </option>
+                    <option value="3">
+                        不定项选择题
+                    </option>
+                    <option value="4">
+                        判断题
+                    </option>
+                    <option value="5">
+                        分录题(数字)
+                    </option>
+                    <option value="6">
+                        分录题(固定)
+                    </option>
+                    <option value="7">
+                        简答题
+                    </option>
+                    <option value="8">
+                        综合题
+                    </option>
+                    <option value="9">
+                        计算题
+                    </option>
+                    <option value="10">
+                        案例分析题
+                    </option>
+                    <option value="11">
+                        补全短文
+                    </option>
+                    <option value="12">
+                        概括大意与完成句子
+                    </option>
+                    <option value="13">
+                        完型填空
+                    </option>
+                    <option value="14">
+                        阅读理解
+                    </option>
+                    <option value="15">
+                        阅读判断
+                    </option>
+                    <option value="16">
+                        作文题
+                    </option>
+                    <option value="17">
+                        英译中
+                    </option>
+                    <option value="18">
+                        交际英语
+                    </option>
+                    <option value="19">
+                        词汇与结构
+                    </option>
+                    <option value="20">
+                        组合单选题
+                    </option>
+                    <option value="21">
+                        中级计算题
+                    </option>
+                    <option value="22">
+                        中级简答题
+                    </option>
+                    <option value="23">
+                        填空题
+                    </option>
+                    <option value="24">
+                        活动设计题
+                    </option>
+                    <option value="25">
+                        论述题
+                    </option>
+                    <option value="26">
+                        教学设计题
+                    </option>
+                    <option value="27">
+                        材料分析题
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">答案:</span></td>
+            <td class="value">
+                <textarea data-bind="value:answer_q" class="inputxt" disabled="disabled" style="height: 100px;width: 400px;"
+                          rows="5" cols="50" readonly="readonly"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">答案解析:</span>
+            </td>
+            <td class="value">
+                <textarea data-bind="value:answerKey_q" class="inputxt"
+                          style="height: 100px;width: 400px;" rows="5" cols="50" disabled="disabled" readonly="readonly"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" width="20%">
                 <span class="filedzt">反馈问题:</span>
             </td>
             <td class="value">
                 <textarea class="inputxt" data-bind="value:content" style="height:100px;width: 400px;" rows="5"
-                          cols="50" readonly="readonly"></textarea>
+                          cols="50" disabled="disabled" readonly="readonly"></textarea>
             </td>
         </tr>
         <tr>
@@ -93,7 +215,13 @@
         var viewModel = {
             id: ko.observable(""),
             content: ko.observable(""),
-            answer: ko.observable("")
+            answer: ko.observable(""),
+            title_q: ko.observable(""),
+            type_q: ko.observable(""),
+            content_q: ko.observable(""),
+            answer_q: ko.observable(""),
+            answerKey_q: ko.observable(""),
+            orderNo_q: ko.observable("")
         };
         ko.applyBindings(viewModel);
         var win = frameElement.api.opener;
@@ -109,10 +237,15 @@
                     data: {id: val},
                     success: function (res) {
                         if (res.success === "success") {
-                            console.log(res);
-                            viewModel.id(res.content.id);
-                            viewModel.content(res.content.content);
-                            viewModel.answer(res.content.answer);
+                            viewModel.id(res.content.feedbackEntity.id);
+                            viewModel.content(res.content.feedbackEntity.content);
+                            viewModel.answer(res.content.feedbackEntity.answer);
+                            viewModel.title_q(res.content.exerciseEntity.title);
+                            viewModel.type_q(res.content.exerciseEntity.type);
+                            viewModel.content_q(res.content.exerciseEntity.content);
+                            viewModel.answer_q(res.content.exerciseEntity.answer);
+                            viewModel.answerKey_q(res.content.exerciseEntity.answerKey);
+                            viewModel.orderNo_q(res.content.exerciseEntity.orderNo);
                         } else if (res.success === "fail") {
                             win.toastr.warning(res.msg);
                         } else if (res.success === "login") {
