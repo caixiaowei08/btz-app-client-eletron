@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="../../plug_in/mutiLang/zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-plugs/storage/jquery.storageapi.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/dataformat.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../plug_in/easyui/themes/metrole/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/easyui/themes/metrole/main.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/easyui/themes/metrole/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/accordion/css/accordion.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/accordion/css/icons.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/toastr/toastr.css" >
+    <link rel="stylesheet" type="text/css" href="../../plug_in/layer/skin/layer.css">
+    <link rel="stylesheet" type="text/css" href="../../plug_in/tools/css/metrole/common.css" >
+    <link rel="stylesheet" type="text/css" href="../../plug_in/ace/css/font-awesome.css" >
+    <link rel="stylesheet" type="text/css" href="../../plug_in/Validform/css/metrole/style.css" >
+    <link rel="stylesheet" type="text/css" href="../../plug_in/Validform/css/metrole/tablefrom.css" >
+    <script type="text/javascript" src="../../plug_in/easyui/jquery.easyui.min.1.3.2.js"></script>
+    <script type="text/javascript" src="../../plug_in/easyui/locale/zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/syUtil.js"></script>
+    <script type="text/javascript" src="../../plug_in/easyui/extends/datagrid-scrollview.js"></script>
+    <script type="text/javascript" src="../../plug_in/lhgDialog/lhgdialog.min.js?skin=metrole"></script>
+    <script type="text/javascript" src="../../plug_in/ace/js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="../../plug_in/layer/layer.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/easyuiextend.js"></script>
+    <script type="text/javascript" src="../../plug_in/jquery-plugs/hftable/jquery-hftable.js"></script>
+    <script type="text/javascript" src="../../plug_in/tools/json2.js"></script>
+    <script type="text/javascript" src="../../plug_in/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/Validform/js/datatype_zh-cn.js"></script>
+    <script type="text/javascript" src="../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript" src="../../plug_in/layer/layer.js"></script>
+    <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
+</head>
+
+<body style="overflow-y: hidden" scroll="no">
+<form id="formobj" action="" name="formobj" method="post">
+    <input type="hidden" id="btn_sub" class="btn_sub">
+    <input id="id" type="hidden" value="">
+    <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
+        <tbody>
+            <tr>
+                <td align="center" width="20%">
+                    <span class="filedzt">关键词:</span>
+                </td>
+                <td class="value">
+                    <input type="text" name="keyword" style="height: 30px;" class="inputxt" datatype="*"
+                           errormsg="请输入关键词！" nullmsg="请输入关键词！">
+                    <span class="Validform_checktip">请输入关键词！</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">
+        $(function () {
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/noteKeywordController.do?doAdd");
+            $("#formobj").Validform({
+                tiptype: 4,
+                btnSubmit: "#btn_sub",
+                btnReset: "#btn_reset",
+                ajaxPost: true,
+                callback: function (data) {
+                    var win = frameElement.api.opener;
+                    if (data.success === "success") {
+                        frameElement.api.close();
+                        win.toastr.success(data.msg);
+                    } else if (data.success === "fail") {
+                        win.toastr.error(data.msg);
+                    } else if (data.success === "login") {
+                        window.parent.location.href = '../../login/login.html';
+                    }
+                    win.keywordReload();
+                }
+            });
+        });
+    </script>
+</form>
+</body>
+</html>

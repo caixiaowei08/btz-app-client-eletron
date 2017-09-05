@@ -41,7 +41,7 @@
                 <span class="filedzt">视频章节:</span>
             </td>
             <td class="value">
-                <input type="text" value=""  style="height: 30px;" class="inputxt" readonly="readonly" data-bind="value:subCourseName">
+                <input type="text" value=""  style="height: 30px;" class="inputxt" readonly="readonly" disabled="disabled"  data-bind="value:subCourseName">
             </td>
         </tr>
         <tr>
@@ -75,10 +75,10 @@
             <td align="center">
                 <span class="filedzt">显示顺序:</span></td>
             <td class="value">
-                <input type="number" value="1" name="orderNo" id="orderNo" min="1" max="100"
-                       datatype="/^([1-9]\d?|100)$/" name="url" style="height: 30px;" class="inputxt"
-                       errormsg="请输入1-100的数字！" nullmsg="请输入1-100的数字！">
-                <span class="Validform_checktip">请输入1-100的数字！</span>
+                <input type="number" name="orderNo" id="orderNo" value="1" min="1"
+                       datatype="/^\+?[1-9]\d*$/" style="height: 30px;" class="inputxt"
+                       errormsg="请输入大于0的数字！" nullmsg="请输入大于0的数字！">
+                <span class="Validform_checktip">请输入大于0的数字！</span>
             </td>
         </tr>
         </tbody>

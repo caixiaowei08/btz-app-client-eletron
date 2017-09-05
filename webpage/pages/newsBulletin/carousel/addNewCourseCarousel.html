@@ -1,0 +1,198 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="../../../plug_in/easyui/themes/metrole/easyui.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/easyui/themes/metrole/main.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/easyui/themes/metrole/icon.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/accordion/css/accordion.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/accordion/css/icons.css">
+    <link rel="stylesheet" href="../../../plug_in/toastr/toastr.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/tools/css/metrole/common.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/ace/css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/layer/skin/layer.css" id="layui_layer_skinlayercss">
+    <script type="text/javascript" src="../../../plug_in/mutiLang/zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-plugs/storage/jquery.storageapi.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/dataformat.js"></script>
+    <script type="text/javascript" src="../../../plug_in/easyui/jquery.easyui.min.1.3.2.js"></script>
+    <script type="text/javascript" src="../../../plug_in/easyui/locale/zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/syUtil.js"></script>
+    <script type="text/javascript" src="../../../plug_in/easyui/extends/datagrid-scrollview.js"></script>
+    <script type="text/javascript" src="../../../plug_in/lhgDialog/lhgdialog.min.js?skin=metrole"></script>
+    <script type="text/javascript" src="../../../plug_in/ace/js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="../../../plug_in/layer/layer.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/easyuiextend.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-plugs/hftable/jquery-hftable.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/json2.js"></script>
+    <script type="text/javascript" src="../../../plug_in/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
+</head>
+
+<body style="overflow-y: hidden" scroll="no">
+<form id="formobj" action="" name="formobj" method="post">
+    <input type="hidden" id="btn_sub" class="btn_sub">
+    <input type="hidden" id="subCourseId" data-bind="value:subCourseId">
+    <table style="width: 550px;margin: 0 auto;" cellpadding="0" cellspacing="1" class="formtable">
+        <tbody>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">课程名称:</span>
+            </td>
+            <td class="value">
+                <input type="text" id="subCourseName" name="subCourseName" style="height: 30px;" disabled="disabled"
+                       readonly="readonly" class="inputxt" data-bind="value:subCourseName">
+            </td>
+        </tr>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">轮播图片:</span>
+            </td>
+            <td class="value">
+                <input type="file" id="img" name="img" accept="image/gif,image/png,image/jpeg" style="height: 30px;"
+                       plugin='swfupload' class="inputxt" datatype="*" errormsg="请输入gif.jpg.png等格式图片！"
+                       nullmsg="请选择轮播图片！">
+                <span class="Validform_checktip">请选择gif.jpg .png等格式图片</span>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">跳转链接:</span>
+            </td>
+            <td class="value">
+                <input type="text" value="" id="url" name="url" style="height: 30px;" class="inputxt" datatype="*"
+                       errormsg="请输入链接地址！" nullmsg="请输入链接地址！">
+                <span class="Validform_checktip">请输入链接地址！</span>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">是否展现:</span></td>
+            <td class="value">
+                <select name="sfyn" id="sfyn" style="height: 30px;line-height: 30px;">
+                    <option value="1" selected>
+                        是
+                    </option>
+                    <option value="2">
+                        否
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">课程或全局:</span></td>
+            <td class="value">
+                <select name="flag" id="flag" style="height: 30px;line-height: 30px;"
+                        disabled="disabled" readonly="readonly">
+                    <option value="1" selected>
+                        课程
+                    </option>
+                    <option value="2">
+                        全局
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">显示顺序:</span>
+            </td>
+            <td class="value">
+                <input type="number" value="1" name="orderNo" id="orderNo" min="1"
+                       datatype="/^\+?[1-9]\d*$/" style="height: 30px;" class="inputxt"
+                       errormsg="请输入大于0的数字！" nullmsg="请输入大于0的数字！">
+                <span class="Validform_checktip">请输入大于0的数字！</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <link rel="stylesheet" href="../../../plug_in/Validform/css/metrole/style.css" type="text/css">
+    <link rel="stylesheet" href="../../../plug_in/Validform/css/metrole/tablefrom.css" type="text/css">
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
+    <script type="text/javascript" src="../../../plug_in/Validform/js/datatype_zh-cn.js"></script>
+    <script type="text/javascript"
+            src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script src="../../../plug_in/layer/layer.js"></script>
+    <script src="../../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadData();
+            $("#formobj").attr("action", GLOBAL_CONSTANT_URL + "admin/carouselController.do?doAdd");
+            $("#formobj").Validform({
+                tiptype: 4,
+                btnSubmit: "#btn_sub",
+                btnReset: "#btn_reset",
+                ajaxPost: true,
+                beforeSubmit: function (curform) {
+                    var img_file = document.getElementById("img").files[0];
+                    var reader = new FileReader();
+                    reader.readAsDataURL(img_file);
+                    reader.onload = function (e) {
+                        var img = this.result;
+                        var object = new Object();
+                        var url = document.getElementById("url").value;
+                        var sfyn = document.getElementById("sfyn").value;
+                        var subCourseId = document.getElementById("subCourseId").value;
+                        var orderNo = document.getElementById("orderNo").value;
+                        object.img = img;
+                        object.url = url.toString();
+                        object.sfyn = sfyn;
+                        object.subCourseId = subCourseId;
+                        object.flag = 1;
+                        object.orderNo = orderNo;
+                        var win = frameElement.api.opener;
+                        $.ajax({
+                            url: GLOBAL_CONSTANT_URL + "admin/carouselController.do?doAddCourseCarousel",
+                            type: 'post',
+                            dataType: 'json',
+                            contentType: 'application/json;charset=utf-8',
+                            data: JSON.stringify(object),
+                            success: function (data) {
+                                if (data.success === "success") {
+                                    frameElement.api.close();
+                                    win.toastr.success("新增成功！");
+                                } else if (data.success === "fail") {
+                                    win.toastr.error(data.msg);
+                                } else if (data.success === "login") {
+                                    window.parent.location.href = '../../../login/login.html';
+                                } else {
+                                    win.toastr.error(data.msg);
+                                }
+                            },
+                            error: function (jqxhr, textStatus, errorThrow) {
+                                win.toastr.success("服务器异常,请联系管理员！");
+                            },
+                            complete: function () {
+                                win.reloadTable();
+                            }
+                        });
+                        return false;
+                    }
+                    return false;
+                }
+            });
+        });
+
+        var viewModel = {
+            subCourseId: ko.observable(),
+            subCourseName: ko.observable()
+        };
+        ko.applyBindings(viewModel);
+        function loadData() {
+            var str = window.document.location.href;
+            var start_subCourseId = str.indexOf("subCourseId=");
+            var end_subCourseId = str.indexOf("&subCourseName");
+            var subCourseId = str.substring(start_subCourseId + 13, end_subCourseId);
+            var start_subCourseName = str.indexOf("subCourseName=");
+            var end_subCourseName = str.indexOf("&_=");
+            var subCourseName = str.substring(start_subCourseName + 14, end_subCourseName);
+            viewModel.subCourseId(subCourseId);
+            viewModel.subCourseName(decodeURI(subCourseName));
+        }
+    </script>
+</form>
+</body>
+</html>

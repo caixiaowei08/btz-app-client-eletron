@@ -8,71 +8,82 @@
     <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/main.css">
     <link rel="stylesheet" type="text/css" href="../../plug_in/tools/css/metrole/common.css">
     <link rel="stylesheet" type="text/css" href="../../plug_in/My97DatePicker/skin/WdatePicker.css">
+    <link rel="stylesheet" href="../../plug_in/toastr/toastr.css"/>
+    <link rel="stylesheet" type="text/css" href="../exercise/gridSystem.css">
     <script type="text/javascript" src="../../plug_in/jquery/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="../../plug_in/jquery-easy-ui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../../plug_in/My97DatePicker/WdatePicker.js"></script>
     <script type="text/javascript" src="../../plug_in/jquery-easy-ui/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
     <script type="text/javascript" src="../../plug_in/tools/curdtools_zh-cn.js"></script>
-    <link rel="stylesheet" href="../../plug_in/toastr/toastr.css"/>
     <script type="text/javascript" src="../../plug_in/toastr/toastr.min.js"></script>
     <script type="text/javascript" src="../../plug_in/lhgDialog/lhgdialog.min.js"></script>
+    <script type="text/javascript" src="../../plug_in/knockout/knockout.js"></script>
     <script type="text/javascript" src="../../../system/GlobalConstant.js"></script>
 </head>
 <body>
-<div style="height: 650px;">
-    <div id="userListtb" class="datagrid-toolbar">
-        <div name="searchColums" id="searchColums">
-            <form>
-                <div style="height: 2px;"></div>
-                <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
-                      title="状态">处理状态：</span>
-                <select name="status" width="100" style="width: 104px">
-                    <option value="">
-                        ---请选择---
-                    </option>
-                    <option value="1">
-                        未回复
-                    </option>
-                    <option value="2">
-                        已回复
-                    </option>
-                </select>
-                <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; " title="">处理状态：</span>
-
-            </form>
-        </div>
-        <div style="height: 2px;"></div>
-        <div style="height:35px;" class="datagrid-toolbar">
-            <span style="float:left;">
-                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                   onclick="feedback('回复反馈','../pages/feedback/updateFeedBack.html','userList',600,350)">
-                     <span class="l-btn-left" style="">
-                         <span class="l-btn-text icon-edit l-btn-icon-left">回复反馈&nbsp;</span>
-                     </span>
-                </a>
-                  <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
-                     onclick="deleteALLSelect('删除问题反馈',GLOBAL_CONSTANT_URL +'admin/feedbackController.do?doDel','userList')">
-                     <span class="l-btn-left" style="">
-                         <span class="l-btn-text icon-remove l-btn-icon-left">删除问题反馈&nbsp;</span>
-                     </span>
-                  </a>
-            </span>
-            <span style="float:right;">
-                <a href="#" class="l-btn" iconcls="icon-search" onclick="listSearch()">
-                         <span class="l-btn-left" style="">
-                              <span class="l-btn-text icon-search l-btn-icon-left">查询&nbsp;</span>
-                         </span>
-                </a>
-                <a href="#" class="l-btn" iconcls="icon-reload" onclick="searchReset()">
-                     <span class="l-btn-left" style="">
-                         <span class="l-btn-text icon-reload l-btn-icon-left">重置&nbsp;</span>
-                     </span>
-                </a>
-            </span>
+<div class="row">
+    <div class="col-xs-3">
+        <div style="height: 650px;">
+            <table id="courseList"></table>
         </div>
     </div>
-    <table id="userList"></table>
+    <div class="col-xs-8">
+        <div style="height: 650px;">
+            <input id="subCourseId" type="hidden" name="subCourseId" data-bind="value:subCourseId">
+            <input id="subCourseName" type="hidden" name="subCourseName" data-bind="value:subCourseName">
+            <div id="userListtb" class="datagrid-toolbar">
+                <div  id="searchColums">
+                    <form>
+                        <div style="height: 2px;"></div>
+                        <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
+                              title="状态">处理状态：</span>
+                        <select name="status" width="100" style="width: 104px">
+                            <option value="">
+                                ---请选择---
+                            </option>
+                            <option value="1">
+                                未回复
+                            </option>
+                            <option value="2">
+                                已回复
+                            </option>
+                        </select>
+                    </form>
+                </div>
+                <div style="height: 2px;"></div>
+                <div style="height:35px;" class="datagrid-toolbar">
+                    <span style="float:left;">
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                           onclick="feedback('回复反馈','../pages/feedback/updateFeedBack.html','userList',600,800)">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-edit l-btn-icon-left">回复反馈&nbsp;</span>
+                             </span>
+                        </a>
+                          <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                             onclick="deleteALLSelect('删除问题反馈',GLOBAL_CONSTANT_URL +'admin/feedbackController.do?doDel','userList')">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-remove l-btn-icon-left">删除问题反馈&nbsp;</span>
+                             </span>
+                          </a>
+                    </span>
+                    <span style="float:right;">
+                        <a href="#" class="l-btn" iconcls="icon-search" onclick="listSearch()">
+                                 <span class="l-btn-left" style="">
+                                      <span class="l-btn-text icon-search l-btn-icon-left">查询&nbsp;</span>
+                                 </span>
+                        </a>
+                        <a href="#" class="l-btn" iconcls="icon-reload" onclick="searchReset()">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-reload l-btn-icon-left">重置&nbsp;</span>
+                             </span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <table id="userList"></table>
+        </div>
+    </div>
 </div>
 </body>
 </html>
@@ -80,7 +91,7 @@
     $(function () {
         $("#userList").datagrid({
             idField: 'id',
-            title: '用户信息表',
+            title: '反馈信息表',
             url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,answer,userName,status,dealTime,createTime,updateTime",
             toolbar: "#userListtb",
             pagination: true,
@@ -126,39 +137,95 @@
                 {field: 'createTime', title: '创建时间'}
             ]],
         });
+
+        $('#courseList').treegrid({
+            title: '课程信息',
+            idField: 'id',
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?mainCourseTreeGrid&type=0",
+            collapsible: false,      //是否可折叠
+            rownumbers: true,        //行号
+            pagination: false,        //分页控件
+            method: 'post',          //请求方式
+            treeField: 'name',       //定义树节点的字段
+            fit: true,               //网格自动撑满
+            fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            onLoadSuccess: function (row, data) {
+                if (data.success !== undefined && data.success !== "" && data.success === 'login') {
+                    window.parent.location.href = '../../login/login.html';
+                }
+            },
+            columns: [[
+                {field: 'name', title: '课程分类', width: 100},
+                {field: 'leaf', title: '是否是叶子', hidden: true},
+                {
+                    field: 'state_s',
+                    title: '状态',
+                    formatter: function (value, rec, index) {
+                        if (rec.leaf) {
+                            if (value == '1') {
+                                return '可以试用';
+                            }
+                            if (value == '2') {
+                                return '不能试用';
+                            }
+                        } else {
+                            if (value == '1') {
+                                return '正常使用';
+                            }
+                            if (value == '2') {
+                                return '禁用使用';
+                            }
+                        }
+                        return "";
+                    }
+                }
+            ]],
+            onSelect: function (node) {
+                if (node.leaf) {
+                    viewModel.subCourseId(node.id);
+                    viewModel.subCourseName(node.name);
+                    reloadTable();
+                }
+            },
+            onBeforeSelect: function (node) {
+                return node.leaf;
+            }
+        });
+        ko.applyBindings(viewModel);
     });
+
+    var viewModel = {
+        subCourseId: ko.observable(),
+        subCourseName: ko.observable()
+    };
 
     /**
      * 查询
      */
     function listSearch() {
         var queryParams = $('#userList').datagrid('options').queryParams;
+        var subCourseId = $("#subCourseId").val();
+        if (subCourseId !== null && subCourseId !== undefined && subCourseId !== '') {
+            console.log(subCourseId.length);
+            subCourseId = subCourseId.substring(1,subCourseId.length);
+            queryParams["subCourseId"] = subCourseId;
+        }
         $('#userListtb').find('*').each(function () {
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#userList').datagrid({
-            url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
+            url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,answer,userName,status,dealTime,createTime,updateTime",
             pageNumber: 1
         });
     }
 
     function searchReset() {
         $("#userListtb").find(":input").val("");
-        var queryParams = $('#userList').datagrid('options').queryParams;
-        $('#userListtb').find('*').each(function () {
-            queryParams[$(this).attr('name')] = $(this).val();
-        });
-        $('#userList').datagrid({
-            url: GLOBAL_CONSTANT_URL + "admin/feedbackController.do?dataGrid&field=id,resume,content,userId,userName,status,dealTime,createTime,updateTime",
-            pageNumber: 1
-        });
+        listSearch();
     }
 
     function reloadTable() {
-        try {
-            $('#userList').datagrid('reload');
-        } catch (ex) {
-        }
+        listSearch();
     }
 
     function pass(title, url, gname) {
