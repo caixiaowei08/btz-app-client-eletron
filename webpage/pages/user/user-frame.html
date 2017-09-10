@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../../plug_in/jquery-easy-ui/themes/metrole/main.css">
     <link rel="stylesheet" type="text/css" href="../../plug_in/tools/css/metrole/common.css">
     <link rel="stylesheet" type="text/css" href="../../plug_in/My97DatePicker/skin/WdatePicker.css">
-    <link rel="stylesheet" type="text/css" href="../../plug_in/toastr/toastr.css" />
+    <link rel="stylesheet" type="text/css" href="../../plug_in/toastr/toastr.css"/>
     <script type="text/javascript" src="../../plug_in/jquery/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="../../plug_in/jquery-easy-ui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../../plug_in/My97DatePicker/WdatePicker.js"></script>
@@ -64,17 +64,20 @@
         <div style="height: 2px;"></div>
         <div style="height:35px;" class="datagrid-toolbar">
             <span style="float:left;">
-                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="lockALLSelect('冻结账户',GLOBAL_CONSTANT_URL +'admin/userController.do?doLock','userList')">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                   onclick="lockALLSelect('冻结账户',GLOBAL_CONSTANT_URL +'admin/userController.do?doLock','userList')">
                      <span class="l-btn-left" style="">
                          <span class="l-btn-text icon-edit l-btn-icon-left">冻结账户&nbsp;</span>
                      </span>
                 </a>
-                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="unLockALLSelect('激活账户',GLOBAL_CONSTANT_URL +'admin/userController.do?doUnLock','userList')">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                   onclick="unLockALLSelect('激活账户',GLOBAL_CONSTANT_URL +'admin/userController.do?doUnLock','userList')">
                      <span class="l-btn-left" style="">
                          <span class="l-btn-text icon-edit l-btn-icon-left">激活账户&nbsp;</span>
                      </span>
                 </a>
-                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="update('密码重置','../pages/user/changePwd.html','userList',600,200)">
+                <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                   onclick="update('密码重置','../pages/user/changePwd.html','userList',600,200)">
                      <span class="l-btn-left" style="">
                          <span class="l-btn-text icon-edit l-btn-icon-left">修改密码&nbsp;</span>
                      </span>
@@ -99,19 +102,19 @@
 </body>
 </html>
 <script>
-    $(function() {
+    $(function () {
         $("#userList").datagrid({
             idField: 'id',
             title: '用户信息表',
-            url:GLOBAL_CONSTANT_URL+"admin/userController.do?dataGrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
+            url: GLOBAL_CONSTANT_URL + "admin/userController.do?dataGrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
             toolbar: "#userListtb",
             pagination: true,
-            pageList: [10,20,30,50,100],
+            pageList: [10, 20, 30, 50, 100],
             rownumbers: true,
-            emptyMsg:"无查询结果！",
+            emptyMsg: "无查询结果！",
             singleSelect: true,
-            fit : true,
-            fitColumns:true,
+            fit: true,
+            fitColumns: true,
             onLoadSuccess: function (data) {
                 if (data.success === 'login') {
                     window.parent.location.href = '../../login/login.html';
@@ -121,18 +124,18 @@
                 field: 'ck',
                 checkbox: 'true'
             }]],
-            columns:[[
-                {field:'id', title:'主键',sortable:true,hidden: true},
-                {field:'userId',sortable:true,title:'账户ID'},
-                {field:'userName',sortable:true,title:'账号名称'},
-                {field:'phone',sortable:true,title:'手机号码'},
-                {field:'authority',title:'权限'},
-                {field:'area',title:'考生地区'},
+            columns: [[
+                {field: 'id', title: '主键', sortable: true, hidden: true},
+                {field: 'userId', sortable: true, title: '账户ID'},
+                {field: 'userName', sortable: true, title: '账号名称'},
+                {field: 'phone', sortable: true, title: '手机号码'},
+                {field: 'authority', title: '权限'},
+                {field: 'area', title: '考生地区'},
                 {
-                    field:'state',
-                    title:'状态',
+                    field: 'state',
+                    title: '状态',
                     sortable: true,
-                    formatter: function(value, rec, index){
+                    formatter: function (value, rec, index) {
                         if (value == '1') {
                             return '已激活';
                         }
@@ -143,9 +146,9 @@
                     }
                 },
                 {
-                    field:'source',
-                    title:'来源',
-                    formatter: function(value, rec, index){
+                    field: 'source',
+                    title: '来源',
+                    formatter: function (value, rec, index) {
                         if (value == '1') {
                             return 'web系统';
                         }
@@ -155,8 +158,8 @@
                         return "";
                     }
                 },
-                {field:'updateTime',title:'更新时间'},
-                {field:'createTime',title:'创建时间'}
+                {field: 'updateTime', title: '更新时间'},
+                {field: 'createTime', title: '创建时间'}
             ]],
         });
     });
@@ -166,11 +169,11 @@
      */
     function ListSearch() {
         var queryParams = $('#userList').datagrid('options').queryParams;
-        $('#userListtb').find('*').each(function() {
+        $('#userListtb').find('*').each(function () {
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#userList').datagrid({
-            url: GLOBAL_CONSTANT_URL+"admin/userController.do?dataGrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
+            url: GLOBAL_CONSTANT_URL + "admin/userController.do?dataGrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
             pageNumber: 1
         });
     }
@@ -178,11 +181,11 @@
     function searchReset() {
         $("#userListtb").find(":input").val("");
         var queryParams = $('#userList').datagrid('options').queryParams;
-        $('#userListtb').find('*').each(function() {
+        $('#userListtb').find('*').each(function () {
             queryParams[$(this).attr('name')] = $(this).val();
         });
         $('#userList').datagrid({
-            url:  GLOBAL_CONSTANT_URL+"admin/userController.do?dataGrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
+            url: GLOBAL_CONSTANT_URL + "admin/userController.do?dataGrid&field=id,userId,userName,phone,state,source,authority,area,updateTime,createTime",
             pageNumber: 1
         });
     }
@@ -190,6 +193,7 @@
     function reloadTable() {
         try {
             $('#userList').datagrid('reload');
-        } catch(ex) {}
+        } catch (ex) {
+        }
     }
 </script>
