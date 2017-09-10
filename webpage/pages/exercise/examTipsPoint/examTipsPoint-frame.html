@@ -386,6 +386,7 @@
 
     function reloadDate() {
         var subCourseId = $("#sid").val();
+        var title = $("#title").val();
         var type = $("#type").val();
         var rowsData = $('#chapterList').treegrid('getSelections');
         var chapterId = "";
@@ -396,8 +397,8 @@
         $('#chapterExerciseList').datagrid('reload', {
             "subCourseId": subCourseId,
             "chapterId": chapterId,
-            "examType": type,
-            "title": title
+            //"examType": type,
+            //"title": title
         });
     }
 
@@ -444,13 +445,13 @@
                 "subCourseName": subCourseName,
                 "moduleType": moduleType
             });
-            var type = $("#type").val();
+            var examType = $("#type").val();
             var title = $("#title").val();
             $('#chapterExerciseList').datagrid('reload', {
                 "subCourseId": subCourseId,
                 "moduleType": moduleType,
-                "examType": type,
-                "title": title
+                //"examType": examType,
+                //"title": title
             });
         } catch (ex) {
         }

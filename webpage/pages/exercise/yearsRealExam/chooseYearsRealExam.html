@@ -20,7 +20,8 @@
     <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_v5.3.1_min_zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/Validform/js/Validform_Datatype_zh-cn.js"></script>
     <script type="text/javascript" src="../../../plug_in/Validform/js/datatype_zh-cn.js"></script>
-    <script type="text/javascript" src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
+    <script type="text/javascript"
+            src="../../../plug_in/Validform/plugin/passwordStrength/passwordStrength-min.js"></script>
 </head>
 <body style="overflow: hidden;" scroll="no">
 <form id="formobj" action="" name="formobj" method="post">
@@ -40,7 +41,7 @@
         $('#courseList').treegrid({
             title: '课程信息',
             idField: 'id',
-            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?mainCourseTreeGrid&type=4",
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?mainCourseTreeGrid&type=7",
             collapsible: false,      //是否可折叠
             rownumbers: true,        //行号
             pagination: false,        //分页控件
@@ -59,8 +60,8 @@
             onBeforeSelect: function (node) {
                 return node.leaf;
             },
-            onDblClickRow:function (row) {
-                if(row.leaf){
+            onDblClickRow: function (row) {
+                if (row.leaf) {
                     chooseCourse();
                 }
             }
@@ -70,7 +71,7 @@
     function chooseCourse() {
         var win = frameElement.api.opener;
         var rowsData = $('#courseList').treegrid('getSelections');
-        if (!rowsData || rowsData.length==0) {
+        if (!rowsData || rowsData.length == 0) {
             toastr.info('请选择课程！');
             return;
         }

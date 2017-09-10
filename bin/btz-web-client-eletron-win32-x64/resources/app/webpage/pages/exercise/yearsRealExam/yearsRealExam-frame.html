@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html class="panel-fit">
+<head>
+    <meta charset="UTF-8">
+    <title>系统账户信息表</title>
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metro/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metrole/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/jquery-easy-ui/themes/metrole/main.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/tools/css/metrole/common.css">
+    <link rel="stylesheet" type="text/css" href="../gridSystem.css">
+    <link rel="stylesheet" type="text/css" href="../../../plug_in/My97DatePicker/skin/WdatePicker.css">
+    <script type="text/javascript" src="../../../plug_in/jquery/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-easy-ui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../../../plug_in/jquery-easy-ui/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../../plug_in/tools/curdtools_zh-cn.js"></script>
+    <link rel="stylesheet" href="../../../plug_in/toastr/toastr.css"/>
+    <script type="text/javascript" src="../../../plug_in/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="../../../plug_in/lhgDialog/lhgdialog.min.js"></script>
+    <script type="text/javascript" src="../../../../system/GlobalConstant.js"></script>
+    <script type="text/javascript" src="../../../plug_in/knockout/knockout.js"></script>
+</head>
+<body>
+<div class="breadcrumbs">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:darkolivegreen;font-size:18px;line-height: 18px;"
+                                              data-bind="text:subCourseName">当前选择课程</span>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#" class="l-btn" iconcls="icon-search" onclick="courseSearch()">
+       <span class="l-btn-left">
+            <span class="l-btn-text icon-search l-btn-icon-left">切换课程&nbsp;</span>
+       </span>
+    </a>
+</div>
+<div class="row">
+    <div class="col-xs-3">
+        <div style="height: 650px;">
+            <table id="chapterList"></table>
+        </div>
+    </div>
+    <div class="col-xs-8">
+        <div style="height: 650px;">
+            <input id="sid" type="hidden" name="sid" data-bind="value:sid">
+            <div id="chapterExerciseListtb" class="datagrid-toolbar">
+                <div name="searchColums" id="searchColums">
+                    <form>
+                        <div style="height: 10px;"></div>
+                        <span>
+                            <span style="display:-moz-inline-box;display:inline-block;">
+                            <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
+                                  title="题干(关键字)">题干(关键字): </span>
+                            <input type="text" name="title" id="title" style="width: 120px" class="inuptxt">
+                        </span>
+                        <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
+                              title="题目类型">题目类型：</span>
+                        <select name="type" width="100" id="type" style="width: 104px">
+                            <option value="">
+                                --请选择--
+                            </option>
+                            <option value="1">
+                                单选题
+                            </option>
+                            <option value="2">
+                                多选题
+                            </option>
+                            <option value="3">
+                                不定项选择题
+                            </option>
+                            <option value="4">
+                                判断题
+                            </option>
+                            <option value="5">
+                                分录题(数字)
+                            </option>
+                            <option value="6">
+                                分录题(固定)
+                            </option>
+                            <option value="7">
+                                简答题
+                            </option>
+                            <option value="8">
+                                综合题
+                            </option>
+                            <option value="9">
+                                计算题
+                            </option>
+                            <option value="10">
+                                案例分析题
+                            </option>
+                            <option value="11">
+                                补全短文
+                            </option>
+                            <option value="12">
+                                概括大意与完成句子
+                            </option>
+                            <option value="13">
+                                完型填空
+                            </option>
+                            <option value="14">
+                                阅读理解
+                            </option>
+                            <option value="15">
+                                阅读判断
+                            </option>
+                            <option value="16">
+                                作文题
+                            </option>
+                            <option value="17">
+                                英译中
+                            </option>
+                            <option value="18">
+                                交际英语
+                            </option>
+                            <option value="19">
+                                词汇与结构
+                            </option>
+                            <option value="20">
+                                组合单选题
+                            </option>
+                            <option value="21">
+                                中级计算题
+                            </option>
+                            <option value="22">
+                                中级简答题
+                            </option>
+                            <option value="23">
+                                填空题
+                            </option>
+                            <option value="24">
+                                活动设计题
+                            </option>
+                            <option value="25">
+                                论述题
+                            </option>
+                            <option value="26">
+                                教学设计题
+                            </option>
+                            <option value="27">
+                                材料分析题
+                            </option>
+                        </select>
+                        </span>
+                    </form>
+                </div>
+                <div style="height: 2px;"></div>
+                <div style="height:35px;" class="datagrid-toolbar">
+                    <span style="float:left;">
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit" onclick="exportXlsByT();">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-put l-btn-icon-left">增量导入&nbsp;</span>
+                             </span>
+                        </a>
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-add"
+                           onclick="newTest('新增题目','../pages/exercise/examTipsPoint/addExamTipsPoint.html','chapterExerciseList',600,600);">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-add l-btn-icon-left">新增题目&nbsp;</span>
+                             </span>
+                        </a>
+                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                            onclick="update('编辑题目','../pages/global/updateTest.html','chapterExerciseList',600,600)">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-edit l-btn-icon-left">编辑题目&nbsp;</span>
+                             </span>
+                        </a>
+                        <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                           onclick="deleteALLSelect('删除题目',GLOBAL_CONSTANT_URL +'admin/exerciseController.do?doDel','chapterExerciseList')">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-remove l-btn-icon-left">删除题目&nbsp;</span>
+                             </span>
+                        </a>
+                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                            onclick="deleteALLByCourseIdAndModuleId(GLOBAL_CONSTANT_URL +'admin/exerciseController.do?doDelAll','chapterExerciseList')">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-remove l-btn-icon-left">全部删除&nbsp;</span>
+                             </span>
+                        </a>
+                         <a href="#" id="icon-putout" class="l-btn l-btn-plain" plain="true" icon="icon-edit"
+                            onclick="downLoadXlsByT();">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-putout l-btn-icon-left">模板下载&nbsp;</span>
+                             </span>
+                        </a>
+                    </span>
+                    <span style="float: right">
+                        <a href="#" class="l-btn" iconcls="icon-search" onclick="listSearch()">
+                             <span class="l-btn-left" style="">
+                                  <span class="l-btn-text icon-search l-btn-icon-left">查询&nbsp;</span>
+                             </span>
+                         </a>
+                         <a href="#" class="l-btn" iconcls="icon-reload" onclick="searchReset()">
+                             <span class="l-btn-left" style="">
+                                 <span class="l-btn-text icon-reload l-btn-icon-left">重置&nbsp;</span>
+                             </span>
+                         </a>
+                    </span>
+                </div>
+            </div>
+            <table id="chapterExerciseList"></table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var viewModel = {
+        sid: ko.observable(""),
+        subCourseName: ko.observable("请选择课程")
+    };
+    ko.applyBindings(viewModel);
+    $(function () {
+        courseSearch();
+        $('#chapterList').treegrid({
+            title: '章节信息',
+            idField: 'id',
+            url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?chapterTreeGrid",
+            collapsible: false,      //是否可折叠
+            rownumbers: true,        //行号
+            pagination: false,        //分页控件
+            method: 'post',          //请求方式
+            treeField: 'name',       //定义树节点的字段
+            fit: true,               //网格自动撑满
+            fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            onLoadSuccess: function (row, data) {
+                if (data.success !== undefined && data.success !== "" && data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
+            toolbar: "#chapterListtb",
+            columns: [[
+                {field: 'name', title: '章节列表'},
+                {field: 'orderNo', title: '显示顺序'},
+                {field: 'level', title: '章节层级', hidden: true}
+            ]],
+            onBeforeSelect: function (node) {
+                return node.leaf || node.level == 'S';
+            },
+            onSelect: function (row) {
+                console.log(row);
+                reloadDate();
+            }
+        });
+
+        $("#chapterExerciseList").datagrid({
+            idField: 'id',
+            title: '',
+            cache: false,
+            url: GLOBAL_CONSTANT_URL + "admin/exerciseController.do?dataGrid&moduleType=4",
+            toolbar: "#chapterExerciseListtb",
+            pagination: true,
+            pageSize: 10,
+            singleSelect: true,
+            pageList: [10, 20, 30, 50, 100, 200],
+            rownumbers: true,
+            emptyMsg: "无查询结果！",
+            fit: true,
+            fitColumns: true,
+            onLoadSuccess: function (data) {
+                if (data.success !== undefined && data.success !== "" && data.success === 'login') {
+                    window.parent.location.href = '../../../login/login.html';
+                }
+            },
+            frozenColumns: [[{
+                field: 'ck',
+                checkbox: 'true'
+            }]],
+            columns: [[
+                {field: 'id', title: '主键', sortable: true, hidden: true},
+                {
+                    field: 'subCourseId',
+                    hidden: true,
+                    title: '课程主键'
+                },
+                {
+                    field: 'chapterId',
+                    hidden: true,
+                    title: '章节主键',
+                    sortable: true
+                }, {
+                    field: 'title',
+                    title: '题干',
+                    formatter: function (value, row, index) {
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
+                    }
+                },
+                {
+                    field: 'content',
+                    title: '内容',
+                    formatter: function (value, row, index) {
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
+                    }
+                },
+                {
+                    field: 'type',
+                    title: '题目类型',
+                    sortable: true,
+                    formatter: function (value, rec, index) {
+                        if (value == '1') {
+                            return '单选题';
+                        } else if (value == '2') {
+                            return '多选题';
+                        } else if (value == '3') {
+                            return '不定项选择题';
+                        } else if (value == '4') {
+                            return '判断题';
+                        } else if (value == '5') {
+                            return '分录题(数字)';
+                        } else if (value == '6') {
+                            return '分录题(固定)';
+                        } else if (value == '7') {
+                            return '简答题';
+                        } else if (value == '8') {
+                            return '综合题';
+                        } else if (value == '9') {
+                            return '计算题';
+                        } else if (value == '10') {
+                            return '案例分析题';
+                        } else if (value == '11') {
+                            return '补全短文';
+                        } else if (value == '12') {
+                            return '概括大意与完成句子';
+                        } else if (value == '13') {
+                            return '完型填空';
+                        } else if (value == '14') {
+                            return '阅读理解';
+                        } else if (value == '15') {
+                            return '阅读判断';
+                        } else if (value == '16') {
+                            return '作文题';
+                        } else if (value == '17') {
+                            return '英译中';
+                        } else if (value == '18') {
+                            return '交际英语';
+                        } else if (value == '19') {
+                            return '词汇与结构';
+                        } else if (value == '20') {
+                            return '组合单选题';
+                        } else if (value == '21') {
+                            return '中级计算题';
+                        } else if (value == '22') {
+                            return '中级简答题';
+                        } else if (value == '23') {
+                            return '填空题';
+                        } else if (value == '24') {
+                            return '活动设计题';
+                        } else if (value == '25') {
+                            return '论述题';
+                        } else if (value == '26') {
+                            return '教学设计题';
+                        } else if (value == '27') {
+                            return '材料分析题';
+                        }
+                        return "未知题型";
+                    }
+                },
+                {
+                    field: 'answer',
+                    title: '答案',
+                    formatter: function (value, row, index) {
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
+                    }
+                },
+                {
+                    field: 'answerKey',
+                    title: '答案解析',
+                    formatter: function (value, row, index) {
+                        return '<textarea rows="2" cols="50" style="resize:none;border:none;background:none;">' + value + "</textarea>";
+                    }
+                },
+                {
+                    field: 'orderNo',
+                    title: '显示顺序',
+                    sortable: true
+                }
+            ]],
+        });
+    })
+
+    function courseSearch() {
+        createwindow('课程选择', '../pages/exercise/examTipsPoint/chooseCourseExamTips.html', 400, 600);
+    }
+
+    function loadCourseInfo(rowsData) {
+        viewModel.sid(rowsData[0].id);
+        viewModel.subCourseName(rowsData[0].name);
+        chapterReloadTable(rowsData[0].id, rowsData[0].name, 4);
+    }
+
+    function reloadDate() {
+        var subCourseId = $("#sid").val();
+        var type = $("#type").val();
+        var rowsData = $('#chapterList').treegrid('getSelections');
+        var chapterId = "";
+        if (!(!rowsData || rowsData.length == 0)) {
+            chapterId = rowsData[0].id;
+        }
+        $('#chapterExerciseList').datagrid('clearSelections');
+        $('#chapterExerciseList').datagrid('reload', {
+            "subCourseId": subCourseId,
+            "chapterId": chapterId,
+            "examType": type,
+            "title": title
+        });
+    }
+
+    function deleteALLByCourseIdAndModuleId(url, gname) {
+        var subCourseId = $("#sid").val();
+        if (subCourseId === undefined || subCourseId === '' || subCourseId.length <= 0) {
+            tip("请先选择课程！");
+        } else {
+            $.dialog.setting.zIndex = getzIndex(true);
+            $.dialog.confirm('你确定删除全部题目吗?', function (r) {
+                subCourseId = subCourseId.substring(1, subCourseId.length);
+                if (r) {
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        data: {
+                            subCourseId: subCourseId, moduleType: 4
+                        },
+                        cache: false,
+                        success: function (data) {
+                            if (data.success == "success") {
+                                toastr.success(data.msg);
+                            } else if (data.success == "fail") {
+                                toastr.error(data.msg);
+                            } else if (data.success == "login") {
+                                window.parent.location.href = '../../../login/login.html';
+                            } else {
+                                toastr.error(data.responseText + "");
+                            }
+                            $("#" + gname).datagrid('unselectAll');
+                            reloadTable();
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+    function chapterReloadTable(subCourseId, subCourseName, moduleType) {
+        try {
+            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "admin/exerciseController.do?downLoadExcel&belongTo=4&subCourseId=" + subCourseId.substring(1, subCourseId.length));
+            $('#chapterList').treegrid('reload', {
+                "subCourseId": subCourseId,
+                "subCourseName": subCourseName,
+                "moduleType": moduleType
+            });
+            var type = $("#type").val();
+            var title = $("#title").val();
+            $('#chapterExerciseList').datagrid('reload', {
+                "subCourseId": subCourseId,
+                "moduleType": moduleType,
+                "examType": type,
+                "title": title
+            });
+        } catch (ex) {
+        }
+    }
+
+    function reloadTable() {
+        reloadDate();
+    }
+
+    function newTest(title, url, gname, width, height) {
+        var subCourseId = $("#sid").val();
+        var rowsData = $('#chapterList').treegrid('getSelections');
+        if (!rowsData || rowsData.length == 0) {
+            tip('请选择左侧题目章节！');
+            return;
+        }
+        console.log(rowsData[0].leaf);
+        if (!rowsData[0].leaf) {
+            tip('只能在试卷上添加题目！');
+            return
+        }
+        url += '?subCourseId=' + subCourseId + '&subCourseName=' + rowsData[0].name + '&id=' + rowsData[0].id + '&level=' + rowsData[0].level;
+        add(title, url, gname, width, height);
+    }
+
+    function exportXlsByT() {
+        createwindow('增量导入', '../pages/exercise/examTipsPoint/uploadFile.html', 600, 100);
+    }
+
+    function downLoadXlsByT() {
+        var val = $("#icon-putout").attr("href");
+        if (val === '#') {
+            toastr.warning("请选择课程,再点击模板下载!")
+            return;
+        }
+    }
+
+    /**
+     * 查询
+     */
+    function listSearch() {
+        reloadDate();
+    }
+
+    function searchReset() {
+        $("#chapterExerciseListtb").find(":input").val("");
+        reloadDate();
+    }
+</script>

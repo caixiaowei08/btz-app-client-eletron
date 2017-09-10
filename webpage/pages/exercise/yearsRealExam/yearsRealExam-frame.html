@@ -150,7 +150,7 @@
                              </span>
                         </a>
                         <a href="#" class="l-btn l-btn-plain" plain="true" icon="icon-add"
-                           onclick="newTest('新增题目','../pages/exercise/examTipsPoint/addExamTipsPoint.html','chapterExerciseList',600,600);">
+                           onclick="newTest('新增题目','../pages/exercise/yearsRealExam/addYearsRealExam.html','chapterExerciseList',600,600);">
                              <span class="l-btn-left" style="">
                                  <span class="l-btn-text icon-add l-btn-icon-left">新增题目&nbsp;</span>
                              </span>
@@ -209,7 +209,7 @@
     $(function () {
         courseSearch();
         $('#chapterList').treegrid({
-            title: '章节信息',
+            title: '试卷',
             idField: 'id',
             url: GLOBAL_CONSTANT_URL + "admin/cascadeMainSubCourseController.do?chapterTreeGrid",
             collapsible: false,      //是否可折叠
@@ -234,16 +234,15 @@
                 return node.leaf || node.level == 'S';
             },
             onSelect: function (row) {
-                console.log(row);
                 reloadDate();
             }
         });
 
         $("#chapterExerciseList").datagrid({
             idField: 'id',
-            title: '',
+            title: '试卷题目',
             cache: false,
-            url: GLOBAL_CONSTANT_URL + "admin/exerciseController.do?dataGrid&moduleType=4",
+            url: GLOBAL_CONSTANT_URL + "admin/exerciseController.do?dataGrid&moduleType=7",
             toolbar: "#chapterExerciseListtb",
             pagination: true,
             pageSize: 10,
@@ -375,13 +374,13 @@
     })
 
     function courseSearch() {
-        createwindow('课程选择', '../pages/exercise/examTipsPoint/chooseCourseExamTips.html', 400, 600);
+        createwindow('课程选择', '../pages/exercise/yearsRealExam/chooseYearsRealExam.html', 400, 600);
     }
 
     function loadCourseInfo(rowsData) {
         viewModel.sid(rowsData[0].id);
         viewModel.subCourseName(rowsData[0].name);
-        chapterReloadTable(rowsData[0].id, rowsData[0].name, 4);
+        chapterReloadTable(rowsData[0].id, rowsData[0].name, 7);
     }
 
     function reloadDate() {
@@ -392,6 +391,7 @@
         if (!(!rowsData || rowsData.length == 0)) {
             chapterId = rowsData[0].id;
         }
+        var title = $("#title").val();
         $('#chapterExerciseList').datagrid('clearSelections');
         $('#chapterExerciseList').datagrid('reload', {
             "subCourseId": subCourseId,
@@ -414,7 +414,7 @@
                         url: url,
                         type: 'post',
                         data: {
-                            subCourseId: subCourseId, moduleType: 4
+                            subCourseId: subCourseId, moduleType: 7
                         },
                         cache: false,
                         success: function (data) {
@@ -438,7 +438,7 @@
 
     function chapterReloadTable(subCourseId, subCourseName, moduleType) {
         try {
-            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "admin/exerciseController.do?downLoadExcel&belongTo=4&subCourseId=" + subCourseId.substring(1, subCourseId.length));
+            $("#icon-putout").attr('href', GLOBAL_CONSTANT_URL + "admin/exerciseController.do?downLoadExcel&belongTo=7&subCourseId=" + subCourseId.substring(1, subCourseId.length));
             $('#chapterList').treegrid('reload', {
                 "subCourseId": subCourseId,
                 "subCourseName": subCourseName,
@@ -467,7 +467,6 @@
             tip('请选择左侧题目章节！');
             return;
         }
-        console.log(rowsData[0].leaf);
         if (!rowsData[0].leaf) {
             tip('只能在试卷上添加题目！');
             return
@@ -477,7 +476,7 @@
     }
 
     function exportXlsByT() {
-        createwindow('增量导入', '../pages/exercise/examTipsPoint/uploadFile.html', 600, 100);
+        createwindow('增量导入', '../pages/exercise/yearsRealExam/uploadFile.html', 600, 100);
     }
 
     function downLoadXlsByT() {

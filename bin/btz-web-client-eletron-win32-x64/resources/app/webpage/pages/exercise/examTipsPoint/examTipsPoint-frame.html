@@ -44,6 +44,12 @@
                 <div name="searchColums" id="searchColums">
                     <form>
                         <div style="height: 10px;"></div>
+                        <span>
+                            <span style="display:-moz-inline-box;display:inline-block;">
+                            <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
+                                  title="题干(关键字)">题干(关键字): </span>
+                            <input type="text" name="title" id="title" style="width: 120px" class="inuptxt">
+                        </span>
                         <span style="vertical-align:middle;display:-moz-inline-box;display:inline-block;width: 90px;text-align:right;text-overflow:ellipsis;-o-text-overflow:ellipsis; overflow: hidden;white-space:nowrap; "
                               title="题目类型">题目类型：</span>
                         <select name="type" width="100" id="type" style="width: 104px">
@@ -390,7 +396,8 @@
         $('#chapterExerciseList').datagrid('reload', {
             "subCourseId": subCourseId,
             "chapterId": chapterId,
-            "examType": type
+            "examType": type,
+            "title": title
         });
     }
 
@@ -438,10 +445,12 @@
                 "moduleType": moduleType
             });
             var type = $("#type").val();
+            var title = $("#title").val();
             $('#chapterExerciseList').datagrid('reload', {
                 "subCourseId": subCourseId,
                 "moduleType": moduleType,
-                "examType": type
+                "examType": type,
+                "title": title
             });
         } catch (ex) {
         }

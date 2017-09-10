@@ -317,7 +317,6 @@
             return;
         }
 
-        console.log(rows);
         var orderNo = 1;
         if (rows === undefined || rows.length < 1) {
             orderNo = 1;
@@ -325,8 +324,6 @@
             orderNo = rows[rows.length - 1].orderNo + 1;
         }
 
-        console.log(rowsData);
-        console.log(orderNo);
         url += '?id=' + rowsData[0].id + '&orderNo=' + orderNo;
         createwindow(title, url, width, height);
     }
