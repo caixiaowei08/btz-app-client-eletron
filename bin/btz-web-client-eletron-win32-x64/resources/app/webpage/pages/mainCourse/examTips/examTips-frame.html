@@ -306,7 +306,7 @@
             type: "post",
             url: GLOBAL_CONSTANT_URL + "admin/moduleController.do?doGetBySubCourseId",
             async: true,
-            data: {subCourseId: subCourseId},
+            data: {subCourseId: subCourseId, type: 4},
             success: function (res) {
                 if (res.success === "success") {
                     viewModel.moduleId(res.content.id);

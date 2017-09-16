@@ -62,11 +62,11 @@
                             <option value="2">
                                 多选题
                             </option>
-                            <option value="3">
-                                不定项选择题
+                             <option value="3">
+                                判断题
                             </option>
                             <option value="4">
-                                判断题
+                                不定项选择题
                             </option>
                             <option value="5">
                                 分录题(数字)
@@ -298,10 +298,10 @@
                         } else if (value == '2') {
                             return '多选题';
                         } else if (value == '3') {
-                            return '不定项选择题';
-                        } else if (value == '4') {
                             return '判断题';
-                        } else if (value == '5') {
+                        } else if (value == '4') {
+                            return '不定项选择题';
+                        }  else if (value == '5') {
                             return '分录题(数字)';
                         } else if (value == '6') {
                             return '分录题(固定)';
@@ -347,6 +347,8 @@
                             return '教学设计题';
                         } else if (value == '27') {
                             return '材料分析题';
+                        } else if (value == '28') {
+                            return '辨析题';
                         }
                         return "未知题型";
                     }
@@ -369,6 +371,10 @@
                     field: 'orderNo',
                     title: '显示顺序',
                     sortable: true
+                },
+                {
+                    field: 'point',
+                    title: '单题分数'
                 }
             ]],
         });
