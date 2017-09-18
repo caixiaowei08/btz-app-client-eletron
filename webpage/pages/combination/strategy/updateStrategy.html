@@ -48,10 +48,10 @@
                         多选题
                     </option>
                     <option value="3">
-                        不定项选择题
+                        判断题
                     </option>
                     <option value="4">
-                        判断题
+                        不定项选择题
                     </option>
                     <option value="5">
                         分录题(数字)
@@ -122,6 +122,9 @@
                     <option value="27">
                         材料分析题
                     </option>
+                    <option value="28">
+                        辨析题
+                    </option>
                 </select>
             </td>
         </tr>
@@ -153,6 +156,16 @@
             </td>
             <td class="value">
                 <input type="number" style="height: 30px;" readonly class="inputxt" data-bind="value:itemTotalPoint">
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <span class="filedzt">顺序:</span></td>
+            <td class="value">
+                <input type="number" data-bind="value:orderNo" name="orderNo" id="orderNo" min="1"
+                       datatype="/^\+?[1-9]\d*$/" style="height: 30px;" class="inputxt"
+                       errormsg="请输入大于0的数字！" nullmsg="请输入大于0的数字！">
+                <span class="Validform_checktip">请输入大于0的数字！</span>
             </td>
         </tr>
         </tbody>
@@ -194,7 +207,7 @@
         });
 
 
-        var viewModel = function (id, examType, point, examNo) {
+        var viewModel = function (id, examType, point, examNo, orderNo) {
             this.id = ko.observable(id);
             this.examType = ko.observable(examType);
             this.point = ko.observable(point);
@@ -213,6 +226,7 @@
                 }
                 return (Math.ceil((Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)) * 100)) / Math.pow(10, 2);
             }, this);
+            this.orderNo =  ko.observable(orderNo)
         }
 
         var win = frameElement.api.opener;
@@ -235,7 +249,8 @@
                                 res.content.id,
                                 res.content.examType,
                                 res.content.point,
-                                res.content.examNo
+                                res.content.examNo,
+                                res.content.orderNo
                             ));
                         } else if (res.success === "fail") {
                             win.toastr.warning(res.msg);
