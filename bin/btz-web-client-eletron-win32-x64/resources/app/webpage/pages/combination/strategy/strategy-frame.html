@@ -159,9 +159,9 @@
                         } else if (value == '2') {
                             return '多选题';
                         } else if (value == '3') {
-                            return '不定项选择题';
-                        } else if (value == '4') {
                             return '判断题';
+                        } else if (value == '4') {
+                            return '不定项选择题';
                         } else if (value == '5') {
                             return '分录题(数字)';
                         } else if (value == '6') {
@@ -208,6 +208,8 @@
                             return '教学设计题';
                         } else if (value == '27') {
                             return '材料分析题';
+                        } else if (value == '28') {
+                            return '辨析题';
                         }
                         return "未知题型";
                     }
@@ -219,6 +221,10 @@
                 {
                     field: 'examNo',
                     title: '题目个数'
+                },
+                {
+                    field: 'orderNo',
+                    title: '顺序'
                 }
             ]],
         });
@@ -274,16 +280,25 @@
     //新增策略
     function addStrategy(title, url, gname, width, height) {
         var subCourseId = $("#subCourseId").val();
+        var rowsData = $('#strategyList').datagrid("getRows");
+        console.log(rowsData);
         if (subCourseId === undefined || subCourseId === "" || subCourseId === null) {
             tip('请先选择课程！');
             return;
         }
-        url += '?subCourseId=' + subCourseId
+        var orderNo = 1;
+        if (rowsData === undefined || rowsData.length < 1) {
+            orderNo = 1;
+        } else {
+            orderNo = rowsData[rowsData.length - 1].orderNo + 1;
+        }
+        console.log(orderNo)
+        url += '?subCourseId=' + subCourseId + "&orderNo=" + orderNo;
         add(title, url, gname, width, height);
     }
 
     function updateStrategy(title, url, width, height) {
-        var rowsData = $('#strategyList').treegrid('getSelections');
+        var rowsData = $('#strategyList').datagrid('getSelections');
         if (!rowsData || rowsData.length == 0) {
             tip('请选择题型进行编辑！');
             return;
