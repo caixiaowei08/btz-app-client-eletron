@@ -49,7 +49,7 @@
                 <span class="filedzt">模块选择:</span></td>
             <td class="value">
                 <select name="type" disabled="disabled" style="height: 30px;line-height: 30px;" data-bind="value:type">
-                    <option value="1">
+                    <option value="1" selected>
                         章节练习
                     </option>
                     <option value="2">
@@ -61,7 +61,7 @@
                     <option value="4">
                         考前押题
                     </option>
-                    <option value="7" >
+                    <option value="7">
                         历年真题
                     </option>
                     <option value="5">
@@ -69,6 +69,9 @@
                     </option>
                     <option value="6">
                         直播课程
+                    </option>
+                    <option value="8">
+                        错题排行
                     </option>
                 </select>
             </td>
@@ -85,6 +88,15 @@
                         禁用
                     </option>
                 </select>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" width="20%">
+                <span class="filedzt">跳转链接:</span>
+            </td>
+            <td class="value">
+                <input type="text" data-bind="value:url" name="url" placeholder="只有错题排行才选择性输入跳转排名链接！"
+                       style="height: 30px;width: 300px;" class="inputxt">
             </td>
         </tr>
         </tbody>
@@ -128,6 +140,7 @@
             id: ko.observable(),
             s_state: ko.observable(),
             type: ko.observable(),
+            url: ko.observable(),
             subCourseName: ko.observable()
         };
         ko.applyBindings(viewModel);
@@ -152,6 +165,7 @@
                             viewModel.id(res.content.id);
                             viewModel.type(res.content.type);
                             viewModel.s_state(res.content.s_state);
+                            viewModel.url(res.content.url);
                         } else if (res.success === "fail") {
                             win.toastr.warning(res.msg);
                         } else if (data.success === "login") {

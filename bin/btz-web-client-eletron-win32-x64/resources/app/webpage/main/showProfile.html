@@ -71,7 +71,7 @@
                                 viewModel.type(res.content.type === 1 ? "管理员" : "录入员");
                                 viewModel.state(res.content.state === 1 ? "正常" : "冻结");
                             } else {
-                                window.location.href = '../login/login.html';
+                                window.parent.location.href = '../login/login.html';
                             }
                         },
                         error: function () {

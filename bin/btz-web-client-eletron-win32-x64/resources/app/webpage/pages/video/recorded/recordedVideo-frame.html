@@ -125,7 +125,7 @@
             url: GLOBAL_CONSTANT_URL + "admin/courseRecordedVideoController.do?dataGrid&field=id,subCourseId,chapterId,moduleId,moduleType,title,videoUrl,lectureUrl,orderNo,updateTime,createTime,",
             toolbar: "#chapterExerciseListtb",
             pagination: true,
-            singleSelect: true,
+            singleSelect: false,
             pageSize: 20,
             pageList: [10, 20, 30, 50, 100, 200],
             rownumbers: true,
@@ -133,6 +133,8 @@
             fit: true,
             fitColumns: true,
             onLoadSuccess: function (data) {
+                //重新加载之后 需要清除之前的选中
+                $('#chapterExerciseList').datagrid('clearSelections');
                 if (data.success === 'login') {
                     window.parent.location.href = '../../../login/login.html';
                 }
@@ -233,7 +235,6 @@
             return;
         }
         if (rowsData[0].level === "S") {
-            console.log(rowsData[0].level);
             tip('不能选择课程进行新增视频操作！');
             return
         }

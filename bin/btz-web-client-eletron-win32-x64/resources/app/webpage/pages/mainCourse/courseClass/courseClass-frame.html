@@ -89,7 +89,7 @@
             method: 'post',          //请求方式
             treeField: 'name',       //定义树节点的字段
             fit: true,               //网格自动撑满
-            fitColumns: true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+            fitColumns: false,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
             onLoadSuccess: function (row, data) {
                 if (data.success !== undefined && data.success !== "" && data.success === 'login') {
                     window.parent.location.href = '../../../login/login.html';
@@ -100,7 +100,6 @@
                 {
                     field: 'type',
                     title: '模块名称',
-                    width: 100,
                     formatter: function (value, rec, index) {
                         if (value === 1) {
                             return '章节练习';
@@ -123,10 +122,13 @@
                         if (value === 7) {
                             return '历年真题';
                         }
+                        if (value === 8) {
+                            return '错题排行';
+                        }
                         return "";
                     }
                 },
-                {field: 'versionNo', title: '题目版本序列', width: 100},
+                {field: 'versionNo', title: '题目版本序列'},
                 {
                     field: 's_state',
                     title: '状态',
@@ -141,7 +143,7 @@
                         }
                         return "";
                     }
-                }
+                },{field: 'url', title: '跳转链接'},
             ]]
         });
 
